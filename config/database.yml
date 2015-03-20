@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: isisdev
+  username: postgres
+  pool: 50
+  password:
+  host: localhost
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: isistest
+  username: postgres
+  pool: 10
+  password:
+  host: localhost
+production:
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>

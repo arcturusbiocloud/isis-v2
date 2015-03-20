@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-signin" }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+    <%= link_to image_tag("arcturus.png", width: "70", height: "66", alt: "Arcturus BioCloud", class: "form-signin-logo"), root_path %>
+    <p class="form-signin-lead">Welcome to Arcturus BioCloud</p>
+    <% form_message_for(:sign_up, @user ? @user.errors : []) %>
+    <%= render partial: "layouts/messages", locals: { default: false } %>
+    <hr>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "New password", class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "New password confirmation", class: "form-control" %>
+    <%= f.submit "Change my password", class: "btn btn-lg btn-primary btn-block" %>
+  <% end %>
+
+  <div class="signup">
+    <span>Nevermind? <%= link_to "Sign in", new_session_path(resource_name) %> | <%= link_to "Sign up", new_registration_path(resource_name) %></span>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+html * {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html { overflow-y: scroll; }
+body { padding-top: 50px; }
+h1 { margin-top: 50px; }
+
+.navbar-white { background-color: #fff; border-bottom: 2px solid #efefef; height: 96px; }
+.navbar-white .navbar-form .btn { margin-top: 8px; }
+.navbar-white .navbar-nav { margin-top: 22px; }
+.navbar-white .navbar-nav .divisor { margin: 9px 5px 0 5px; color: #aaa; font-weight: 100; font-size: 22px; }
+.navbar-white .navbar-nav > li > a:hover,
+.navbar-white .navbar-nav > li > a:focus { background-color: #fff; }
+.navbar-white .navbar-nav > li.active > a { color: #000; }
+
+.slogan { padding: 30px 0; }
+.slogan h1 { font-weight: normal; font-size: 28px; }
+.slogan .lead { font-weight: 300; font-size: 18px; color: #999; }
+
+.nav-inner { float: right; margin-top: 80px; }
+
+.project { margin-bottom: 35px; }
+.project .description { padding-left: 30px; }
+.project .actions { margin-top: 25px; text-align: right; }
+.project .actions li { list-style-type: none; display: inline; margin-left: 20px; font-size: 16px; }
+
+.explore { margin-bottom: 25px; }
+.explore img { margin-bottom: 15px; }
+
+.element-container { text-align: center; }
+.element-container img { width: 100px; height: 100px; }
+.element-container p { font-size: 15px; margin-top: 5px; }
+
+.video { margin-bottom: 50px; }
+
+.scope-check { margin-left: 15px; }
+
+/* Sticky footer */
+html { position: relative; min-height: 100%; }
+body { margin-bottom: 60px; }
+.footer { position: absolute; bottom: 0; width: 100%; height: 60px; }
+.footer-inner { border-top: 1px solid #ccc; }
+.footer-inner p { padding-top: 20px; text-align: center; }

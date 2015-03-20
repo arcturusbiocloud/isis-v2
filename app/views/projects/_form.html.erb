@@ -1,0 +1,38 @@
+<%= form_for(@project, html: { class: "form-inline" }) do |f| %>
+  <div class="row project">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :name, class: "sr-only" %>
+        <%= f.text_field :name, placeholder: "Project name", class: "form-control" %>
+      </div>
+      <div class="checkbox scope-check">
+        <label>
+          <%= f.check_box :is_public %> Public?
+        </label>
+      </div>
+      <br>
+      <span class="label label-danger form-error"><%= field_validation_message(@project, :name) %></span>
+    </div>
+  </div>
+
+  <div class="row project">
+    <div class="col-xs-12">
+      <%= f.label :description %>
+      <%= f.text_field :description, placeholder: "A short sentence that describes your project", style: "width:100%", class: "form-control" %>
+      <span class="label label-danger form-error"><%= field_validation_message(@project, :description) %></span>
+    </div>
+  </div>
+
+  <div class="row project">
+    <div class="col-xs-12">
+      <%= f.label :design %><br>
+      <%= f.text_area :design, rows: "15", style: "width:100%", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row project">
+    <div class="col-xs-12">
+      <%= f.submit "Execute", class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+<% end %>
