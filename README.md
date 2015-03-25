@@ -34,3 +34,34 @@ From `key = 1` to `key = 3` the status of the project is **running**. After crea
 # Add timeline item indicating that the project has been completed
 curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=TOKEN&key=2"
 ```
+
+## Image handling
+
+The service [Cloudnary](cloudinary.com) is used to handle images. Check out Heroku's dashboard for the credentials.
+
+Sample upload:
+
+```ruby
+Cloudinary::Uploader.upload(params["content"],
+                            public_id: public_id, tags: tags,
+                            eager: [
+                              {
+                                transformation: [
+                                  { width: 1077, height: 1077, crop: :crop, gravity: :center },
+                                  { width: 150, height: 150, crop: :fit, gravity: :center }
+                                ]
+                              },
+                              { width: 1077, height: 1077, crop: :crop, gravity: :center }
+                            ])
+```
+
+Same upload, but now using named transformations (they can seen on Cloudnary's dashboard):
+
+```ruby
+Cloudinary::Uploader.upload(params["content"],
+                            public_id: public_id, tags: tags,
+                            eager: [
+                              { transformation: 'thumbnail' },
+                              { transformation: 'original' }
+                            ])
+```

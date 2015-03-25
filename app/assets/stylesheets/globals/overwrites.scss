@@ -37,6 +37,11 @@ h1 { margin-top: 50px; }
 
 .scope-check { margin-left: 15px; }
 
+.img-thumbnail { border-radius: 0; border-color: #ddd; }
+.img-thumbnail:hover { border-color: #888; }
+.lighterbox-title, .lighterbox-desc { display: none; }
+.lighterbox-overlay-title { font-size: 18px; }
+
 /* Sticky footer */
 html { position: relative; min-height: 100%; }
 body { margin-bottom: 60px; }

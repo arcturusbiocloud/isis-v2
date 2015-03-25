@@ -46,8 +46,18 @@
   </div>
 
   <div class="<%= is_selected?('pictures-and-data') %> tab-pane" id="pictures-and-data">
-    <h4>Pictures and data</h4>
-    <p>Here goes pictures and data</p>
+    <div class="row project">
+      <% @activities.picture_taken.each_with_index do |activity, i| %>
+        <div class="col-xs-2">
+          <a href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" class="lighterbox">
+            <%= image_tag activity.detail, class: 'img-thumbnail' %>
+            <p class="lighterbox-title">Sample #<%= i+1 %></p>
+            <span class="lighterbox-desc"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %> </span>
+          </a>
+          #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <% if is_project_owner?(@project) %>

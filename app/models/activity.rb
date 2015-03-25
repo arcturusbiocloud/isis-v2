@@ -8,7 +8,7 @@ class Activity < ActiveRecord::Base
   private
 
   def handle_project_status
-    project.update_attribute(:status, 1) if self.running?
+    return project.update_attribute(:status, 1) if self.running?
     project.update_attribute(:status, 2) if self.completed?
   end
 end
