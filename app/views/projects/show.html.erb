@@ -2,7 +2,7 @@
   <ul class="nav nav-pills nav-inner">
     <li class="<%= is_selected?('timeline', true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
     <li class="<%= is_selected?('design') %>"><a href="#design" data-toggle="pill">Design</a></li>
-    <li class="<%= is_selected?('pictures-and-data') %>"><a href="#pictures-and-data" data-toggle="pill">Pictures and data</a></li>
+    <li class="<%= is_selected?('insights') %>"><a href="#insights" data-toggle="pill">Insights</a></li>
     <% if is_project_owner?(@project) %>
       <li><a href="#settings" data-toggle="pill">Settings</a></li>
     <% end %>
@@ -45,7 +45,7 @@
     <% end %>
   </div>
 
-  <div class="<%= is_selected?('pictures-and-data') %> tab-pane" id="pictures-and-data">
+  <div class="<%= is_selected?('insights') %> tab-pane" id="insights">
     <div class="row project">
       <% @activities.picture_taken.each_with_index do |activity, i| %>
         <div class="col-xs-2">
