@@ -54,7 +54,7 @@ module ProjectsHelper
       when "created" then "<p>Arc just created your project and is going to run it in 2 minutes.</p>"
       when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p><p>#{link_to 'Watch the transformation process!', activity.detail}</p>"
       when "incubating" then "<p>Arc just finished the transformation process and now is incubating your experiment. This step is going to take approximately 20 hours to be completed.</p>"
-      when "picture_taken" then "<p>Arc just got a picture of your experiment. <a href=\"#{activity.detail.gsub('t_thumbnail','t_original')}\" class=\"lighterbox\">Check it out!<p class=\"lighterbox-title\">Sample</p><span class=\"lighterbox-desc\">#{activity.created_at.strftime('%m/%d/%Y %H:%M:%S')}</span></a></p>"
+      when "picture_taken" then "<p>Arc just got a picture of your experiment. <a href=\"#{activity.detail.gsub('t_thumbnail','t_original')}\" class=\"fancybox\" rel=\"gallery1\">Check it out!<p class=\"lighterbox-title\"></a></p>"
       when "completed" then "<p>Arc just finished the incubation of your experiment.</p>"
     end
   end

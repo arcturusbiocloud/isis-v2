@@ -49,11 +49,9 @@
     <div class="row project">
       <% @activities.picture_taken.each_with_index do |activity, i| %>
         <div class="col-xs-2">
-          <a href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" class="lighterbox">
+          <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" title="Sample #<%= i+1 %>">
             <%= image_tag activity.detail, class: 'img-thumbnail' %>
-            <p class="lighterbox-title">Sample #<%= i+1 %></p>
-            <span class="lighterbox-desc"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %> </span>
-          </a>
+          </a>          
           #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
         </div>
       <% end %>
