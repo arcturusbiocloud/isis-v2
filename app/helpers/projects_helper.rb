@@ -52,7 +52,7 @@ module ProjectsHelper
   def activity_description(activity)
     case activity.key
       when "created" then "<p>Arc just created your project and is going to run it in 2 minutes.</p>"
-      when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p><p>#{link_to 'Watch the transformation process!', activity.detail}</p>"
+      when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p><p><div id='strobeMediaPlayback'><p>Video</p></div></p>"
       when "incubating" then "<p>Arc just finished the transformation process and now is incubating your experiment. This step is going to take approximately 20 hours to be completed.</p>"
       when "picture_taken" then "<p>Arc just got a picture of your experiment: <br/><br/><a href=\"#{activity.detail.gsub('t_thumbnail','t_original')}\" class=\"fancybox\" rel=\"gallery1\">#{image_tag activity.detail, class: 'img-thumbnail'}<p class=\"lighterbox-title\"></a></p>"
       when "completed" then "<p>Arc just finished the incubation of your experiment.</p>"

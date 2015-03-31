@@ -51,7 +51,7 @@
         <div class="col-xs-2">
           <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" title="Sample #<%= i+1 %>">
             <%= image_tag activity.detail, class: 'img-thumbnail' %>
-          </a>          
+          </a>
           #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
         </div>
       <% end %>
@@ -97,3 +97,29 @@
 </div>
 
 <br/>
+
+<script type="text/javascript">
+  var parameters = {
+    src: "rtmp://osiris.arcturus.io/flvplayback/myStream",
+    autoPlay: true,
+    controlBarAutoHide: false,
+    playButtonOverlay: true,
+    showVideoInfoOverlayOnStartUp: true,
+    optimizeBuffering : false,
+    initialBufferTime : 0.1,
+    expandedBufferTime : 0.1,
+    minContinuousPlayback : 0.1,
+    streamType: "live",
+    poster: "/strobe/images/poster.png"
+  };
+
+  swfobject.embedSWF("/strobe/StrobeMediaPlayback.swf",
+    "strobeMediaPlayback",
+    640,
+    480,
+    "10.1.0",
+    {},
+    parameters,
+    { allowFullScreen: "true"},
+    { name: "strobeMediaPlayback" });
+</script>
