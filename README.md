@@ -1,6 +1,6 @@
 # Isis
 
-Component responsible for managing customers and their projects on Arcturus BioCloud. It communicates with the clusters of robots through the project [horus](https://github.com/arcturusbiocloud/horus).
+Component responsible for managing customers and their projects on Arcturus BioCloud. It communicates with the clusters of robots through the project [horus-v2](https://github.com/arcturusbiocloud/horus-v2).
 
 ## API
 
