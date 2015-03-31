@@ -1,3 +1,21 @@
+<% if @activities.picture_taken.any? %>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arcturusbio">
+  <meta name="twitter:title" content="Arcturus BioCloud">
+  <meta name="twitter:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!">
+  <meta name="twitter:image:src" content="<%= @activities.picture_taken.last.detail %>">
+  <meta name="twitter:domain" content="arcturus.io">
+  <meta name="twitter:url" content="<%= request.url %>" />
+<% else %>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@arcturusbio" />
+  <meta name="twitter:title" content="Platform for biomakers" />
+  <meta name="twitter:description" content="Code and create your biotechnology experiments in a friendly and easy way." />
+  <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
+  <meta name="twitter:domain" content="arcturus.io">
+  <meta name="twitter:url" content="<%= request.url %>" />
+<% end %>
+
 <div class="slogan">
   <ul class="nav nav-pills nav-inner">
     <li class="<%= is_selected?('timeline', true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
