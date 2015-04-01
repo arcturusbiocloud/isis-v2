@@ -6,12 +6,14 @@
     <meta name="twitter:title" content="<%= @project.name %>" />
     <meta name="twitter:description" content="Platform for biomakers, which connects robots to the cloud allowing the community to execute biotech experiments in a safe and easy way." />
     <meta name="twitter:image:src" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_twitter-card") %>" />
+    <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
   <% else %>
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@arcturusbio" />
     <meta name="twitter:title" content="<%= @project.name %>" />
     <meta name="twitter:description" content="Code and create your biotechnology experiments in a friendly and easy way." />
     <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
+    <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
   <% end %>
 
   <meta property="og:locale" content="en" />
@@ -141,28 +143,39 @@
 
 <br/>
 
+<script type="text/javascript" src="//cdn.cine.io/cineio-broadcast.js"></script>
 <script type="text/javascript">
-  var parameters = {
-    src: "rtmp://osiris.arcturus.io/flvplayback/myStream",
-    autoPlay: true,
-    controlBarAutoHide: false,
-    playButtonOverlay: true,
-    showVideoInfoOverlayOnStartUp: true,
-    optimizeBuffering : false,
-    initialBufferTime : 0.1,
-    expandedBufferTime : 0.1,
-    minContinuousPlayback : 0.1,
-    streamType: "live",
-    poster: "/strobe/images/poster.png"
-  };
+  (function(){
 
-  swfobject.embedSWF("/strobe/StrobeMediaPlayback.swf",
-    "strobeMediaPlayback",
-    640,
-    480,
-    "10.1.0",
-    {},
-    parameters,
-    { allowFullScreen: "true"},
-    { name: "strobeMediaPlayback" });
+    var playerId = "player";
+    var logError = function(message){
+      var elem = document.getElementById(playerId);
+      elem.innerText = message;
+    };
+    var
+      qs = {},
+      publicKey = "55f827239e6c0badfc95795943396155",
+      streamId = "551913c4b936640b005750da";
+
+
+    if (location.search) {
+      location.search.substr(1).split("&").forEach(function(item) {
+        var parts = item.split(/=(.+)?/);
+        qs[parts[0]] = parts[1];
+      });
+    }
+
+    if (publicKey == null){
+      return logError("missing publicKey");
+    }
+    if (streamId == null){
+      return logError("missing streamId");
+    }
+    CineIO.init(publicKey, {jwPlayerKey: qs.jwPlayerKey});
+    // live streaming
+    // CineIO.play(streamId, playerId);
+    // recorded
+    // get the list of records at: curl -X GET "https://www.cine.io/api/1/-/stream/recordings?publicKey=55f827239e6c0badfc95795943396155&id=551913c4b936640b005750da"
+    CineIO.playRecording(streamId, "XJRl3Bsq.20150401T222821.mp4", playerId);
+  })();
 </script>
