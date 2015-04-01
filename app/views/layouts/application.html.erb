@@ -21,6 +21,8 @@
     <link href='<%= asset_path("arcturus.png") %>' rel='icon' type='image/png'>
 
     <%= csrf_meta_tags %>
+
+    <%= yield(:social) %>
   </head>
   <body>
     <%= render "layouts/navbar" %>
