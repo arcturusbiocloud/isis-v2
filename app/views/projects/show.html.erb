@@ -1,17 +1,24 @@
 <% if @activities.picture_taken.any? %>
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arcturusbio">
-  <meta name="twitter:creator" content="@arcturusbio">
-  <meta name="twitter:title" content="<%= @project.name %>">
-  <meta name="twitter:description" content="Platform for biomakers, which connects robots to the cloud allowing the community to execute biotech experiments in a safe and easy way.">
-  <meta name="twitter:image:src" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_twitter-card") %>">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@arcturusbio" />
+  <meta name="twitter:creator" content="@arcturusbio" />
+  <meta name="twitter:title" content="<%= @project.name %>" />
+  <meta name="twitter:description" content="Platform for biomakers, which connects robots to the cloud allowing the community to execute biotech experiments in a safe and easy way." />
+  <meta name="twitter:image:src" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_twitter-card") %>" />
 <% else %>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@arcturusbio" />
-  <meta name="twitter:title" content="<%= @project.name %>">
+  <meta name="twitter:title" content="<%= @project.name %>" />
   <meta name="twitter:description" content="Code and create your biotechnology experiments in a friendly and easy way." />
   <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
 <% end %>
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="<%= @project.name %>" />
+<meta property="og:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!" />
+<meta property="og:site_name" content="Arcturus BioCloud" />
+<meta property="og:image" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_twitter-card") %>" />
 
 <div class="slogan">
   <ul class="nav nav-pills nav-inner">
