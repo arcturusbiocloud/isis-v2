@@ -10,9 +10,7 @@ module ProjectsHelper
   def icon_class(project)
     last_activity = project.activities.last
 
-    return 'project-icon' if last_activity.nil?
-
-    if Activity.keys[last_activity.key] >= 3
+    if last_activity && Activity.keys[last_activity.key] >= 3
       'project-thumbnail'
     else
       'project-icon'
