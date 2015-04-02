@@ -34,7 +34,7 @@ module ProjectsHelper
       when "created" then "cd-picture"
       when "assembling" then "cd-running"
       when "transforming" then "cd-movie"
-      when "plating" then "cd-running"
+      when "plating" then "cd-plating"
       when "incubating" then "cd-location"
       when "picture_taken" then "cd-movie"
       when "completed" then "cd-picture"
