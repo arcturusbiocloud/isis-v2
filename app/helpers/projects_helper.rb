@@ -31,13 +31,13 @@ module ProjectsHelper
 
   def activity_background(activity)
     case activity.key
-      when "created" then "cd-picture"
+      when "created" then "cd-green"
       when "assembling" then "cd-running"
       when "transforming" then "cd-movie"
       when "plating" then "cd-plating"
       when "incubating" then "cd-location"
-      when "picture_taken" then "cd-movie"
-      when "completed" then "cd-picture"
+      when "picture_taken" then "cd-picture"
+      when "completed" then "cd-green"
     end
   end
 
