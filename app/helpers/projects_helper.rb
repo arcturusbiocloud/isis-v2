@@ -56,10 +56,10 @@ module ProjectsHelper
   def activity_description(activity)
     case activity.key
       when "created" then "<p>Arc just created your project and is going to run it as soon as possible.</p>"
-      when "assembling" then "<p>Arc just got all the genetic parts and configurations and is assembling your genetic circuit. You can watch the video of the process and learn more about it!</p>"
+      when "assembling" then "<p>Arc just got all the genetic parts and configurations to assemble your genetic circuit. You can watch the video of the process and learn more about it!</p><p><div id='player'>Loading video...</div></p>"
       when "transforming" then "<p>Arc is transforming a competent cell with your genetic circuit.</p>"
       when "plating" then "<p>Arc is plating your transformed competent cell in a petri dish with agar.</p>"
-      when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p><p><div id='player'>Loading video...</div></p></p>"
+      when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p>"
       when "incubating" then "<p>Arc is incubating your experiment for the next 36 hours.</p>"
       when "picture_taken" then "<p>Arc just got a picture of your experiment: <br/><br/><a href=\"#{activity.detail.gsub('t_thumbnail','t_original')}\" class=\"fancybox\" rel=\"gallery1\">#{image_tag activity.detail, class: 'img-thumbnail'}<p class=\"lighterbox-title\"></a></p>"
       when "completed" then "<p>Arc just finished your experiment. You can check the insights and pictures to see if your genetic circuit is working as expected.</p>"
