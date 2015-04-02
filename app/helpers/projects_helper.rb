@@ -33,7 +33,7 @@ module ProjectsHelper
     case activity.key
       when "created" then "cd-picture"
       when "assembling" then "cd-running"
-      when "transforming" then "cd-running"
+      when "transforming" then "cd-movie"
       when "plating" then "cd-running"
       when "incubating" then "cd-location"
       when "picture_taken" then "cd-movie"
@@ -44,7 +44,7 @@ module ProjectsHelper
   def activity_title(activity)
     case activity.key
       when "created" then "Project created!"
-      when "assembling" then "Assembling!"
+      when "assembling" then "Assembling"
       when "transforming" then "Transforming"
       when "plating" then "Plating"
       when "incubating" then "Incubating"
