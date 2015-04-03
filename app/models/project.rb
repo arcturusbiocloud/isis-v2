@@ -2,6 +2,10 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :activities
 
+  # To create nice URLs
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   # A project is created with status 0 (pending); then another process grab the
   # project, allocate resources for it and change the status to 1 (running).
   # Lastly, that same process should finish the project, changing its status
@@ -37,6 +41,7 @@ end
 #
 #  id            :integer          not null, primary key
 #  name          :string           not null
+#  slug          :string           not null
 #  description   :string
 #  is_public     :boolean          default(TRUE), not null
 #  design        :text
@@ -45,3 +50,4 @@ end
 #  user_id       :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#
