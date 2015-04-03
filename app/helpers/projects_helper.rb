@@ -7,6 +7,14 @@ module ProjectsHelper
     project.user == current_user
   end
 
+  def index_title(user)
+    if user && user != current_user
+      "#{user.username}'s projects"
+    else
+      "Your projects"
+    end
+  end
+
   def icon_class(project)
     last_activity = project.activities.last
 
