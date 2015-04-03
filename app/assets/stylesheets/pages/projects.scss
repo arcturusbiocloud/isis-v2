@@ -34,6 +34,8 @@ $color-3: #ffffff; // white
 $color-4: #75ce66; // green
 $color-5: #f0ca45; // yellow
 $color-6: #428bca; // blue
+$color-7: #9a6adc; // purple
+$color-8: #ed7c4a; // orange
 
 // fonts
 $primary-font: 'Droid Serif', serif;
@@ -190,7 +192,7 @@ header {
 		margin-top: -12px;
 	}
 
-	&.cd-picture {
+	&.cd-green {
 		background: $color-4;
 	}
 
@@ -204,6 +206,14 @@ header {
 
   &.cd-running {
 		background: $color-6;
+	}
+
+  &.cd-plating {
+		background: $color-7;
+	}
+
+  &.cd-picture {
+		background: $color-8;
 	}
 
 	@include MQ(L) {
