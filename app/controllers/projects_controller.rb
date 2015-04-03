@@ -12,7 +12,16 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    if params[:username]
+      @user = User.find_by_username(params[:username])
+      not_found unless @user
+    end
+
+    @project = if @user
+      @user.projects.friendly.find(params[:id])
+    else
+      Project.friendly.find(params[:id])
+    end
 
     if is_accessible?
       @activities = @project.activities.order('updated_at desc')
