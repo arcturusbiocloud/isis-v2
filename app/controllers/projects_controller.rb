@@ -3,7 +3,12 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
-    @projects = current_user.projects
+    if params[:username]
+      @user = User.find_by_username(params[:username])
+      not_found unless @user
+    end
+
+    @projects = (@user || current_user).projects
   end
 
   def show

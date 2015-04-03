@@ -5,11 +5,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects
-
   devise_for :users
 
   get 'explore', to: 'explore#index'
+
+  resources :projects
+
+  match ':username' => 'projects#index', via: :get, as: 'username_projects'
 
   root 'explore#index'
 end
