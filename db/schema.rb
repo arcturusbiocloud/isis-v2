@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150314144535) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",                         null: false
+    t.string   "slug",                         null: false
     t.string   "description"
     t.boolean  "is_public",     default: true, null: false
     t.text     "design"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150314144535) do
     t.datetime "updated_at",                   null: false
   end
 
+  add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|

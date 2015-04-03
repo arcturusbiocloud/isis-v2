@@ -4,6 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  name          :string           not null
+#  slug          :string           not null
 #  description   :string
 #  is_public     :boolean          default(TRUE), not null
 #  design        :text
@@ -12,6 +13,7 @@
 #  user_id       :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#
 
 require 'test_helper'
 
