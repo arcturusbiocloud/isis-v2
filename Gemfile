@@ -17,6 +17,7 @@ gem 'uglifier'
 # Other gems
 gem 'devise'
 gem 'cloudinary'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'byebug'
