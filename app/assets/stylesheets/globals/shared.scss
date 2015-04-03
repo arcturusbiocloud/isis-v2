@@ -75,16 +75,20 @@ body.devise {
 		}
 	}
 
+  input[type="text"] {
+	  margin-bottom: 15px;
+	}
+
 	input[type="email"] {
 	  margin-bottom: 15px;
 	}
 
 	input[type="password"] {
-	  margin-bottom: 20px;
+	  margin-bottom: 15px;
 	}
 
   input[type="submit"] {
-	  margin-top: 28px;
+	  margin-top: 30px;
     margin-bottom: -15px;
 	}
 }
