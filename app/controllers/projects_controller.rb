@@ -1,22 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :load_user, only: [:show, :index]
   before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
-    if params[:username]
-      @user = User.find_by_username(params[:username])
-      not_found unless @user
-    end
-
     @projects = (@user || current_user).projects
   end
 
   def show
-    if params[:username]
-      @user = User.find_by_username(params[:username])
-      not_found unless @user
-    end
-
     @project = if @user
       @user.projects.friendly.find(params[:id])
     else
@@ -68,6 +59,13 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = current_user.projects.find(params[:id])
+  end
+
+  def load_user
+    if params[:username]
+      @user = User.find_by_username(params[:username])
+      not_found unless @user
+    end
   end
 
   def project_params
