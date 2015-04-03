@@ -15,15 +15,16 @@
         <% else %>
           <%= fa_icon "check-square-o", class: 'project-completed', title: "Completed", "data-toggle" => "tooltip" %>
         <% end %>
-        <%= link_to project.name, project_path(project) %>
+        <span class="project-owner"><%= link_to project.user.username, username_projects_path(project.user.username) %> /</span>
+        <%= link_to project.name, username_project_path(project.user.username, project) %>
       </h4>
       <p><%= project.description %></p>
     </div>
     <div class="col-xs-7">
       <ul class="actions">
-        <li><%= link_to "Timeline", project_path(project, tab: "timeline") %></li>
-        <li><%= link_to "Design", project_path(project, tab: "design") %></li>
-        <li><%= link_to "Insights", project_path(project, tab: "insights") %></li>
+        <li><%= link_to "Timeline", username_project_path(project.user.username, project, tab: "timeline") %></li>
+        <li><%= link_to "Design", username_project_path(project.user.username, project, tab: "design") %></li>
+        <li><%= link_to "Insights", username_project_path(project.user.username, project, tab: "insights") %></li>
       </ul>
     </div>
   </div>
