@@ -142,6 +142,7 @@ class User < ActiveRecord::Base
   		'email',
   		'employment',
   		'enterprise',
+      'explore',
   		'faq',
   		'favorite',
   		'favorites',
