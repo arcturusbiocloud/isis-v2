@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
-    @projects = (@user || current_user).projects
+    @projects = (@user || current_user).projects.page params[:page]
   end
 
   def show

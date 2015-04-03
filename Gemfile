@@ -11,6 +11,7 @@ gem 'pg', '0.18.1'
 gem 'bourbon'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'kaminari-bootstrap'
 gem 'sass-rails'
 gem 'uglifier'
 
@@ -18,6 +19,7 @@ gem 'uglifier'
 gem 'devise'
 gem 'cloudinary'
 gem 'friendly_id'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
