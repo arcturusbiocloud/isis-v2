@@ -16,6 +16,7 @@
   }
 }
 .design-action { margin: 20px 0 0 94px; width: 119px; }
+.timeline-entry { display: none; }
 
 .project-icon {
   background-color: #eee;
@@ -133,11 +134,11 @@ header {
 
 #cd-timeline {
 	position: relative;
-	padding: 3em 0;
-	margin: {
-		top: 2em;
-		bottom: 2em;
-	}
+	padding: 3.5em 0;
+  margin: {
+    top: 2em;
+    bottom: 2em;
+  }
 
 	&::before {
 		/* this is the vertical line */
@@ -152,7 +153,7 @@ header {
 
 	@include MQ(L) {
 		margin: {
-			top: 3em;
+			top: -20px;
 			bottom: 3em;
 		}
 
