@@ -16,8 +16,23 @@ class Activity < ActiveRecord::Base
   private
 
   def handle_project_status
-    return project.update_attribute(:status, 1) if self.assembling?
-    project.update_attribute(:status, 2) if self.completed?
+    case self[:key]
+    when Activity.keys[:assembling]
+      # This activity indicates that the project is no longer pending,
+      # so the project status is updated to 1 (running)
+      return project.update_attribute(:status, 1)
+    when Activity.keys[:incubating]
+      # This activity indicates that the project is ready to be photographed
+      return project.update_attribute(:status, 2)
+    when Activity.keys[:picture_taken]
+      # This activity indicates that a picture was taken, so the project
+      # is updated with the current time
+      return project.update_attribute(:last_picture_taken_at, Time.now)
+    when Activity.keys[:completed]
+      # This activity indicates that no further actions will be taken towards
+      # ths project, so it is status is updated to 3 (completed)
+      project.update_attribute(:status, 3)
+    end
   end
 end
 
