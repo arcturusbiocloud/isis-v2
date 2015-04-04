@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     if @project.save
       # Add the first activity of the timeline
       @project.activities.create!
-      redirect_to @project
+      redirect_to username_project_path(current_user.username, @project)
     else
       render :new
     end
