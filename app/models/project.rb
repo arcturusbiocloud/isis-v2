@@ -44,10 +44,22 @@ class Project < ActiveRecord::Base
 
   before_create :random_icon
 
+  def channel
+    require 'base64'
+
+    (Digest::SHA256.new << md5 + 'jUb@d8v#mmN02ZkB').hexdigest
+  end
+
   private
 
   def random_icon
     self.icon_url_path = "project-icons/#{rand(15)}.png"
+  end
+
+  def md5
+    require 'digest/md5'
+
+    Digest::MD5.hexdigest self.user.username + self.name
   end
 end
 
