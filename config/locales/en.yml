@@ -1,3 +1,40 @@
 en:
   custom_errors:
     sign_up: "Please fill in all the fields."
+  design:
+    anchor:
+      description: "Here goes a brief explanation about this parameter"
+      values:
+        ampr: "AmpR"
+        clhor: "ClhoR"
+        kanr: "KanR"
+    promoter:
+      description: "Just a small hint on how to define this attribute"
+      values:
+        very_strong: "Very strong"
+        strong: "Strong"
+        medium: "Medium"
+        weak: "Weak"
+    rbs:
+      description: "Small description regarding this property and the affect it has on the experiment"
+      values:
+        very_strong: "Very strong"
+        strong: "Strong"
+        medium: "Medium"
+        weak: "Weak"
+    gene:
+      description: "A few words to give the user a clue on how to set this value "
+      values:
+        gfp: "GFP"
+        rfp: "RFP"
+        acp: "aCP"
+    terminator:
+      description: "Just some information about the terminator parameter"
+      values:
+        ter: "Ter"
+    cap:
+      description: "Summarized CAP description and the impact of it on the experiment"
+      values:
+        high: "High"
+        medium: "Medium"
+        low: "Low"
