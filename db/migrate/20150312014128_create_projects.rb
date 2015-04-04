@@ -10,6 +10,14 @@ class CreateProjects < ActiveRecord::Migration
       t.string   :icon_url_path,                       null: false
       t.datetime :last_picture_taken_at
 
+      # Design initial concept
+      t.string :anchor
+      t.string :promoter
+      t.string :rbs
+      t.string :gene
+      t.string :terminator
+      t.string :cap
+
       t.references :user, null: false, index: true
 
       t.timestamps null: false

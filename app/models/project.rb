@@ -55,15 +55,22 @@ end
 #
 # Table name: projects
 #
-#  id            :integer          not null, primary key
-#  name          :string           not null
-#  slug          :string           not null
-#  description   :string
-#  is_public     :boolean          default(TRUE), not null
-#  design        :text
-#  status        :integer          default(0), not null
-#  icon_url_path :string           not null
-#  user_id       :integer          not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id                    :integer          not null, primary key
+#  name                  :string           not null
+#  slug                  :string           not null
+#  description           :string
+#  is_public             :boolean          default(TRUE), not null
+#  design                :text
+#  status                :integer          default(0), not null
+#  icon_url_path         :string           not null
+#  last_picture_taken_at :datetime
+#  anchor                :string
+#  promoter              :string
+#  rbs                   :string
+#  gene                  :string
+#  terminator            :string
+#  cap                   :string
+#  user_id               :integer          not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #

@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20150314144535) do
     t.integer  "status",                default: 0,    null: false
     t.string   "icon_url_path",                        null: false
     t.datetime "last_picture_taken_at"
+    t.string   "anchor"
+    t.string   "promoter"
+    t.string   "rbs"
+    t.string   "gene"
+    t.string   "terminator"
+    t.string   "cap"
     t.integer  "user_id",                              null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
