@@ -23,16 +23,91 @@
     </div>
   </div>
 
+  <!--
   <div class="row project">
+    <div class="col-xs-2">
+      <%= f.label :anchor %><br>
+      <%= f.select :anchor, options_for_select(t("design.anchor").invert), {}, { :class => 'form-control' } %>
+    </div>
+    <div class="col-xs-2">
+      <%= f.label :promoter %><br>
+      <%= f.select :promoter, options_for_select(t("design.promoter").invert), {}, { :class => 'form-control' } %>
+    </div>
+    <div class="col-xs-2">
+      <%= f.label :rbs, "RBS" %><br>
+      <%= f.select :rbs, options_for_select(t("design.rbs").invert), {}, { :class => 'form-control' } %>
+    </div>
+    <div class="col-xs-2">
+      <%= f.label :gene %><br>
+      <%= f.select :gene, options_for_select(t("design.gene").invert), {}, { :class => 'form-control' } %>
+    </div>
+    <div class="col-xs-2">
+      <%= f.label :terminator %><br>
+      <%= f.select :terminator, options_for_select(t("design.terminator").invert), {}, { :class => 'form-control' } %>
+    </div>
+    <div class="col-xs-2">
+      <%= f.label :cap, "CAP" %><br>
+      <%= f.select :cap, options_for_select(t("design.cap").invert), {}, { :class => 'form-control' } %>
+    </div>
+  </div>
+  -->
+
+  <%= f.label :design %>
+  <p>Select the experiment parameters that will be used to build your project:</p>
+  <br>
+  <div class="row design-attribute">
     <div class="col-xs-12">
-      <%= f.label :design %><br>
-      <%= f.text_area :design, rows: "15", style: "width:100%", class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :anchor %>
+        <%= f.select :anchor, options_for_select(t("design.anchor.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.anchor.description") %></span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :promoter %>
+        <%= f.select :promoter, options_for_select(t("design.promoter.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.promoter.description") %></span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :rbs, "RBS" %>
+        <%= f.select :rbs, options_for_select(t("design.rbs.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.rbs.description") %></span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :gene %>
+        <%= f.select :gene, options_for_select(t("design.gene.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.gene.description") %></span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :terminator %>
+        <%= f.select :terminator, options_for_select(t("design.terminator.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.terminator.description") %></span>
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+      <div class="form-group">
+        <%= f.label :cap, "CAP" %>
+        <%= f.select :cap, options_for_select(t("design.cap.values").invert), {}, { :class => 'form-control' } %>
+        <span><%= t("design.cap.description") %></span>
+      </div>
     </div>
   </div>
 
   <div class="row project">
     <div class="col-xs-12">
-      <%= f.submit "Execute", class: "btn btn-lg btn-primary" %>
+      <%= f.submit "Execute", class: "btn btn-lg btn-primary design-action" %>
     </div>
   </div>
 <% end %>

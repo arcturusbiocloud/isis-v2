@@ -81,12 +81,54 @@
   </div>
 
   <div class="<%= is_selected?('design') %> tab-pane" id="design">
-    <h4>Design</h4>
-
     <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
-      <div class="row project">
+      <div class="row design-attribute">
         <div class="col-xs-12">
-          <%= f.text_area :design, rows: "15", style: "width:100%", class: "form-control", disabled: true %>
+          <div class="form-group">
+            <%= f.label :anchor %>
+            <%= f.select :anchor, options_for_select([t("design.anchor.values.#{@project.anchor}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.anchor.description") %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :promoter %>
+            <%= f.select :promoter, options_for_select([t("design.promoter.values.#{@project.promoter}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.promoter.description") %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :rbs, "RBS" %>
+            <%= f.select :rbs, options_for_select([t("design.rbs.values.#{@project.rbs}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.rbs.description") %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :gene %>
+            <%= f.select :gene, options_for_select([t("design.gene.values.#{@project.gene}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.gene.description") %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :terminator %>
+            <%= f.select :terminator, options_for_select([t("design.terminator.values.#{@project.terminator}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.terminator.description") %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :cap, "CAP" %>
+            <%= f.select :cap, options_for_select([t("design.cap.values.#{@project.cap}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+            <span><%= t("design.cap.description") %></span>
+          </div>
         </div>
       </div>
     <% end %>
