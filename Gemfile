@@ -20,6 +20,7 @@ gem 'devise'
 gem 'cloudinary'
 gem 'friendly_id'
 gem 'kaminari'
+gem 'pusher'
 
 group :development, :test do
   gem 'byebug'
