@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :is_public, :design)
+    params.require(:project).permit(:name, :description, :is_public, :design, :anchor, :promoter, :rbs, :gene, :terminator, :cap)
   end
 
   # Since a project can be public or private, it's necessary to be sure that
