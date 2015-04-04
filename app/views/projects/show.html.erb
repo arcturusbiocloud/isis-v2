@@ -189,8 +189,7 @@
 
 <script type="text/javascript" src="//cdn.cine.io/cineio-broadcast.js"></script>
 <script type="text/javascript">
-  (function(){
-
+  function loadVideo() {
     var playerId = "player";
     var logError = function(message){
       var elem = document.getElementById(playerId);
@@ -200,7 +199,6 @@
       qs = {},
       publicKey = "55f827239e6c0badfc95795943396155",
       streamId = "551913c4b936640b005750da";
-
 
     if (location.search) {
       location.search.substr(1).split("&").forEach(function(item) {
@@ -221,7 +219,9 @@
     // recorded
     // get the list of records at: curl -X GET "https://www.cine.io/api/1/-/stream/recordings?publicKey=55f827239e6c0badfc95795943396155&id=551913c4b936640b005750da"
     CineIO.playRecording(streamId, "XJRl3Bsq.20150402T020747.mp4", playerId);
-  })();
+  }
+
+  loadVideo();
 
   var pusher, channel;
   var entryId = 0;
@@ -251,6 +251,8 @@
     markup += "</div>";
 
     $("#cd-timeline").prepend(markup);
-    $(".entry-" + entryId++).fadeIn("slow");
+    $(".entry-" + entryId++).fadeIn("slow", function() {
+      if(data.icon == 'assembling') { loadVideo(); }
+    });
   }
 </script>
