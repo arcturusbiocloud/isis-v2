@@ -66,13 +66,13 @@
     <section id="cd-timeline" class="cd-container">
       <% @activities.each do |activity| %>
         <div class="cd-timeline-block">
-          <div class="cd-timeline-img <%= activity_background(activity) %>">
-            <%= fa_icon activity_icon(activity) %>
+          <div class="cd-timeline-img <%= activity.background %>">
+            <i class="fa <%= activity.icon %>"></i>
           </div>
 
           <div class="cd-timeline-content">
-            <h2><%= activity_title(activity) %></h2>
-            <%= raw activity_description(activity) %>
+            <h2><%= activity.title %></h2>
+            <%= raw activity.description %>
             <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
           </div>
         </div>
@@ -222,4 +222,35 @@
     // get the list of records at: curl -X GET "https://www.cine.io/api/1/-/stream/recordings?publicKey=55f827239e6c0badfc95795943396155&id=551913c4b936640b005750da"
     CineIO.playRecording(streamId, "XJRl3Bsq.20150401T222821.mp4", playerId);
   })();
+
+  var pusher, channel;
+  var entryId = 0;
+
+  $(document).ready(function() {
+    if(typeof pusher == 'undefined'){
+      pusher = new Pusher("<%= Rails.application.secrets.pusher_key %>");
+      channel = pusher.subscribe('<%= @project.channel %>');
+      channel.bind('update', function(data) { addTimelineEntry(data); });
+    } else {
+      addTimelineEntry(data);
+    }
+  });
+
+  function addTimelineEntry(data) {
+    var markup = "";
+
+    markup += "<div class='cd-timeline-block'>";
+    markup += "  <div class='cd-timeline-img " + data.background + "'>";
+    markup += "    <i class='fa " + data.icon + "'></i>";
+    markup += "  </div>";
+    markup += "  <div class='cd-timeline-content timeline-entry entry-" + entryId + "'>";
+    markup += "    <h2>" + data.title + "</h2>";
+    markup += "    <p>" + data.description + "</p>";
+    markup += "    <span class='cd-date'>" + data.timestamp + "</span>";
+    markup += "  </div>";
+    markup += "</div>";
+
+    $("#cd-timeline").prepend(markup);
+    $(".entry-" + entryId++).fadeIn("slow");
+  }
 </script>
