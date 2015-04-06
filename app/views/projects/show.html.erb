@@ -37,7 +37,7 @@
     <% end %>
   </ul>
 
-  <h1><%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <%= @project.name %></h1>
+  <h1><%= image_tag current_user.gravatar_url %> <%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <%= @project.name %></h1>
   <p class="lead"><%= @project.description %></p>
 
   <hr/>
