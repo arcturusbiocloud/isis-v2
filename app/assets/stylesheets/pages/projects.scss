@@ -1,9 +1,11 @@
+.scope-check { margin-left: 15px; }
+
 .design-attribute {
   .col-xs-12 {
     margin-bottom: 18px;
   }
   label {
-    min-width: 90px;
+    min-width: 170px;
     padding-right: 15px;
     text-align: right;
   }
@@ -11,12 +13,29 @@
     min-width: 120px;
     margin-right: 10px;
   }
-  span {
+  p {
+    margin: 6px 0 15px 175px;
     color: #aaa;
   }
 }
-.design-action { margin: 20px 0 0 94px; width: 119px; }
+
+.design-action { margin: 10px 0 0 174px; width: 119px; }
+
 .timeline-entry { display: none; }
+
+@media(max-width:767px){
+  .scope-check { margin-left: 0; }
+
+  .design-attribute {
+    label {
+      text-align: left;
+    }
+    p {
+      margin-left: 0;
+    }
+  }
+  .design-action { margin-left: 0; width: 100%; }
+}
 
 .project-icon {
   background-color: #eee;
