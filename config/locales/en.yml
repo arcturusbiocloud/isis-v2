@@ -3,37 +3,37 @@ en:
     sign_up: "Please fill in all the fields."
   design:
     anchor:
-      description: "Here goes a brief explanation about this parameter"
+      description: "This is the part of your DNA circuit that helps you to select the right bacteria. If the bacteria has your circuit it will be able to resist this antibiotic and happily grow."
       values:
         ampr: "AmpR"
         clhor: "ClhoR"
         kanr: "KanR"
     promoter:
-      description: "Just a small hint on how to define this attribute"
+      description: "This guy controls your gene, it tells the gene when and why it should be active. This part is under the regulating of other cell components, helping in the transcription of your gene. Transcription is to read your DNA and produce a RNA copy of it."
       values:
         very_strong: "Very strong"
         strong: "Strong"
         medium: "Medium"
         weak: "Weak"
     rbs:
-      description: "Small description regarding this property and the affect it has on the experiment"
+      description: "This part of your circuit will be transcribed with your gene. It indicates to the ribosome (machine that produces proteins) how many times it will read your RNA to produce proteins."
       values:
         very_strong: "Very strong"
         strong: "Strong"
         medium: "Medium"
         weak: "Weak"
     gene:
-      description: "A few words to give the user a clue on how to set this value "
+      description: "This is the main component of your circuit! It is the gene that you want to express, which means, it will be translated into proteins. GFP (green fluorescent protein - when your bacteria is under UV light this gene makes it green), RFP (red fluorescent protein - when your bacteria is under UV light this gene makes it pink and under normal light it makes it red) or aCP (coral acropora millepora - makes your bacteria blue under normal light)."
       values:
         gfp: "GFP"
         rfp: "RFP"
         acp: "aCP"
     terminator:
-      description: "Just some information about the terminator parameter"
+      description: "This part of your circuit indicates where finish the message that will become RNA in the transcription process."
       values:
         ter: "Ter"
     cap:
-      description: "Summarized CAP description and the impact of it on the experiment"
+      description: "This part determines the number of copies of your circuit per bacterial cell. Low (around 20 to 30), Medium (around 100 to 200) and High (around 300 to 500)."
       values:
         high: "High"
         medium: "Medium"

@@ -85,7 +85,7 @@
       <div class="row design-attribute">
         <div class="col-xs-12">
           <div class="form-group">
-            <%= f.label :anchor %>
+            <%= f.label :anchor, "Selection gene" %>
             <%= f.select :anchor, options_for_select([t("design.anchor.values.#{@project.anchor}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
             <span><%= t("design.anchor.description") %></span>
           </div>
@@ -101,7 +101,7 @@
 
         <div class="col-xs-12">
           <div class="form-group">
-            <%= f.label :rbs, "RBS" %>
+            <%= f.label :rbs, "Ribosome Binding Site" %>
             <%= f.select :rbs, options_for_select([t("design.rbs.values.#{@project.rbs}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
             <span><%= t("design.rbs.description") %></span>
           </div>
@@ -125,7 +125,7 @@
 
         <div class="col-xs-12">
           <div class="form-group">
-            <%= f.label :cap, "CAP" %>
+            <%= f.label :cap, "Replication Origin" %>
             <%= f.select :cap, options_for_select([t("design.cap.values.#{@project.cap}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
             <span><%= t("design.cap.description") %></span>
           </div>
