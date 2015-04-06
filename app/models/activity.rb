@@ -27,7 +27,7 @@ class Activity < ActiveRecord::Base
 
   def icon
     case self.key
-    when "created" then "fa-clock-o"
+      when "created" then "fa-clock-o"
       when "assembling" then "fa-random"
       when "transforming" then "fa-flask"
       when "plating" then "fa-eyedropper"
