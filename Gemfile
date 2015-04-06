@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'devise'
 gem 'cloudinary'
 gem 'friendly_id'
+gem 'gravtastic'
 gem 'kaminari'
 gem 'pusher'
 
