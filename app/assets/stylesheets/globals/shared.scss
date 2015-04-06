@@ -4,6 +4,18 @@ body.devise {
   -webkit-background-size: cover;
 }
 
+h1 img {
+  width: 70px;
+  height: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  float: left;
+  margin: 0 13px 0 0;
+}
+
 .alert {
   display: none;
   padding: 6px 10px;
