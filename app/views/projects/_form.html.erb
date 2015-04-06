@@ -23,84 +23,55 @@
     </div>
   </div>
 
-  <!--
-  <div class="row project">
-    <div class="col-xs-2">
-      <%= f.label :anchor %><br>
-      <%= f.select :anchor, options_for_select(t("design.anchor").invert), {}, { :class => 'form-control' } %>
-    </div>
-    <div class="col-xs-2">
-      <%= f.label :promoter %><br>
-      <%= f.select :promoter, options_for_select(t("design.promoter").invert), {}, { :class => 'form-control' } %>
-    </div>
-    <div class="col-xs-2">
-      <%= f.label :rbs, "RBS" %><br>
-      <%= f.select :rbs, options_for_select(t("design.rbs").invert), {}, { :class => 'form-control' } %>
-    </div>
-    <div class="col-xs-2">
-      <%= f.label :gene %><br>
-      <%= f.select :gene, options_for_select(t("design.gene").invert), {}, { :class => 'form-control' } %>
-    </div>
-    <div class="col-xs-2">
-      <%= f.label :terminator %><br>
-      <%= f.select :terminator, options_for_select(t("design.terminator").invert), {}, { :class => 'form-control' } %>
-    </div>
-    <div class="col-xs-2">
-      <%= f.label :cap, "CAP" %><br>
-      <%= f.select :cap, options_for_select(t("design.cap").invert), {}, { :class => 'form-control' } %>
-    </div>
-  </div>
-  -->
-
   <%= f.label :design %>
   <p>Select the parts that will be used to assemble your genetic circuit:</p>
   <br>
   <div class="row design-attribute">
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :anchor, "Selection gene" %>
+        <%= f.label :anchor, t("design.anchor.name") %>
         <%= f.select :anchor, options_for_select(t("design.anchor.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.anchor.description") %></span>
+        <p><%= t("design.anchor.description") %></p>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :promoter %>
+        <%= f.label :promoter, t("design.promoter.name") %>
         <%= f.select :promoter, options_for_select(t("design.promoter.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.promoter.description") %></span>
+        <p><%= t("design.promoter.description") %></p>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :rbs, "Ribosome Binding Site" %>
+        <%= f.label :rbs, t("design.rbs.name") %>
         <%= f.select :rbs, options_for_select(t("design.rbs.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.rbs.description") %></span>
+        <p><%= t("design.rbs.description") %></p>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :gene %>
+        <%= f.label :gene, t("design.gene.name") %>
         <%= f.select :gene, options_for_select(t("design.gene.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.gene.description") %></span>
+        <p><%= t("design.gene.description") %></p>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :terminator %>
+        <%= f.label :terminator, t("design.terminator.name") %>
         <%= f.select :terminator, options_for_select(t("design.terminator.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.terminator.description") %></span>
+        <p><%= t("design.terminator.description") %></p>
       </div>
     </div>
 
     <div class="col-xs-12">
       <div class="form-group">
-        <%= f.label :cap, "Replication Origin" %>
+        <%= f.label :cap, t("design.cap.name") %>
         <%= f.select :cap, options_for_select(t("design.cap.values").invert), {}, { :class => 'form-control' } %>
-        <span><%= t("design.cap.description") %></span>
+        <p><%= t("design.cap.description") %></p>
       </div>
     </div>
   </div>
