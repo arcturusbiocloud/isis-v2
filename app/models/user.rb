@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :projects
 
+  # To handle gravatars
+  include Gravtastic
+  gravtastic
+
   validates :email,
     presence: true,
     uniqueness: {
