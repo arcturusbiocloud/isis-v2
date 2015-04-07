@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(version: 20150314144535) do
   add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",                                 null: false
-    t.string   "slug",                                 null: false
+    t.string   "name",                                  null: false
+    t.string   "slug",                                  null: false
     t.string   "description"
-    t.boolean  "is_public",             default: true, null: false
+    t.boolean  "is_public",             default: true,  null: false
+    t.boolean  "is_featured",           default: false, null: false
     t.text     "design"
-    t.integer  "status",                default: 0,    null: false
-    t.string   "icon_url_path",                        null: false
+    t.integer  "status",                default: 0,     null: false
+    t.string   "icon_url_path",                         null: false
     t.datetime "last_picture_taken_at"
     t.string   "anchor"
     t.string   "promoter"
@@ -41,9 +42,9 @@ ActiveRecord::Schema.define(version: 20150314144535) do
     t.string   "gene"
     t.string   "terminator"
     t.string   "cap"
-    t.integer  "user_id",                              null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "user_id",                               null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree

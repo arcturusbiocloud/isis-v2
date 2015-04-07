@@ -7,6 +7,7 @@
 #  slug                  :string           not null
 #  description           :string
 #  is_public             :boolean          default(TRUE), not null
+#  is_featured           :boolean          default(FALSE), not null
 #  design                :text
 #  status                :integer          default(0), not null
 #  icon_url_path         :string           not null
