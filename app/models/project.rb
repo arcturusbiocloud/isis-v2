@@ -28,6 +28,9 @@ class Project < ActiveRecord::Base
   # Projects qualified to be shown on /explore
   scope :is_public, -> { where("is_public = 'true'") }
 
+  # Projects qualified to be shown on the landing page
+  scope :featured, -> { where("is_featured = 'true'") }
+
   # Projects incubating where the last picture was taken one hour ago and
   # with less than 36 pictures in total.
   # Note that the having clause is using count < 41, that's because before
@@ -72,6 +75,7 @@ end
 #  slug                  :string           not null
 #  description           :string
 #  is_public             :boolean          default(TRUE), not null
+#  is_featured           :boolean          default(FALSE), not null
 #  design                :text
 #  status                :integer          default(0), not null
 #  icon_url_path         :string           not null
