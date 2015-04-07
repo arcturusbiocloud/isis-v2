@@ -6,7 +6,7 @@
 #  name                  :string           not null
 #  slug                  :string           not null
 #  description           :string
-#  is_public             :boolean          default(TRUE), not null
+#  is_open_source        :boolean          default(TRUE), not null
 #  is_featured           :boolean          default(FALSE), not null
 #  design                :text
 #  status                :integer          default(0), not null
@@ -29,7 +29,7 @@ one:
   slug: mystring
   icon_url_path: MyString
   description: MyString
-  is_public: false
+  is_open_source: false
   design: MyText
   user_id: 1
 
@@ -39,6 +39,6 @@ two:
   slug: mystring
   icon_url_path: MyString
   description: MyString
-  is_public: false
+  is_open_source: false
   design: MyText
   user_id: 2

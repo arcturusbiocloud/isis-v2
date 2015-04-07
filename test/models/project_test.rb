@@ -6,7 +6,7 @@
 #  name                  :string           not null
 #  slug                  :string           not null
 #  description           :string
-#  is_public             :boolean          default(TRUE), not null
+#  is_open_source        :boolean          default(TRUE), not null
 #  is_featured           :boolean          default(FALSE), not null
 #  design                :text
 #  status                :integer          default(0), not null

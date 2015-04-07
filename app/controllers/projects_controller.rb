@@ -69,13 +69,13 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :is_public, :design, :anchor, :promoter, :rbs, :gene, :terminator, :cap)
+    params.require(:project).permit(:name, :description, :is_open_source, :design, :anchor, :promoter, :rbs, :gene, :terminator, :cap)
   end
 
   # Since a project can be public or private, it's necessary to be sure that
   # the project is is_accessible to the current user
   def is_accessible?
-    return true if @project.is_public?
+    return true if @project.is_open_source?
     @project.user == current_user
   end
 end

@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150314144535) do
     t.string   "name",                                  null: false
     t.string   "slug",                                  null: false
     t.string   "description"
-    t.boolean  "is_public",             default: true,  null: false
+    t.boolean  "is_open_source",        default: true,  null: false
     t.boolean  "is_featured",           default: false, null: false
     t.text     "design"
     t.integer  "status",                default: 0,     null: false

@@ -5,7 +5,7 @@
     </div>
     <div class="col-xs-4 description">
       <h4>
-        <% unless project.is_public? %>
+        <% unless project.is_open_source? %>
           <%= fa_icon "lock", class: 'project-visibility' %>
         <% end %>
         <% if project.pending? %>

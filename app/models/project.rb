@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
   default_scope { order('status, created_at DESC') }
 
   # Projects qualified to be shown on /explore
-  scope :is_public, -> { where("is_public = 'true'") }
+  scope :open_source, -> { where("is_open_source = 'true'") }
 
   # Projects qualified to be shown on the landing page
   scope :featured, -> { where("is_featured = 'true'") }
@@ -74,7 +74,7 @@ end
 #  name                  :string           not null
 #  slug                  :string           not null
 #  description           :string
-#  is_public             :boolean          default(TRUE), not null
+#  is_open_source        :boolean          default(TRUE), not null
 #  is_featured           :boolean          default(FALSE), not null
 #  design                :text
 #  status                :integer          default(0), not null

@@ -2,6 +2,6 @@ class ExploreController < ApplicationController
 
   # GET /explore
   def index
-    @projects = Project.is_public.page params[:page]
+    @projects = Project.open_source.page params[:page]
   end
 end
