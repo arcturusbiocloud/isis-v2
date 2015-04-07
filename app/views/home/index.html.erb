@@ -1,5 +1,62 @@
-<div class="slogan">
-  <h1>Welcome!</h1>
-  <p class="lead">This page would be something like a landing page.</p>
-  <hr/>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Biomakers Platform</h1>
+        <p class="lead">Robots connected to the cloud which allows you to safety execute biotech experiments</p>
+      </div>
+    </div>
+    <div class="row features">
+      <div class="col-md-3 col-sm-6">
+        <div class="service-item">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-heart fa-stack-1x text-primary"></i>
+          </span>
+          <h3>Open source community</h3>
+          <p>We love open source. You can share your genetic creations or co-create with other members.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service-item">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-flask fa-stack-1x text-primary"></i>
+          </span>
+          <h3>Easy genetic engineering</h3>
+          <p>Code your very own synthetic biology projects without any previous knowledge, through the web.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service-item">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-shield fa-stack-1x text-primary"></i>
+          </span>
+          <h3>Safe prototyping</h3>
+          <p>Our labs are completely isolated and human-free. We follow the highest safety protocols.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="service-item">
+          <span class="fa-stack fa-4x">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-cogs fa-stack-1x text-primary"></i>
+          </span>
+          <h3>Robots to help you out</h3>
+          <p>Your synthetic biology projects are handled by super smart and precise robots, 24x7, non-stop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="slogan">
+    <h1>Featured projects</h1>
+    <p class="lead">Check out what others are doing on Arcturus BioCloud</p>
+    <hr/>
+
+    <%= render 'projects/list' %>
+  </div>
 </div>
