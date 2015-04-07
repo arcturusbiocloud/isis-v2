@@ -55,6 +55,10 @@ h1 { margin-top: 50px; }
 .navbar-white .navbar-nav > li > .btn-blue:hover { background-color: #20649f; color: #fff; }
 .navbar-white .navbar-nav > li > .btn-default:hover { background-color: #eee }
 
+form.navbar-nav .btn {
+	margin-top: 3px;
+}
+
 .slogan { padding: 30px 0; }
 .slogan h1 { font-weight: normal; font-size: 28px; }
 .slogan .lead { font-weight: 300; font-size: 18px; color: #999; }
