@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = current_user.projects.find(params[:id])
+    @project = current_user.projects.friendly.find(params[:id])
   end
 
   def load_user
