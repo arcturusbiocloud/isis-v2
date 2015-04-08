@@ -26,6 +26,10 @@ class Activity < ActiveRecord::Base
   end
 
   def icon
+    # Font-awesome icons to represent the different stages of the project,
+    # displayed on the timeline. Note that the icon 'fa-random' is used
+    # on the JavaScript to trigger the assembling video, so if it is changed
+    # here, the script on projects/show.html.erb should be changed as well.
     case self.key
       when "created" then "fa-clock-o"
       when "assembling" then "fa-random"
