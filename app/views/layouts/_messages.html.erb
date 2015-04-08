@@ -1,7 +1,7 @@
-<!-- <% if flash.any? %>
+<% if flash.any? && devise_controller? %>
   <% unless flash.first[1].blank? %>
     <div class="<%= flash_class(flash.first[0], default) %>">
       <%= flash.first[1].html_safe %>
     </div>
   <% end %>
-<% end %> -->
+<% end %>
