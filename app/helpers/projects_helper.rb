@@ -1,6 +1,11 @@
 module ProjectsHelper
   def is_selected?(tab, is_first=false)
-    'active' if params[:tab] == tab || params[:tab].nil? && is_first
+    if session[:tab] == tab
+      session[:tab] = nil
+      return 'active'
+    end
+
+    'active' if session[:tab].nil? && is_first
   end
 
   def is_project_owner?(project)

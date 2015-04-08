@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :load_user, only: [:show, :index]
   before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :set_tab, only: [:show]
 
   def index
     @projects = (@user || current_user).projects.page params[:page]
@@ -65,6 +66,18 @@ class ProjectsController < ApplicationController
     if params[:username]
       @user = User.find_by_username(params[:username])
       not_found unless @user
+    end
+  end
+
+  def set_tab
+    if params['tab'].present?
+      # A specific tab should be displayed, but we don't want the query string
+      # visible on the URL, because it shouldn't be present on Twitter.
+      # This value set on session will be handled on projects_helper.
+      session[:tab] = params['tab']
+      params.delete 'tab'
+
+      redirect_to request.path
     end
   end
 
