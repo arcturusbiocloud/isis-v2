@@ -1,16 +1,18 @@
-<% if @projects.any? %>
-  <div class="slogan">
-    <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= index_title(@user) %></h1>
-    <p class="lead">The following projects are still running</p>
-    <hr/>
-  </div>
+<div class="container">
+  <% if @projects.any? %>
+    <div class="slogan">
+      <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= index_title(@user) %></h1>
+      <p class="lead">The following projects are still running</p>
+      <hr/>
+    </div>
 
-  <%= render 'list' %>
+    <%= render 'list' %>
 
-<% else %>
-  <div class="slogan">
-    <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= index_title(@user) %>
-    <p class="lead">Are you new here? Sweet! <%= link_to "Create your first project!", new_project_path %></p>
-    <hr/>
-  </div>
-<% end %>
+  <% else %>
+    <div class="slogan">
+      <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= index_title(@user) %></h1>
+      <p class="lead">Are you new here? Sweet! <%= link_to "Create your first project!", new_project_path %></p>
+      <hr/>
+    </div>
+  <% end %>
+</h1>

@@ -27,162 +27,164 @@
   <% end %>
 <% end %>
 
-<div class="slogan">
-  <ul class="nav nav-pills nav-inner">
-    <li class="<%= is_selected?('timeline', true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
-    <li class="<%= is_selected?('design') %>"><a href="#design" data-toggle="pill">Design</a></li>
-    <li class="<%= is_selected?('insights') %>"><a href="#insights" data-toggle="pill">Insights</a></li>
-    <% if is_project_owner?(@project) %>
-      <li><a href="#settings" data-toggle="pill">Settings</a></li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="slogan">
+    <ul class="nav nav-pills nav-inner">
+      <li class="<%= is_selected?('timeline', true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
+      <li class="<%= is_selected?('design') %>"><a href="#design" data-toggle="pill">Design</a></li>
+      <li class="<%= is_selected?('insights') %>"><a href="#insights" data-toggle="pill">Insights</a></li>
+      <% if is_project_owner?(@project) %>
+        <li><a href="#settings" data-toggle="pill">Settings</a></li>
+      <% end %>
+    </ul>
 
-  <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <%= @project.name %></h1>
-  <p class="lead"><%= @project.description %></p>
+    <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <%= @project.name %></h1>
+    <p class="lead"><%= @project.description %></p>
 
-  <hr/>
-</div>
+    <hr/>
+  </div>
 
-<div class="tab-content">
+  <div class="tab-content">
 
-  <div class="<%= is_selected?('timeline', true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
-    <div class="social">
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.3";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-      <div class="fb-share-button" data-layout="button_count"></div>
+    <div class="<%= is_selected?('timeline', true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
+      <div class="social">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.3";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-share-button" data-layout="button_count"></div>
 
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check this beautiful synthetic biology project at Arcturus BioCloud!" data-via="arcturusbio">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check this beautiful synthetic biology project at Arcturus BioCloud!" data-via="arcturusbio">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+
+      <br class="clearfix">
+
+      <section id="cd-timeline" class="cd-container">
+        <% @activities.each do |activity| %>
+          <div class="cd-timeline-block">
+            <div class="cd-timeline-img <%= activity.background %>">
+              <i class="fa <%= activity.icon %>"></i>
+            </div>
+
+            <div class="cd-timeline-content">
+              <h2><%= activity.title %></h2>
+              <%= raw activity.description %>
+              <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
+            </div>
+          </div>
+        <% end %>
+    	</section>
     </div>
 
-    <br class="clearfix">
-
-    <section id="cd-timeline" class="cd-container">
-      <% @activities.each do |activity| %>
-        <div class="cd-timeline-block">
-          <div class="cd-timeline-img <%= activity.background %>">
-            <i class="fa <%= activity.icon %>"></i>
+    <div class="<%= is_selected?('design') %> tab-pane" id="design">
+      <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
+        <div class="row design-attribute">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :anchor, t("design.anchor.name") %>
+              <%= f.select :anchor, options_for_select([t("design.anchor.values.#{@project.anchor}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.anchor.description") %></p>
+            </div>
           </div>
 
-          <div class="cd-timeline-content">
-            <h2><%= activity.title %></h2>
-            <%= raw activity.description %>
-            <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :promoter, t("design.promoter.name") %>
+              <%= f.select :promoter, options_for_select([t("design.promoter.values.#{@project.promoter}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.promoter.description") %></p>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :rbs, t("design.rbs.name") %>
+              <%= f.select :rbs, options_for_select([t("design.rbs.values.#{@project.rbs}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.rbs.description") %></p>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :gene, t("design.gene.name") %>
+              <%= f.select :gene, options_for_select([t("design.gene.values.#{@project.gene}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.gene.description") %></p>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :terminator, t("design.terminator.name") %>
+              <%= f.select :terminator, options_for_select([t("design.terminator.values.#{@project.terminator}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.terminator.description") %></p>
+            </div>
+          </div>
+
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= f.label :cap, t("design.cap.name") %>
+              <%= f.select :cap, options_for_select([t("design.cap.values.#{@project.cap}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
+              <p><%= t("design.cap.description") %></p>
+            </div>
           </div>
         </div>
       <% end %>
-  	</section>
-  </div>
+    </div>
 
-  <div class="<%= is_selected?('design') %> tab-pane" id="design">
-    <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
-      <div class="row design-attribute">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :anchor, t("design.anchor.name") %>
-            <%= f.select :anchor, options_for_select([t("design.anchor.values.#{@project.anchor}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.anchor.description") %></p>
+    <div class="<%= is_selected?('insights') %> tab-pane" id="insights">
+      <div class="row project">
+        <% @activities.picture_taken.each_with_index do |activity, i| %>
+          <div class="col-xs-2">
+            <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" title="Sample #<%= i+1 %>">
+              <%= image_tag activity.detail, class: 'img-thumbnail' %>
+            </a>
+            #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
           </div>
-        </div>
+        <% end %>
+      </div>
+    </div>
 
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :promoter, t("design.promoter.name") %>
-            <%= f.select :promoter, options_for_select([t("design.promoter.values.#{@project.promoter}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.promoter.description") %></p>
+    <% if is_project_owner?(@project) %>
+      <div class="tab-pane" id="settings">
+        <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
+          <div class="row project">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <%= f.label :name, class: "sr-only" %>
+                <%= f.text_field :name, placeholder: "Project name", class: "form-control" %>
+              </div>
+              <div class="checkbox scope-check">
+                <label>
+                  <%= f.check_box :is_open_source %> Open source?
+                </label>
+              </div>
+              <br>
+              <span class="label label-danger form-error"><%= field_validation_message(@project, :name) %></span>
+            </div>
           </div>
-        </div>
 
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :rbs, t("design.rbs.name") %>
-            <%= f.select :rbs, options_for_select([t("design.rbs.values.#{@project.rbs}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.rbs.description") %></p>
+          <div class="row project">
+            <div class="col-xs-12">
+              <%= f.label :description %>
+              <%= f.text_field :description, placeholder: "A short sentence that describes your project", style: "width:100%", class: "form-control" %>
+              <span class="label label-danger form-error"><%= field_validation_message(@project, :description) %></span>
+            </div>
           </div>
-        </div>
 
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :gene, t("design.gene.name") %>
-            <%= f.select :gene, options_for_select([t("design.gene.values.#{@project.gene}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.gene.description") %></p>
+          <div class="row project">
+            <div class="col-xs-12">
+              <%= f.submit "Update settings", class: "btn btn-primary" %>
+              <%= link_to "Delete project", @project, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+            </div>
           </div>
-        </div>
-
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :terminator, t("design.terminator.name") %>
-            <%= f.select :terminator, options_for_select([t("design.terminator.values.#{@project.terminator}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.terminator.description") %></p>
-          </div>
-        </div>
-
-        <div class="col-xs-12">
-          <div class="form-group">
-            <%= f.label :cap, t("design.cap.name") %>
-            <%= f.select :cap, options_for_select([t("design.cap.values.#{@project.cap}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-            <p><%= t("design.cap.description") %></p>
-          </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-
-  <div class="<%= is_selected?('insights') %> tab-pane" id="insights">
-    <div class="row project">
-      <% @activities.picture_taken.each_with_index do |activity, i| %>
-        <div class="col-xs-2">
-          <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail","t_original") %>" title="Sample #<%= i+1 %>">
-            <%= image_tag activity.detail, class: 'img-thumbnail' %>
-          </a>
-          #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <% if is_project_owner?(@project) %>
-    <div class="tab-pane" id="settings">
-      <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
-        <div class="row project">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :name, class: "sr-only" %>
-              <%= f.text_field :name, placeholder: "Project name", class: "form-control" %>
-            </div>
-            <div class="checkbox scope-check">
-              <label>
-                <%= f.check_box :is_open_source %> Open source?
-              </label>
-            </div>
-            <br>
-            <span class="label label-danger form-error"><%= field_validation_message(@project, :name) %></span>
-          </div>
-        </div>
-
-        <div class="row project">
-          <div class="col-xs-12">
-            <%= f.label :description %>
-            <%= f.text_field :description, placeholder: "A short sentence that describes your project", style: "width:100%", class: "form-control" %>
-            <span class="label label-danger form-error"><%= field_validation_message(@project, :description) %></span>
-          </div>
-        </div>
-
-        <div class="row project">
-          <div class="col-xs-12">
-            <%= f.submit "Update settings", class: "btn btn-primary" %>
-            <%= link_to "Delete project", @project, class: "btn btn-danger", method: :delete, data: { :confirm => 'Are you sure?' } %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
 </div>
 
 <br/>
