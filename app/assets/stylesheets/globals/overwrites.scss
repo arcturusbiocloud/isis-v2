@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
 
 html * {
-	-webkit-font-smoothing: antialiased;
 	font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -19,8 +18,10 @@ h1 { margin-top: 50px; }
 		font-size: 70px;
 		text-shadow: 1px 1px 5px #20649f;
 		font-weight: 700;
+		-webkit-font-smoothing: antialiased;
 	}
 	.lead {
+		-webkit-font-smoothing: antialiased;
 		color: #fff;
 		margin-bottom: 80px;
 		text-shadow: 1px 1px 5px #20649f;
@@ -34,13 +35,13 @@ h1 { margin-top: 50px; }
 	.features {
 		color: #fff;
 		h3 {
-			font-size: 18px;
-			font-weight: 700;
+			font-size: 20px;
+			font-weight: 800;
+			-webkit-font-smoothing: antialiased;
 		}
 		p {
 			margin-top: 18px;
 			font-size: 15px;
-			-webkit-font-smoothing: normal;
 		}
 	}
 }
