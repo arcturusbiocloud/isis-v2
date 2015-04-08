@@ -1,7 +1,28 @@
 <div class="footer">
   <div class="container">
-    <div class="footer-inner">
-      <p>© 2015 Acturus BioCloud, Inc.</p>
-    </div>
+    <% if controller_name == 'home' %>
+      <div class="row complete">
+        <div class="col-lg-10 col-lg-offset-1 text-center">
+          <h4><strong>Arcturus BioCloud, Inc.</strong></h4>
+          <p>2325 3rd St, Suite 202 - Arcturus BioCloud<br>San Francisco, CA 94107</p>
+          <ul class="list-unstyled">
+            <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:founders@arcturus.io">founders@arcturus.io</a></li>
+          </ul>
+          <br>
+          <ul class="list-inline">
+            <li><a target="_blank" href="https://www.facebook.com/arcturusbiocloud?fref=ts"><i class="fa fa-facebook fa-fw fa-3x"></i></a></li>
+            <li><a target="_blank" href="https://twitter.com/arcturusbio"><i class="fa fa-twitter fa-fw fa-3x"></i></a></li>
+            <li><a target="_blank" href="https://medium.com/@arcturusbiocloud"><i class="fa fa-medium fa-fw fa-3x"></i></a></li>
+            <li><a target="_blank" href="https://github.com/arcturusbiocloud"><i class="fa fa-github fa-fw fa-3x"></i></a></li>
+          </ul>
+          <hr class="small">
+          <p class="text-muted">&copy; 2015 Acturus BioCloud, Inc.</p>
+        </div>
+      </div>
+    <% else %>
+      <div class="footer-inner">
+        <p>© 2015 Acturus BioCloud, Inc.</p>
+      </div>
+    <% end %>
   </div>
 </div>
