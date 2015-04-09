@@ -11,9 +11,9 @@ The initial status of a project is **pending**. This status is automatically cha
 ### Projects endpoint
 
 ```shell
-# recording_file_name=file.mp4
+# recording_file_name=XJRl3Bsq.20150402T020747.mp4
 # Update the project with its recording file
-curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=file.mp4"
+curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150402T020747.mp4"
 ```
 
 ### Activities endpoint
