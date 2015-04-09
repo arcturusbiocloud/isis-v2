@@ -215,12 +215,14 @@
     if (streamId == null){
       return logError("missing streamId");
     }
+
     CineIO.init(publicKey, {jwPlayerKey: qs.jwPlayerKey});
-    // live streaming
-    // CineIO.play(streamId, playerId);
-    // recorded
-    // get the list of records at: curl -X GET "https://www.cine.io/api/1/-/stream/recordings?publicKey=55f827239e6c0badfc95795943396155&id=551913c4b936640b005750da"
-    CineIO.playRecording(streamId, "XJRl3Bsq.20150402T020747.mp4", playerId);
+
+    <% if @project.recording_file_name.present? %>
+      CineIO.playRecording(streamId, "<%= @project.recording_file_name %>", playerId);
+    <% else %>
+      CineIO.play(streamId, playerId);
+    <% end %>
   }
 
   loadVideo();
