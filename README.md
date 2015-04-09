@@ -8,6 +8,16 @@ It's possible to feed the timeline through the public API, which also reflects o
 
 The initial status of a project is **pending**. This status is automatically changed when the activity with `key = 1` is created:
 
+### Projects endpoint
+
+```shell
+# recording_file_name=file.mp4
+# Update the project with its recording file
+curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=file.mp4"
+```
+
+### Activities endpoint
+
 ```shell
 # key=1
 # Add timeline item indicating that the project is assembling
@@ -57,7 +67,6 @@ $ heroku run console
 > Project.find(1).update_attribyte(:is_featured, true)
 > # updating the project by it's friendly name
 > Project.friendly.find('my-project').update_attribyte(:is_featured, true)
-
 ```
 
 ## Image handling

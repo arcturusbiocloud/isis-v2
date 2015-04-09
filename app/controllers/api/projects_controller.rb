@@ -13,7 +13,7 @@ module API
 
     def activity_params
       params[:status] = params[:status].to_i if params[:status]
-      params.permit(:status)
+      params.permit(:status, :recording_file_name)
     end
   end
 end

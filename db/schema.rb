@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150314144535) do
     t.integer  "status",                default: 0,     null: false
     t.string   "icon_url_path",                         null: false
     t.datetime "last_picture_taken_at"
+    t.string   "recording_file_name"
     t.string   "anchor"
     t.string   "promoter"
     t.string   "rbs"

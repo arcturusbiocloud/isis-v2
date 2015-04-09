@@ -10,6 +10,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer  :status,               default: 0,     null: false
       t.string   :icon_url_path,                        null: false
       t.datetime :last_picture_taken_at
+      t.string   :recording_file_name
 
       # Design initial concept
       t.string :anchor

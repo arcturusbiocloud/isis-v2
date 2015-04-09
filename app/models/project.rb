@@ -80,6 +80,7 @@ end
 #  status                :integer          default(0), not null
 #  icon_url_path         :string           not null
 #  last_picture_taken_at :datetime
+#  recording_file_name   :string
 #  anchor                :string
 #  promoter              :string
 #  rbs                   :string
