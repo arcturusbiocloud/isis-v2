@@ -30,9 +30,9 @@
 <div class="container">
   <div class="slogan">
     <ul class="nav nav-pills nav-inner">
-      <li class="<%= is_selected?('timeline', true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
-      <li class="<%= is_selected?('design') %>"><a href="#design" data-toggle="pill">Design</a></li>
-      <li class="<%= is_selected?('insights') %>"><a href="#insights" data-toggle="pill">Insights</a></li>
+      <li class="<%= is_selected?('timeline', false, true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
+      <li class="<%= is_selected?('design', false) %>"><a href="#design" data-toggle="pill">Design</a></li>
+      <li class="<%= is_selected?('insights', false) %>"><a href="#insights" data-toggle="pill">Insights</a></li>
       <% if is_project_owner?(@project) %>
         <li><a href="#settings" data-toggle="pill">Settings</a></li>
       <% end %>
@@ -46,7 +46,7 @@
 
   <div class="tab-content">
 
-    <div class="<%= is_selected?('timeline', true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
+    <div class="<%= is_selected?('timeline', true, true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
       <div class="social">
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
@@ -81,7 +81,7 @@
     	</section>
     </div>
 
-    <div class="<%= is_selected?('design') %> tab-pane" id="design">
+    <div class="<%= is_selected?('design', true) %> tab-pane" id="design">
       <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
         <div class="row design-attribute">
           <div class="col-xs-12">
@@ -135,7 +135,7 @@
       <% end %>
     </div>
 
-    <div class="<%= is_selected?('insights') %> tab-pane" id="insights">
+    <div class="<%= is_selected?('insights', true) %> tab-pane" id="insights">
       <div class="row project">
         <% @activities.picture_taken.each_with_index do |activity, i| %>
           <div class="col-xs-2">

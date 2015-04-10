@@ -1,7 +1,7 @@
 module ProjectsHelper
-  def is_selected?(tab, is_first=false)
+  def is_selected?(tab, clear, is_first=false)
     if session[:tab] == tab
-      session[:tab] = nil
+      session[:tab] = nil if clear
       return 'active'
     end
 
