@@ -20,7 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.inet     :last_sign_in_ip
 
       ## Custom fields
-      t.string :username, null: false, index: true
+      t.string  :username, null: false, index: true
+      t.integer :status,   null: false, default: 0
 
       t.timestamps null: false
     end

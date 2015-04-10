@@ -14,6 +14,7 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  username               :string           not null
+#  status                 :integer          default(0), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
