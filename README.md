@@ -15,7 +15,7 @@ Setting the user status:
 ```shell
 # status=1
 # Update the user status (pending: 0, active: 1, suspended: 2)
-curl -X PUT "https://dashboard.arcturus.io/api/users/luisbebop@gmail.com?access_token=55d28fc5783172b90fea425a2312b95a&status=1"
+curl -X PUT "https://www.arcturus.io/api/users/luisbebop@gmail.com?access_token=55d28fc5783172b90fea425a2312b95a&status=1"
 ```
 
 ### Projects endpoint
@@ -25,7 +25,7 @@ Setting the recording file:
 ```shell
 # recording_file_name=XJRl3Bsq.20150402T020747.mp4
 # Update the project with its recording file
-curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150402T020747.mp4"
+curl -X PUT "https://www.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150402T020747.mp4"
 ```
 
 Promoting a project to the **featured projects**:
@@ -33,7 +33,7 @@ Promoting a project to the **featured projects**:
 ```shell
 # is_featured=true
 # Update the project featured status (true / false)
-curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&is_featured=true"
+curl -X PUT "https://www.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&is_featured=true"
 ```
 
 _Note: In case you don't know the project ID, you can simply inspec the project title (on action Project#show), and the project ID will be inside the `h1` tag, as a comment._
@@ -43,38 +43,38 @@ _Note: In case you don't know the project ID, you can simply inspec the project 
 ```shell
 # key=1
 # Add timeline item indicating that the project is assembling
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=1&detail=streaming_url"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=1&detail=streaming_url"
 ```
 
 ```shell
 # key=2
 # Add timeline item indicating that the project is transforming
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=2"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=2"
 ```
 
 ```shell
 # key=3
 # Add timeline item indicating that the project is plating
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=3"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=3"
 ```
 
 ```shell
 # key=4
 # Add timeline item indicating that the project is incubating
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=4"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=4"
 ```
 
 ```shell
 # key=5
 # Add timeline item indicating that a picture was taken
 # Note that @sample.png is the picture being sent (there is a file called sample.png in the current directory)
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=5" -F "content=@sample.png"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=5" -F "content=@sample.png"
 ```
 
 ```shell
 # key=6
 # Add timeline item indicating that the project has been completed
-curl -X POST "https://dashboard.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=6"
+curl -X POST "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a&key=6"
 ```
 
 From `key = 1` to `key = 3` the status of the project is **running**. After creating a new activity with `key = 4`, the project status is changed to **incubating**, and after creating a new activity with `key = 6`, the project is automatically finished.
