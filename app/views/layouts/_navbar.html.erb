@@ -15,7 +15,7 @@
           <li class="<%= is_active?("/#{current_user.username}") %>"><%= link_to 'My projects', username_projects_path(current_user.username) %></li>
           <li class="divisor">|</li>
         <% end %>
-        <li class="<%= is_active?('/explore') %>"><a href="/explore">Explore</a></li>
+        <li class="<%= is_active?('/explore') %>"><%= link_to 'Explore', explore_path %></li>
         <!--
         <li class="divisor">|</li>
         <li class="<%= is_active?('/people') %>"><a href="/people">People</a></li>
