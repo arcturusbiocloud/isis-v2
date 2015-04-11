@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :projects, only: :update do
       resources :activities, only: :create
     end
+    resources :users, only: :update, constraints: { id: /[^\/]+/ }
   end
 
   devise_for :users

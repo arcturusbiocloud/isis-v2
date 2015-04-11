@@ -8,6 +8,16 @@ It's possible to feed the timeline through the public API, which also reflects o
 
 The initial status of a project is **pending**. This status is automatically changed when the activity with `key = 1` is created:
 
+### Users endpoint
+
+Setting the user status:
+
+```shell
+# status=1
+# Update the user status (pending: 0, active: 1, suspended: 2)
+curl -X PUT "https://dashboard.arcturus.io/api/users/luisbebop@gmail.com?access_token=55d28fc5783172b90fea425a2312b95a&status=1"
+```
+
 ### Projects endpoint
 
 Setting the recording file:
