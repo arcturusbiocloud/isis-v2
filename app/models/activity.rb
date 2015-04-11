@@ -61,7 +61,7 @@ class Activity < ActiveRecord::Base
       when "plating" then "<p>Arc is plating your transformed competent cell in a petri dish with agar.</p>"
       when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p>"
       when "incubating" then "<p>Arc is incubating your experiment for the next 36 hours.</p>"
-      when "picture_taken" then "<p>Arc just got a picture of your experiment: <br/><br/><a href='#{self.detail.gsub('t_thumbnail','t_original')}' class='fancybox' rel='gallery1'><img src='#{self.detail}' class: 'img-thumbnail'><p class='lighterbox-title'></a></p>"
+      when "picture_taken" then "<p>Arc just got a picture of your experiment: <br/><br/><a href='#{self.detail.gsub('t_thumbnail/','')}' class='fancybox' rel='gallery1'><img src='#{self.detail}' class: 'img-thumbnail'><p class='lighterbox-title'></a></p>"
       when "completed" then "<p>Arc just finished your experiment. You can check the insights and pictures to see if your genetic circuit is working as expected.</p>"
     end
   end

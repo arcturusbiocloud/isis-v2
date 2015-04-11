@@ -25,7 +25,6 @@ module API
                                         public_id: public_id, tags: tags,
                                         eager: [
                                           { transformation: 'thumbnail' },
-                                          { transformation: 'original' },
                                           { transformation: 'twitter-card' }
                                         ])
 
