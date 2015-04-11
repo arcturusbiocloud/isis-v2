@@ -76,7 +76,6 @@ end
 #  description           :string
 #  is_open_source        :boolean          default(TRUE), not null
 #  is_featured           :boolean          default(FALSE), not null
-#  design                :text
 #  status                :integer          default(0), not null
 #  icon_url_path         :string           not null
 #  last_picture_taken_at :datetime

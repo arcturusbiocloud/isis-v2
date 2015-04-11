@@ -8,7 +8,6 @@
 #  description           :string
 #  is_open_source        :boolean          default(TRUE), not null
 #  is_featured           :boolean          default(FALSE), not null
-#  design                :text
 #  status                :integer          default(0), not null
 #  icon_url_path         :string           not null
 #  last_picture_taken_at :datetime
@@ -26,12 +25,11 @@
 
 one:
   id: 1
-  name: MyString
-  slug: mystring
-  icon_url_path: MyString
-  description: MyString
-  is_open_source: false
-  design: MyText
+  name: Glowing Bacteria
+  slug: glowing-bacteria
+  icon_url_path: project-icons/1.png
+  description: My super cool open-source glowing bacterias
+  is_open_source: true
   user_id: 1
 
 two:
