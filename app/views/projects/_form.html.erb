@@ -78,7 +78,31 @@
 
   <div class="row project">
     <div class="col-xs-12">
-      <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
+      <% if current_user.active? %>
+        <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
+      <% else %>
+        <button type="button" class="btn btn-lg btn-primary design-action" data-toggle="modal" data-target="#betaInvitation">Assemble</button>
+      <% end %>
     </div>
   </div>
 <% end %>
+
+<div class="modal fade" id="betaInvitation" tabindex="-1" role="dialog" aria-labelledby="betaInvitation" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Beta invitation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hooray <%= current_user.username %>!</p>
+        <p>It seems like you want to see your experiment in action, that's right?</p>
+        <p>We are currently giving private access to selected users, so if you want to join the waiting list, please fill in the <a href="https://arcturus.typeform.com/to/jk9qz8">invitation form</a> and cross your fingers!</p>
+      </div>
+      <div class="modal-footer">
+        <span class="waiting-list">Waiting list: 459 members</span>
+        <a href="https://arcturus.typeform.com/to/jk9qz8" class="btn btn-primary">Invitation form</a>
+      </div>
+    </div>
+  </div>
+</div>

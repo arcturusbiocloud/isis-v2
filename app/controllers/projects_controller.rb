@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
 
-    if @project.save
+    if current_user.active? && @project.save
       # Add the first activity of the timeline
       @project.activities.create!
       redirect_to username_project_path(current_user.username, @project)
