@@ -10,11 +10,23 @@ The initial status of a project is **pending**. This status is automatically cha
 
 ### Projects endpoint
 
+Setting the recording file:
+
 ```shell
 # recording_file_name=XJRl3Bsq.20150402T020747.mp4
 # Update the project with its recording file
 curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150402T020747.mp4"
 ```
+
+Promoting a project to the **featured projects**:
+
+```shell
+# is_featured=true
+# Update the project featured status (true / false)
+curl -X PUT "https://dashboard.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&is_featured=true"
+```
+
+_Note: In case you don't know the project ID, you can simply inspec the project title (on action Project#show), and the project ID will be inside the `h1` tag, as a comment._
 
 ### Activities endpoint
 
@@ -59,7 +71,7 @@ From `key = 1` to `key = 3` the status of the project is **running**. After crea
 
 ## Featured projects
 
-At this moment there's no interface to set/unset featured projects, so it's necessary to use Heroku's console:
+There's a way to do this through the Project's endpoint, but it's also possible to go straight through Heroku's console:
 
 ```shell
 $ heroku run console
