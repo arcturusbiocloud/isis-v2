@@ -76,14 +76,6 @@
       </div>
     </div>
   </div>
-
-  <p>Would you like to upload new genes and parts? <a href="#" id="upload-gene">Talk with us!</a></p>
-  <script>
-  $('#upload-gene').click(function (event) {
-    Intercom('show');
-    event.preventDefault(); // Prevent link from following its href
-  });
-  </script>
   
   <div class="row project">
     <div class="col-xs-12">
@@ -94,6 +86,15 @@
       <% end %>
     </div>
   </div>
+  
+  <p>Would you like to upload new genes and parts? <a href="#" id="upload-gene">Talk with us!</a></p>
+  <script>
+  $('#upload-gene').click(function (event) {
+    Intercom('show');
+    event.preventDefault(); // Prevent link from following its href
+  });
+  </script>
+  
 <% end %>
 
 <div class="modal fade" id="betaInvitation" tabindex="-1" role="dialog" aria-labelledby="betaInvitation" aria-hidden="true">
