@@ -25,6 +25,15 @@
 
   <%= f.label :design %>
   <p>Select the parts that will be used to assemble your genetic circuit:</p>
+  <p>Would you like to upload new genes and parts? <a href="#" id="upload-gene">Talk with us!</a></p>
+  
+  <script>
+  $('#upload-gene').click(function (event) {
+    Intercom('show');
+    event.preventDefault(); // Prevent link from following its href
+  });
+  </script>
+  
   <br>
   <div class="row design-attribute">
     <div class="col-xs-12">
