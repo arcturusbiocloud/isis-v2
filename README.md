@@ -23,9 +23,12 @@ curl -X PUT "https://www.arcturus.io/api/users/luisbebop@gmail.com?access_token=
 Setting the recording file:
 
 ```shell
-# recording_file_name=XJRl3Bsq.20150402T020747.mp4
+# get the list of the recordings
+curl -X GET "https://www.cine.io/api/1/-/stream/recordings?publicKey=55f827239e6c0badfc95795943396155&id=551913c4b936640b005750da"
+# the record file bellow contains 5 minutes of an assembly protocol
+# recording_file_name=XJRl3Bsq.20150411T022627.mp4
 # Update the project with its recording file
-curl -X PUT "https://www.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150402T020747.mp4"
+curl -X PUT "https://www.arcturus.io/api/projects/1?access_token=55d28fc5783172b90fea425a2312b95a&recording_file_name=XJRl3Bsq.20150411T022627.mp4"
 ```
 
 Promoting a project to the **featured projects**:
