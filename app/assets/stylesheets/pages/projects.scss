@@ -183,6 +183,19 @@ header {
 			margin-left: -2px;
 		}
 	}
+  @include MQ(S) {
+    h2 {
+      margin-top: 10px;
+      font-size: 22px;
+    }
+    p, .cd-date {
+      font-size: 14px;
+    }
+		margin: {
+			top: -20px;
+			bottom: 3em;
+		}
+	}
 }
 
 .cd-timeline-block {
