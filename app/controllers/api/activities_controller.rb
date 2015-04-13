@@ -25,7 +25,8 @@ module API
                                         public_id: public_id, tags: tags,
                                         eager: [
                                           { transformation: 'thumbnail' },
-                                          { transformation: 'twitter-card' }
+                                          { transformation: 'twitter-card' },
+                                          { transformation: 'facebook' }
                                         ])
 
       # Store the secure url
