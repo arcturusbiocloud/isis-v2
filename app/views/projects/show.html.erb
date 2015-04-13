@@ -136,12 +136,12 @@
 
     <div class="<%= is_selected?('insights', true) %> tab-pane" id="insights">
       <div class="row project">
-        <% @activities.picture_taken.each_with_index do |activity, i| %>
+        <% @activities.picture_taken.reverse.each_with_index do |activity, i| %>
           <div class="col-xs-2">
             <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail/","") %>" title="Sample #<%= i+1 %>">
               <%= image_tag activity.detail, class: 'img-thumbnail' %>
             </a>
-            #<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %>
+            <p>#<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></p>
           </div>
         <% end %>
       </div>
