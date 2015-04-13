@@ -12,10 +12,10 @@
     <meta name="twitter:creator" content="@arcturusbio" />
     <meta name="twitter:title" content="<%= @project.name %>" />
     <meta name="twitter:description" content="Platform for biomakers, which connects robots to the cloud allowing the community to execute biotech experiments in a safe and easy way." />
-    <meta name="twitter:image:src" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_twitter-card") %>" />
+    <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_twitter-card") %>" />
     <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
 
-    <meta property="og:image" content="<%= @activities.picture_taken.last.detail.gsub("t_thumbnail","t_facebook") %>" />
+    <meta property="og:image" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_facebook") %>" />
   <% else %>
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@arcturusbio" />
