@@ -98,29 +98,45 @@ $ heroku run console
 
 The service [Cloudnary](cloudinary.com) is used to handle images. Check out Heroku's dashboard for the credentials.
 
-Sample upload:
+### How it works
 
-```ruby
-Cloudinary::Uploader.upload(params["content"],
-                            public_id: public_id, tags: tags,
-                            eager: [
-                              {
-                                transformation: [
-                                  { width: 1077, height: 1077, crop: :crop, gravity: :center },
-                                  { width: 150, height: 150, crop: :fit, gravity: :center }
-                                ]
-                              },
-                              { width: 1077, height: 1077, crop: :crop, gravity: :center }
-                            ])
+Once the original image is upload, a set o transformations is performed, generating other images.
+
+List of transaformations: [https://cloudinary.com/console/transformations?filter=named](https://cloudinary.com/console/transformations?filter=named)
+
+### Transformation details
+
+The following transformations are available:
+
+#### twitter-card
+
+Transformation used on Twitter.
+
+Ref: https://dev.twitter.com/cards/types/summary-large-image
+
+```
+Scale to 643 x 643
+Mpad to 1200 x 643 (Center gravity)
+Background: #130b18
 ```
 
-Same upload, but now using named transformations (they can seen on Cloudnary's dashboard):
+#### facebook
 
-```ruby
-Cloudinary::Uploader.upload(params["content"],
-                            public_id: public_id, tags: tags,
-                            eager: [
-                              { transformation: 'thumbnail' },
-                              { transformation: 'original' }
-                            ])
+Transformation used on Facebook.
+
+Ref: https://developers.facebook.com/docs/sharing/best-practices#images
+
+```
+Scale to 630
+Mpad to 1200 x 630 (Center gravity)
+Background: #130b18
+```
+
+#### thumbnail
+
+Transformation used to generate the thumbnails.
+
+```
+Crop to 1077 x 1077 (Center gravity)
+Fit to 150 x 150 (Center gravity)
 ```
