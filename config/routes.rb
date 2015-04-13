@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json }, path: 'api' do
     resources :projects, only: :update do
-      resources :activities, only: :create
+      resources :activities, only: [:index, :create, :update]
     end
     resources :users, only: :update, constraints: { id: /[^\/]+/ }
   end

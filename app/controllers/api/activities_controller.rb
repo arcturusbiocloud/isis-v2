@@ -1,7 +1,16 @@
 module API
   class ActivitiesController < API::ApplicationController
+    before_filter :load_project
+
+    def index
+      @activities = @project.activities
+
+      respond_to do |format|
+        format.json { render :json => @activities }
+      end
+    end
+
     def create
-      @project = Project.find(params[:project_id])
       @activity = @project.activities.new(activity_params)
 
       upload_picture if @activity.picture_taken?
@@ -13,11 +22,27 @@ module API
       end
     end
 
+    def update
+      @activity = @project.activities.find(params[:id])
+
+      respond_to do |format|
+        if @activity.update_attributes(activity_params)
+          format.json { render :json => @activity }
+        else
+          format.json { render :json => @activity.errors, status: 422 }
+        end
+      end
+    end
+
     private
+
+    def load_project
+      @project = Project.find(params[:project_id])
+    end
 
     def activity_params
       params[:key] = params[:key].to_i if params[:key]
-      params.permit(:key, :detail)
+      params.permit(:key, :detail, :created_at)
     end
 
     def upload_picture
