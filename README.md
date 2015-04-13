@@ -86,12 +86,12 @@ From `key = 1` to `key = 3` the status of the project is **running**. After crea
 
 ```shell
 # Get the list of activities of a given project
-curl -X GET "https://www.arcturus.io/api/projects/1/activities?access_token=02711a855d28fc5783172b90fea425a2"
+curl -X GET "https://www.arcturus.io/api/projects/1/activities?access_token=55d28fc5783172b90fea425a2312b95a"
 ```
 
 ```shell
 # Update the attribute created_at of the first activity
-curl -X PUT "https://www.arcturus.io/api/projects/1/activities/1?access_token=02711a855d28fc5783172b90fea425a2&created_at=2015-04-13T02:12:21.405Z"
+curl -X PUT "https://www.arcturus.io/api/projects/1/activities/1?access_token=55d28fc5783172b90fea425a2312b95a&created_at=2015-04-13T02:12:21.405Z"
 ```
 
 ## Featured projects
