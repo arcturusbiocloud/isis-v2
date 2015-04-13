@@ -126,6 +126,8 @@ Transformation used on Facebook.
 
 Ref: https://developers.facebook.com/docs/sharing/best-practices#images
 
+This might also be useful (Fetch new scrape): [debug](https://developers.facebook.com/tools/debug/og/object/)
+
 ```
 Scale to 630
 Mpad to 1200 x 630 (Center gravity)
