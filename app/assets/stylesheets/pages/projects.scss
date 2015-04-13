@@ -25,6 +25,12 @@
 
 .timeline-entry { display: none; }
 
+.project { margin-bottom: 35px; }
+.project .description { padding-left: 30px; }
+.project .actions { margin-top: 25px; text-align: right; }
+.project .actions li { list-style-type: none; display: inline; margin-left: 20px; font-size: 16px; }
+.project-owner { font-weight: 400; }
+
 @media(max-width:767px){
   .scope-check { margin-left: 0; }
 
@@ -37,6 +43,9 @@
     }
   }
   .design-action { margin-left: 0; width: 100%; }
+  .project .fa { display: none; }
+  .project .description { padding-left: 15px; margin: 18px 0 15px auto; }
+  .project .actions { display: none; }
 }
 
 .project-icon {

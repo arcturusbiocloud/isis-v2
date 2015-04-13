@@ -1,9 +1,9 @@
 <% @projects.each do |project| %>
   <div class="row project">
-    <div class="col-xs-1">
+    <div class="col-md-1">
       <%= link_to image_tag(project.icon_url_path, class: "img-responsive #{icon_class(project)}"), project_path(project) %>
     </div>
-    <div class="col-xs-4 description">
+    <div class="col-md-4 description">
       <h4>
         <% unless project.is_open_source? %>
           <%= fa_icon "lock", class: 'project-visibility' %>
@@ -20,7 +20,7 @@
       </h4>
       <p><%= project.description %></p>
     </div>
-    <div class="col-xs-7">
+    <div class="col-md-7">
       <ul class="actions">
         <li><%= link_to "Timeline", username_project_path(project.user.username, project, tab: "timeline") %></li>
         <li><%= link_to "Design", username_project_path(project.user.username, project, tab: "design") %></li>
