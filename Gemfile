@@ -22,6 +22,7 @@ gem 'friendly_id'
 gem 'gravtastic'
 gem 'kaminari'
 gem 'pusher'
+gem 'clockwork'
 
 group :development, :test do
   gem 'byebug'

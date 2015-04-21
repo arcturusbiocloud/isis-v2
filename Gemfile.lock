@@ -51,6 +51,9 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    clockwork (1.2.0)
+      activesupport
+      tzinfo
     cloudinary (1.0.84)
       aws_cf_signer
       rest-client
@@ -209,6 +212,7 @@ DEPENDENCIES
   better_errors
   bourbon
   byebug
+  clockwork
   cloudinary
   coffee-rails
   devise
