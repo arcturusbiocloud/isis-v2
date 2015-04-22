@@ -53,6 +53,17 @@ class Project < ActiveRecord::Base
     (Digest::SHA256.new << md5 + 'jUb@d8v#mmN02ZkB').hexdigest
   end
 
+  def genetic_parts
+    {
+      anchor: anchor,
+      promoter: promoter,
+      rbs: rbs,
+      gene: gene,
+      terminator: terminator,
+      cap: cap
+    }
+  end
+
   private
 
   def random_icon
