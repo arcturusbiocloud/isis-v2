@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   # the project, allocate resources for it and change the status to 1 (running).
   # During the running phase, the robot performs various tasks, and at a certain
   # point, the status is changed again, and the new status (2) indicates the
-  # project is incubating and ready to be photographed. After 36 pictures, the
+  # project is incubating and ready to be photographed. After 3 pictures, the
   # status is changed to 3 indicating that it is completed.
   enum status: { pending: 0, running: 1, incubating: 2, completed: 3 }
 
@@ -62,6 +62,10 @@ class Project < ActiveRecord::Base
       terminator: terminator,
       cap: cap
     }
+  end
+
+  def self.free_slot
+    (Rails.application.secrets.slots - Project.active.map(&:slot)).first
   end
 
   private
