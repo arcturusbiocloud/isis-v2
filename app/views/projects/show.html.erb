@@ -1,31 +1,33 @@
-<% content_for(:social) do %>
-  <meta property="og:locale" content="en" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="<%= request.original_url %>" />
-  <meta property="og:title" content="<%= @project.name %>" />
-  <meta property="og:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!" />
-  <meta property="og:site_name" content="Arcturus BioCloud" />
-  <% if @activities.picture_taken.any? %>
-  <meta property="og:image" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_facebook") %>" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <% end %>
+<% if @project.is_open_source? %>
+  <% content_for(:social) do %>
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:title" content="<%= @project.name %>" />
+    <meta property="og:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!" />
+    <meta property="og:site_name" content="Arcturus BioCloud" />
+    <% if @activities.picture_taken.any? %>
+    <meta property="og:image" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_facebook") %>" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <% end %>
 
-  <% if @activities.picture_taken.any? %>
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@arcturusbio" />
-    <meta name="twitter:creator" content="@arcturusbio" />
-    <meta name="twitter:title" content="<%= @project.name %>" />
-    <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
-    <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_twitter-card") %>" />
-    <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
-  <% else %>
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@arcturusbio" />
-    <meta name="twitter:title" content="<%= @project.name %>" />
-    <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
-    <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
-    <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
+    <% if @activities.picture_taken.any? %>
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@arcturusbio" />
+      <meta name="twitter:creator" content="@arcturusbio" />
+      <meta name="twitter:title" content="<%= @project.name %>" />
+      <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
+      <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_twitter-card") %>" />
+      <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
+    <% else %>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@arcturusbio" />
+      <meta name="twitter:title" content="<%= @project.name %>" />
+      <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
+      <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
+      <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
+    <% end %>
   <% end %>
 <% end %>
 
@@ -48,20 +50,9 @@
   <div class="tab-content">
 
     <div class="<%= is_selected?('timeline', true, true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
-      <div class="social">
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en/sdk.js#xfbml=1&version=v2.3";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-share-button" data-layout="button_count"></div>
-
-        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check this beautiful synthetic biology project at Arcturus BioCloud!" data-via="arcturusbio">Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      </div>
+      <% if @project.is_open_source? %>
+        <%= render 'social' %>
+      <% end %>
 
       <br class="clearfix">
 
