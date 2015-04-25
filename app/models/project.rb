@@ -39,7 +39,7 @@ class Project < ActiveRecord::Base
     select("projects.*, COUNT(activities.id)").
      joins("JOIN activities ON activities.project_id = projects.id").
      where("projects.status = 2").
-     where("projects.last_picture_taken_at > NOW() - INTERVAL '60 minutes'
+     where("NOW() AT TIME ZONE 'UTC' - INTERVAL '1 minutes' > projects.last_picture_taken_at
             OR projects.last_picture_taken_at IS NULL").
      group("projects.id").
     having("COUNT(activities.id) < 8")
