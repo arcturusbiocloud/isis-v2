@@ -6,7 +6,7 @@ Component responsible for managing customers and their projects on Arcturus BioC
 
 It's possible to feed the timeline through the public API, which also reflects on the project status.
 
-The initial status of a project is **pending**. This status is automatically changed when the activity with `key = 1` is created:
+The initial status of a project is **pending**. This status is automatically changed when the activity with `key = 1` is created:
 
 ### Users endpoint
 
