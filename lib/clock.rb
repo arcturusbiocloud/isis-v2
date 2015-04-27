@@ -32,10 +32,14 @@ every(30.seconds, 'Trying to run experiment') {
 }
 
 every(1.minute, 'Trying to take a picture') {
+  # define the API url
+  url = Rails.env.production? ? "horus01.arcturus.io:3000" : "10.1.10.111:3000"
+
   # TODO: change the Project model to update the status of project to completed after 3 pictures
-  # TODO: make the real rest call to take the picture
   project = Project.active.last
   unless project.nil?
     puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}"
+    # making the rest call to take the picture
+    RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_picture/#{project.id}/#{project.slot}/uv_on/light_off"
   end
 }
