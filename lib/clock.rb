@@ -16,9 +16,8 @@ every(30.seconds, 'Trying to run experiment') {
     free_slot = Project.free_slot
 
     # making the rest call to run the experiment
-    # TODO: change the rest call to the real experiment endpoint
     puts "making rest call to run the experiment :project_id => #{project.id}, :slot => #{free_slot}, :genetic_parts => #{project.genetic_parts.to_json}"
-    req = RestClient.post "http://arcturus:huxnGrbNfQFR@#{url}/api/run_virtual_experiment", :project_id => project.id, :slot => free_slot, :genetic_parts => project.genetic_parts.to_json
+    req = RestClient.post "http://arcturus:huxnGrbNfQFR@#{url}/api/run_experiment", :project_id => project.id, :slot => free_slot, :genetic_parts => project.genetic_parts.to_json
     # compare req and save the slot on the project 
     unless req.nil?
       status = JSON.parse(req)["status"]
