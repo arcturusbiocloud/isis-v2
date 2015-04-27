@@ -23,8 +23,10 @@ every(30.seconds, 'Trying to run experiment') {
       status = JSON.parse(req)["status"]
       if status != nil && status != "error"
         puts "saving slot, experiment running :project_id => #{project.id}, :slot => #{free_slot}"
-        project.slot = free_slot
-        project.save
+        if project.slot.nil?
+          project.slot = free_slot
+          project.save
+        end
       end
     end
     puts req
