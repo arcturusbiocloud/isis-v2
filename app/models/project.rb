@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
             uniqueness: { scope: :user,
                           message: "Already exists on your account" }
 
-  validates :description, length: { maximum: 80 }
+  validates :description, length: { maximum: 140 }
 
   # List the pending projects first
   default_scope { order('status, created_at DESC') }
