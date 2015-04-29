@@ -42,6 +42,7 @@ every(1.minute, 'Trying to take a picture') {
   unless project.nil?
     puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}"
     # making the rest call to take the picture
-    RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_picture/#{project.id}/#{project.slot}/uv_on/light_off"
+    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_picture/#{project.id}/#{project.slot}/uv_on/light_off"
+    puts req
   end
 }
