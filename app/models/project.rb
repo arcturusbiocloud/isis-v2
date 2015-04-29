@@ -65,7 +65,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.free_slot
-    (Rails.application.secrets.slots - Project.active.map(&:slot)).first
+    (Rails.application.secrets.slots - (Project.running.map(&:slot) + Project.incubating.map(&:slot))).first
   end
 
   private
