@@ -11,10 +11,10 @@ every(30.seconds, 'Trying to run experiment') {
   
   # execute a pending experiment
   project = Project.pending.last
-  unless project.nil?
-    # get the free slot to run the experiment
-    free_slot = Project.free_slot
-
+  # get the free slot to run the experiment
+  free_slot = Project.free_slot
+  
+  unless project.nil? || free_slot.nil?
     # making the rest call to run the experiment
     puts "making rest call to run the experiment :project_id => #{project.id}, :slot => #{free_slot}, :genetic_parts => #{project.genetic_parts.to_json}"
     req = RestClient.post "http://arcturus:huxnGrbNfQFR@#{url}/api/run_experiment", :project_id => project.id, :slot => free_slot, :genetic_parts => project.genetic_parts.to_json
