@@ -1,6 +1,27 @@
-# Isis
+# Isis-v2
 
 Component responsible for managing customers and their projects on Arcturus BioCloud. It communicates with the clusters of robots through the project [horus-v2](https://github.com/arcturusbiocloud/horus-v2).
+
+## Environment variables
+
+You should set this variables to run the project:
+
+```shell
+# petri dish slot available on the robot endpoint
+heroku config:set SLOTS=[5,6]
+
+# stripe payment keys
+heroku config:set STRIPE_PUBLISHABLE_KEY=pk_test_dkH6SuhSyjqPu0kZnjDwQuFz
+heroku config:set STRIPE_SECRET_KEY=sk_test_lcGjI6jHE2NrO3pdod3DYoJo
+```
+
+## Clockwork
+
+Every 30 seconds Isis-v2 try to run a pending experiment. Every 60 seconds Isis-v2 try to take a picture on the robot endpoint. You can check the jobs at `lib/clock.rb`. To run the job enable clockwork on Heroku with <https://devcenter.heroku.com/articles/clock-processes-ruby> or in development mode use the following shell command:
+
+```shell
+clockwork lib/clock.rb
+``` 
 
 ## API
 
