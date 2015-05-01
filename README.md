@@ -10,6 +10,9 @@ You should set this variables to run the project:
 # petri dish slot available on the robot endpoint
 heroku config:set SLOTS=[5,6]
 
+# number of pictures to take before automatically finishing the project
+heroku config:set NUMBER_OF_PICTURES_TO_TAKE=3
+
 # stripe payment keys
 heroku config:set STRIPE_PUBLISHABLE_KEY=pk_test_dkH6SuhSyjqPu0kZnjDwQuFz
 heroku config:set STRIPE_SECRET_KEY=sk_test_lcGjI6jHE2NrO3pdod3DYoJo
@@ -21,7 +24,7 @@ Every 30 seconds Isis-v2 try to run a pending experiment. Every 60 seconds Isis-
 
 ```shell
 clockwork lib/clock.rb
-``` 
+```
 
 ## API
 

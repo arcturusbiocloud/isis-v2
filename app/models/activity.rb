@@ -79,7 +79,9 @@ class Activity < ActiveRecord::Base
       return project.update_attribute(:status, 2)
     when Activity.keys[:picture_taken]
       # This activity indicates that a picture was taken, so the project
-      # is updated with the current time
+      # is updated with the current time. If this is the nth picture, the
+      # completed activity is automatically triggered
+      project.activities.create!(key: 6) if project.can_be_closed?
       return project.update_attribute(:last_picture_taken_at, Time.now)
     when Activity.keys[:completed]
       # This activity indicates that no further actions will be taken towards
