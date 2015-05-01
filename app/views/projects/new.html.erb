@@ -3,6 +3,14 @@
     <h1>New project</h1>
     <p class="lead">Define the name, scope and start designing it right away!</p>
     <hr/>
+    
+    <% if flash.any? %>
+      <% unless flash.first[1].blank? %>
+        <div class="alert alert-danger">
+          <%= flash.first[1].html_safe %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <%= render 'form' %>

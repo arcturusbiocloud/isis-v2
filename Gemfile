@@ -23,6 +23,7 @@ gem 'gravtastic'
 gem 'kaminari'
 gem 'pusher'
 gem 'clockwork'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   gem 'byebug'

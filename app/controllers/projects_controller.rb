@@ -33,14 +33,34 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-
+    
     if current_user.active? && @project.save
+      # Stripe charge
+      # Amount in cents
+      @amount = 32000
+      # create customer
+      customer = Stripe::Customer.create(
+        :email => current_user.email,
+        :card => params[:stripeToken]
+      )
+      # create charge
+      charge = Stripe::Charge.create(
+        :customer => customer.id,
+        :amount => @amount,
+        :description => '1 biological construct with 1 gene',
+        :currency => 'usd'
+      )
+            
       # Add the first activity of the timeline
       @project.activities.create!
       redirect_to username_project_path(current_user.username, @project)
     else
       render :new
     end
+    
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    render :new
   end
 
   def update

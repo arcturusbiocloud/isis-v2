@@ -80,7 +80,18 @@
   <div class="row project">
     <div class="col-xs-12">
       <% if current_user.active? %>
-        <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
+        <!-- <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %> -->
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-image="<%= asset_path('arcturus.png') %>"
+                data-name="Arcturus BioCloud"
+                data-description="1 biological construct with 1 gene"
+                data-amount="32000"
+                data-email="<%= current_user.email %>"
+                data-label="Assemble"
+                data-allow-remember-me="true"
+                data-bitcoin="true">
+        </script>
       <% else %>
         <button type="button" class="btn btn-lg btn-primary design-action" data-toggle="modal" data-target="#betaInvitation">Assemble</button>
       <% end %>
@@ -94,7 +105,7 @@
     event.preventDefault(); // Prevent link from following its href
   });
   </script>
-  
+    
 <% end %>
 
 <div class="modal fade" id="betaInvitation" tabindex="-1" role="dialog" aria-labelledby="betaInvitation" aria-hidden="true">
