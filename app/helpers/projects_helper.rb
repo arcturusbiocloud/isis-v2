@@ -29,4 +29,8 @@ module ProjectsHelper
       'project-icon'
     end
   end
+
+  def selected_value(option)
+    params['project'] && params['project'][option]
+  end
 end

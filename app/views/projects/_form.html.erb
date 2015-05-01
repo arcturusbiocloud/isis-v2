@@ -25,13 +25,13 @@
 
   <%= f.label :design %>
   <p>Select the parts that will be used to assemble your genetic circuit:</p>
-    
+
   <br>
   <div class="row design-attribute">
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :anchor, t("design.anchor.name") %>
-        <%= f.select :anchor, options_for_select(t("design.anchor.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :anchor, options_for_select(t("design.anchor.values").invert, selected: selected_value('anchor')), {}, { :class => 'form-control' } %>
         <p><%= t("design.anchor.description") %></p>
       </div>
     </div>
@@ -39,7 +39,7 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :promoter, t("design.promoter.name") %>
-        <%= f.select :promoter, options_for_select(t("design.promoter.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :promoter, options_for_select(t("design.promoter.values").invert, selected: selected_value('promoter')), {}, { :class => 'form-control' } %>
         <p><%= t("design.promoter.description") %></p>
       </div>
     </div>
@@ -47,7 +47,7 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :rbs, t("design.rbs.name") %>
-        <%= f.select :rbs, options_for_select(t("design.rbs.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :rbs, options_for_select(t("design.rbs.values").invert, selected: selected_value('rbs')), {}, { :class => 'form-control' } %>
         <p><%= t("design.rbs.description") %></p>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :gene, t("design.gene.name") %>
-        <%= f.select :gene, options_for_select(t("design.gene.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :gene, options_for_select(t("design.gene.values").invert, selected: selected_value('gene')), {}, { :class => 'form-control' } %>
         <p><%= t("design.gene.description") %></p>
       </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :terminator, t("design.terminator.name") %>
-        <%= f.select :terminator, options_for_select(t("design.terminator.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :terminator, options_for_select(t("design.terminator.values").invert, selected: selected_value('terminator')), {}, { :class => 'form-control' } %>
         <p><%= t("design.terminator.description") %></p>
       </div>
     </div>
@@ -71,12 +71,12 @@
     <div class="col-xs-12">
       <div class="form-group">
         <%= f.label :cap, t("design.cap.name") %>
-        <%= f.select :cap, options_for_select(t("design.cap.values").invert), {}, { :class => 'form-control' } %>
+        <%= f.select :cap, options_for_select(t("design.cap.values").invert, selected: selected_value('cap')), {}, { :class => 'form-control' } %>
         <p><%= t("design.cap.description") %></p>
       </div>
     </div>
   </div>
-  
+
   <div class="row project">
     <div class="col-xs-12">
       <% if current_user.active? %>
@@ -97,7 +97,7 @@
       <% end %>
     </div>
   </div>
-  
+
   <p class="lead">Would you like to upload new genes and parts? <a href="#" id="upload-gene">Talk with us!</a></p>
   <script>
   $('#upload-gene').click(function (event) {
@@ -105,7 +105,7 @@
     event.preventDefault(); // Prevent link from following its href
   });
   </script>
-    
+
 <% end %>
 
 <div class="modal fade" id="betaInvitation" tabindex="-1" role="dialog" aria-labelledby="betaInvitation" aria-hidden="true">
