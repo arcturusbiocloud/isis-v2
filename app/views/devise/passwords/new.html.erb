@@ -5,7 +5,7 @@
     <% form_message_for(:sign_up, @user ? @user.errors : []) %>
     <%= render partial: "layouts/messages", locals: { default: false } %>
     <hr>
-    <%= f.email_field :email, autofocus: true, placeholder: "Your email address", class: "form-control" %>
+    <%= f.text_field :username, autofocus: true, placeholder: "Email or username", class: "form-control" %>
     <%= f.submit "Send me the instructions", class: "btn btn-lg btn-primary btn-block" %>
   <% end %>
 
