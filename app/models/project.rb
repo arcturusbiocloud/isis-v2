@@ -32,17 +32,17 @@ class Project < ActiveRecord::Base
   scope :featured, -> { where("is_featured = 'true'") }
 
   # Projects incubating where the last picture was taken one hour ago and
-  # with less than 3 pictures in total.
-  # Note that the having clause is using count < 8, that's because before
-  # stating taking picture, five other activities happens, so 5 + 3 = 8.
+  # with less than N pictures in total.
+  # Note that the having clause is using count < N, that's because before
+  # stating taking picture, five other activities happens, so 5 + N = X.
   scope :active, -> {
     select("projects.*, COUNT(activities.id)").
      joins("JOIN activities ON activities.project_id = projects.id").
      where("projects.status = 2").
-     where("NOW() AT TIME ZONE 'UTC' - INTERVAL '5 minutes' > projects.last_picture_taken_at
+     where("NOW() AT TIME ZONE 'UTC' - INTERVAL '10 hours' > projects.last_picture_taken_at
             OR projects.last_picture_taken_at IS NULL").
      group("projects.id").
-    having("COUNT(activities.id) < 8")
+     having("COUNT(activities.id) < #{5 + Rails.application.secrets.number_of_pictures_to_take}")    
   }
 
   before_create :random_icon
