@@ -128,7 +128,7 @@ There's a way to do this through the Project's endpoint, but it's also possible 
 ```shell
 $ heroku run console
 > # updating the project by it's ID
-> Project.find(1).update_attribyte(:is_featured, true)
+> Project.find(1).update_attribute(:is_featured, true)
 > # updating the project by it's friendly name
 > Project.friendly.find('my-project').update_attribyte(:is_featured, true)
 ```
