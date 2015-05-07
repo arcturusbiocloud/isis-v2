@@ -13,6 +13,9 @@ heroku config:set SLOTS=[5,6]
 # number of pictures to take before automatically finishing the project
 heroku config:set NUMBER_OF_PICTURES_TO_TAKE=3
 
+# interval to take pictures
+heroku config:set PICTURE_INTERVAL="10 hours"
+
 # stripe payment keys
 heroku config:set STRIPE_PUBLISHABLE_KEY=pk_test_dkH6SuhSyjqPu0kZnjDwQuFz
 heroku config:set STRIPE_SECRET_KEY=sk_test_lcGjI6jHE2NrO3pdod3DYoJo
