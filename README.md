@@ -11,7 +11,7 @@ You should set this variables to run the project:
 heroku config:set SLOTS=[5,6]
 
 # number of pictures to take before automatically finishing the project
-heroku config:set NUMBER_OF_PICTURES_TO_TAKE=3
+heroku config:set NUMBER_OF_PICTURES_TO_TAKE=4
 
 # interval to take pictures
 heroku config:set PICTURE_INTERVAL="10 hours"
