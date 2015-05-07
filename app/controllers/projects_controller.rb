@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     if current_user.active? && @project.save
       # Stripe charge
       # Amount in cents
-      @amount = 32000
+      @amount = 8000
       # create customer
       customer = Stripe::Customer.create(
         :email => current_user.email,
