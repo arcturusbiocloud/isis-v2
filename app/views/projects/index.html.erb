@@ -11,7 +11,11 @@
   <% else %>
     <div class="slogan">
       <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= index_title(@user) %></h1>
-      <p class="lead">Are you new here? Sweet! <%= link_to "Create your first project!", new_project_path %></p>
+      <% if @user %>
+        <p class="lead"><%= (@user || current_user).username %> seems to have no projects to be shown!</p>
+      <% else %>
+        <p class="lead">Are you new here? Sweet! <%= link_to "Create your first project!", new_project_path %></p>
+      <% end %>
       <hr/>
     </div>
   <% end %>

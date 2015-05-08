@@ -5,7 +5,11 @@ class ProjectsController < ApplicationController
   before_action :set_tab, only: [:show]
 
   def index
-    @projects = (@user || current_user).projects.page params[:page]
+    @projects = if @user
+      @user.projects.open_source.page params[:page]
+    else
+      current_user.projects.page params[:page]
+    end
   end
 
   def show
@@ -33,7 +37,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-    
+
     if current_user.active? && @project.save
       # Stripe charge
       # Amount in cents
@@ -50,14 +54,14 @@ class ProjectsController < ApplicationController
         :description => '1 biological construct with 1 gene',
         :currency => 'usd'
       )
-            
+
       # Add the first activity of the timeline
       @project.activities.create!
       redirect_to username_project_path(current_user.username, @project)
     else
       render :new
     end
-    
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     render :new
