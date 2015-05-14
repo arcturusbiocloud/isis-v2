@@ -14,15 +14,7 @@ class Activity < ActiveRecord::Base
   after_create :handle_project_status, :notify
 
   def background
-    case self.key
-      when "created" then "cd-green"
-      when "assembling" then "cd-running"
-      when "transforming" then "cd-movie"
-      when "plating" then "cd-plating"
-      when "incubating" then "cd-location"
-      when "picture_taken" then "cd-picture"
-      when "completed" then "cd-green"
-    end
+    I18n.t("timeline.background.#{key}")
   end
 
   def icon
@@ -30,39 +22,19 @@ class Activity < ActiveRecord::Base
     # displayed on the timeline. Note that the icon 'fa-random' is used
     # on the JavaScript to trigger the assembling video, so if it is changed
     # here, the script on projects/show.html.erb should be changed as well.
-    case self.key
-      when "created" then "fa-clock-o"
-      when "assembling" then "fa-random"
-      when "transforming" then "fa-flask"
-      when "plating" then "fa-eyedropper"
-      when "incubating" then "fa-sun-o"
-      when "picture_taken" then "fa-picture-o"
-      when "completed" then "fa-check-square-o"
-    end
+    I18n.t("timeline.icon.#{key}")
   end
 
   def title
-    case self.key
-      when "created" then "Project created!"
-      when "assembling" then "Assembling"
-      when "transforming" then "Transforming"
-      when "plating" then "Plating"
-      when "incubating" then "Incubating"
-      when "picture_taken" then "Picture taken!"
-      when "completed" then "Project finished!"
-    end
+    I18n.t("timeline.title.#{key}")
   end
 
-  def description
-    case self.key
-      when "created" then "<p>Arc just created your project and is going to run it as soon as possible.</p>"
-      when "assembling" then "<p>Arc just got all the genetic parts and configurations to assemble your genetic circuit. You can watch the video of the process and learn more about it!</p><p><div id='player'>Loading video...</div></p>"
-      when "transforming" then "<p>Arc is transforming a competent cell with your genetic circuit.</p>"
-      when "plating" then "<p>Arc is plating your transformed competent cell in a petri dish with agar.</p>"
-      when "running" then "<p>Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed.</p>"
-      when "incubating" then "<p>Arc is incubating your experiment for the next 36 hours.</p>"
-      when "picture_taken" then "<p>Arc just got a picture of your experiment: <br/><br/><a href='#{self.detail.gsub('t_thumbnail/','')}' class='fancybox' rel='gallery2'><img src='#{self.detail}' class: 'img-thumbnail'><p class='lighterbox-title'></a></p>"
-      when "completed" then "<p>Arc just finished your experiment. You can check the insights and pictures to see if your genetic circuit is working as expected.</p>"
+  def description(index=nil)
+    if picture_taken?
+      link = detail.gsub('t_thumbnail/','')
+      I18n.t("timeline.description.#{key}", link: link, i: index, img: detail)
+    else
+      I18n.t("timeline.description.#{key}")
     end
   end
 
@@ -101,7 +73,7 @@ class Activity < ActiveRecord::Base
       background: background,
       icon: icon,
       title: title,
-      description: description,
+      description: description(project.activities.picture_taken.count),
       timestamp: self.created_at.strftime('%m/%d/%Y %H:%M:%S')
     })
   end

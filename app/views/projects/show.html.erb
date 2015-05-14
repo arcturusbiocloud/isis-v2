@@ -65,7 +65,11 @@
 
             <div class="cd-timeline-content">
               <h2><%= activity.title %></h2>
-              <%= raw activity.description %>
+              <% if activity.picture_taken? %>
+                <p><%= raw activity.description(picture_counter) %></p>
+              <% else %>
+                <p><%= raw activity.description %></p>
+              <% end %>
               <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
             </div>
           </div>

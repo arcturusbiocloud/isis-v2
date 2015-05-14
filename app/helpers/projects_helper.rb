@@ -33,4 +33,8 @@ module ProjectsHelper
   def selected_value(option)
     params['project'] && params['project'][option]
   end
+
+  def picture_counter
+    @counter = (@counter || @project.activities.picture_taken.count + 1) - 1
+  end
 end
