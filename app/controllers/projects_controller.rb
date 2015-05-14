@@ -5,10 +5,15 @@ class ProjectsController < ApplicationController
   before_action :set_tab, only: [:show]
 
   def index
-    @projects = if @user
-      @user.projects.open_source.page params[:page]
+    if @user && @user == current_user
+      # URL of the current_user
+      @projects = @user.projects.page params[:page]
+    elsif @user
+      # URL of a user other than the current_user
+      @projects = @user.projects.open_source.page params[:page]
     else
-      current_user.projects.page params[:page]
+      # URL of the projects root (/projects)
+      @projects = current_user.projects.page params[:page]
     end
   end
 
@@ -37,7 +42,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-    
+
     if current_user.tester? && @project.save
       # Add the first activity of the timeline
       @project.activities.create!
