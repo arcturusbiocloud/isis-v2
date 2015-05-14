@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   has_many :projects
 
-  enum status: { pending: 0, active: 1, suspended: 2 }
+  enum status: { pending: 0, active: 1, tester: 2, suspended: 3 }
 
   # To handle gravatars
   include Gravtastic

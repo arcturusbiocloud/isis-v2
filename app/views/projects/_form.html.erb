@@ -79,7 +79,10 @@
 
   <div class="row project">
     <div class="col-xs-12">
-      <% if current_user.active? %>
+      <!-- ugly hack to run experiments without paying until implement credits -->
+      <% if current_user.tester? %>
+        <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
+      <% elsif current_user.active? %>
         <!-- <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %> -->
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                 data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
