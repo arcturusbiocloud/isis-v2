@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
       if conditions[:username].nil?
         where(conditions).first
       else
-        where(username: conditions[:username]).first
+        where(["lower(username) = :value OR lower(email) = :value", { :value => conditions[:username] }]).first
       end
     end
   end
