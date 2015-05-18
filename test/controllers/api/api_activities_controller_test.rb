@@ -10,7 +10,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
 
   test "should create new activity with key assembling" do
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 1, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 1, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')
@@ -20,7 +20,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
 
   test "should create new activity with key transforming" do
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 2, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 2, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')
@@ -29,7 +29,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
 
   test "should create new activity with key plating" do
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 3, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 3, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')
@@ -38,7 +38,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
 
   test "should create new activity with key incubating" do
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 4, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 4, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')
@@ -49,7 +49,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
     file = fixture_file_upload('images/sample.png', 'image/png')
 
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 5, content: file, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 5, content: file, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')
@@ -58,7 +58,7 @@ class ApiActivitiesControllerTest < ActionController::TestCase
 
   test "should create new activity with key completed" do
     assert_difference('Activity.count', +1) do
-      post :create, access_token: Rails.application.secrets.access_token, project_id: @project, key: 6, format: :json
+      post :create, access_token: Rails.application.secrets.access_token, project_id: @project.id, key: 6, format: :json
     end
     assert_response :success
     assert(activity = assigns(:activity), 'Cannot find @activity')

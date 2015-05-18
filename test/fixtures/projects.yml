@@ -40,5 +40,4 @@ two:
   icon_url_path: MyString
   description: MyString
   is_open_source: false
-  design: MyText
   user_id: 2

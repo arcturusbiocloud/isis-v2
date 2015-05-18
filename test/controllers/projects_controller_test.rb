@@ -22,10 +22,10 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, project: { name: 'My project', description: 'Super cool', is_open_source: true, design: 'source-code' }
+      post :create, project: { name: 'My project', description: 'Super cool', is_open_source: true }
     end
 
-    assert_redirected_to project_path(assigns(:project))
+    assert_response :success
   end
 
   test "should not create project with empty fields" do
@@ -57,7 +57,7 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
-    patch :update, id: @project, project: { name: 'Updated project', description: 'New description', is_open_source: false, design: 'source-code v2' }
+    patch :update, id: @project, project: { name: 'Updated project', description: 'New description', is_open_source: false }
     assert_redirected_to project_path(assigns(:project))
   end
 
