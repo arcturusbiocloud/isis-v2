@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'explore', to: 'explore#index'
+  get 'people', to: 'people#index'
 
   resources :projects
 
