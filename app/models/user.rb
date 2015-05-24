@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
     exclusion: { in: proc { User.reserved_usernames } },
     uniqueness: { case_sensitive: false }
 
+  # List the first users of the platform first
+  default_scope { order('created_at') }
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     conditions[:email].downcase! if conditions[:email]
@@ -210,6 +213,7 @@ class User < ActiveRecord::Base
   		'language',
   		'languages',
   		'legal',
+      'learn',
   		'list',
   		'lists',
       'locale',
@@ -276,6 +280,7 @@ class User < ActiveRecord::Base
   		'pages',
   		'panel',
   		'password',
+      'people',
   		'perl',
   		'photo',
   		'photoalbum',
@@ -388,6 +393,7 @@ class User < ActiveRecord::Base
   		'url',
   		'usage',
   		'user',
+      'users',
   		'username',
   		'video',
   		'videos',
