@@ -141,43 +141,8 @@ The service [Cloudnary](cloudinary.com) is used to handle images. Check out Hero
 
 Once the original image is upload, a set o transformations is performed, generating other images.
 
-List of transaformations: [https://cloudinary.com/console/transformations?filter=named](https://cloudinary.com/console/transformations?filter=named)
+The initial pictures were taken from an iPhone, but at a certain point (2015-05-08) a new camera was configured, resulting on pictures with different dimensions, so to handle both scenarios, it was necessary to define two sets of transformations, and perform additional validations on the source code.
 
-### Transformation details
+Note that the old transformations (iPhone) are not used anymore, but it is necessary to keep them, as they are still in use on the demonstration projects.
 
-The following transformations are available:
-
-#### twitter-card
-
-Transformation used on Twitter.
-
-Ref: https://dev.twitter.com/cards/types/summary-large-image
-
-```
-Scale to 643 x 643
-Mpad to 1200 x 643 (Center gravity)
-Background: #130b18
-```
-
-#### facebook
-
-Transformation used on Facebook.
-
-Ref: https://developers.facebook.com/docs/sharing/best-practices#images
-
-This might also be useful (Fetch new scrape): [debug](https://developers.facebook.com/tools/debug/og/object/)
-
-```
-Scale to 630
-Mpad to 1200 x 630 (Center gravity)
-Background: #130b18
-```
-
-#### thumbnail
-
-Transformation used to generate the thumbnails.
-
-```
-Crop to 1077 x 1077 (Center gravity)
-Fit to 150 x 150 (Center gravity)
-```
+List of transformations: [https://cloudinary.com/console/transformations?filter=named](https://cloudinary.com/console/transformations?filter=named)

@@ -49,13 +49,13 @@ module API
       res = Cloudinary::Uploader.upload(params["content"],
                                         public_id: public_id, tags: tags,
                                         eager: [
-                                          { transformation: 'thumbnail' },
-                                          { transformation: 'twitter-card' },
-                                          { transformation: 'facebook' }
+                                          { transformation: 'thumbnail-v2' },
+                                          { transformation: 'twitter-card-v2' },
+                                          { transformation: 'facebook-v2' }
                                         ])
 
       # Store the secure url
-      @activity.detail = res["secure_url"].gsub("upload/","upload/t_thumbnail/")
+      @activity.detail = res["secure_url"].gsub("upload/","upload/t_thumbnail-v2/")
 
       # Update project icon with the latest image
       @project.update_attribute(:icon_url_path, @activity.detail)

@@ -31,10 +31,37 @@ class Activity < ActiveRecord::Base
 
   def description(index=nil)
     if picture_taken?
-      link = detail.gsub('t_thumbnail/','')
+      link = if project.created_at >= '2015-05-08'.to_date
+        # Replace the transformation thumbnail for squared-v2
+        detail.gsub('t_thumbnail/','t_squared-v2/')
+      else
+        # Just remove the transformation, because the old images were already
+        # squared by default
+        detail.gsub('t_thumbnail/','')
+      end
       I18n.t("timeline.description.#{key}", link: link, i: index, img: detail)
     else
       I18n.t("timeline.description.#{key}")
+    end
+  end
+
+  def facebook
+    if project.created_at >= '2015-05-08'.to_date
+      # New camera, so it's necessary to use transformations v2
+      detail.gsub(/t_thumb.+?(?=\/)/, "t_facebook-v2")
+    else
+      # iPhone, so use the old transformations
+      detail.gsub(/t_thumb.+?(?=\/)/, "t_facebook")
+    end
+  end
+
+  def twitter
+    if project.created_at >= '2015-05-08'.to_date
+      # New camera, so it's necessary to use transformations v2
+      detail.gsub(/t_thumb.+?(?=\/)/, "t_twitter-card-v2")
+    else
+      # iPhone, so use the old transformations
+      detail.gsub(/t_thumb.+?(?=\/)/, "t_twitter-card")
     end
   end
 

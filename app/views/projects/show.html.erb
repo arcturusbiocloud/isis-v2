@@ -7,7 +7,7 @@
     <meta property="og:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!" />
     <meta property="og:site_name" content="Arcturus BioCloud" />
     <% if @activities.picture_taken.any? %>
-    <meta property="og:image" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_facebook") %>" />
+    <meta property="og:image" content="<%= @activities.picture_taken.first.facebook %>" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <% end %>
@@ -18,7 +18,7 @@
       <meta name="twitter:creator" content="@arcturusbio" />
       <meta name="twitter:title" content="<%= @project.name %>" />
       <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
-      <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.detail.gsub("t_thumbnail","t_twitter-card") %>" />
+      <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.twitter %>" />
       <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
     <% else %>
       <meta name="twitter:card" content="summary" />
