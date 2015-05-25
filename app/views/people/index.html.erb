@@ -5,15 +5,21 @@
     <hr/>
   </div>
 
-  <% @people.each do |user| %>
+  <% @people.in_groups_of(4).each do |group| %>
     <div class="row project">
-      <div class="col-lg-12">
-        <h2 class="list">
-          <%= link_to image_tag(user.gravatar_url(default: 'identicon')), username_projects_path(user.username) %> <%= link_to user.username, username_projects_path(user.username) %>
-          <p>Open source projects: <%= user.projects.open_source.size %></p>
-          <p class="meta">Member since <%= user.created_at.strftime('%m/%d/%Y') %></p>
-        </h2>
-      </div>
+      <% group.each do |user| %>
+        <div class="col-sm-3">
+          <% if user %>
+            <div class="item">
+              <h2 class="list">
+                <%= link_to image_tag(user.gravatar_url(default: 'identicon')), username_projects_path(user.username) %> <%= link_to user.username, username_projects_path(user.username) %>
+                <p>Open source projects: <%= user.projects.open_source.size %></p>
+                <p class="meta">Member since <%= user.created_at.strftime('%m/%d/%Y') %></p>
+              </h2>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 
