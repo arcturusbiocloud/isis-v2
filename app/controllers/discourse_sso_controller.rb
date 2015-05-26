@@ -10,6 +10,8 @@ class DiscourseSsoController < ApplicationController
     sso.name = current_user.username 
     sso.username = current_user.email # from devise
     sso.external_id = current_user.id # from devise
+    sso.avatar_url = current_user.gravatar_url(default: 'identicon')
+    sso.avatar_force_update=true
     sso.sso_secret = secret
 
     redirect_to sso.to_url("http://forum.arcturus.io/session/sso_login")
