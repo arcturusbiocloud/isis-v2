@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'explore', to: 'explore#index'
   get 'people', to: 'people#index'
+  get 'discourse/sso' => 'discourse_sso#sso'
 
   resources :projects
 
