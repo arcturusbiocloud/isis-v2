@@ -5,7 +5,7 @@ html * {
 }
 
 html { overflow-y: scroll; }
-body { padding-top: 50px; }
+body { padding-top: 30px; }
 h1 { margin-top: 50px; }
 
 .jumbotron {
@@ -51,9 +51,9 @@ h1 { margin-top: 50px; }
 	color: #fff;
 }
 
-.navbar-white { background-color: #fff; border-bottom: 2px solid #efefef; height: 96px; }
-.navbar-white .navbar-nav { margin-top: 28px; }
-.navbar-white .navbar-nav .divisor { margin: 3px 0 0 10px; color: #aaa; font-weight: 100; font-size: 22px; }
+.navbar-white { background-color: #fff; box-shadow: rgba(0, 0, 0, 0.247059) 0px 2px 4px -1px; height: 63px; }
+.navbar-white .navbar-nav { margin-top: 13px; }
+.navbar-white .navbar-nav .divisor { margin: 3px 0 0 10px; color: #ccc; font-weight: 100; font-size: 22px; }
 .navbar-white .navbar-nav > li.active > a { color: #000; }
 .navbar-white .navbar-nav > li > a { height: 40px; line-height: 8px; margin-left: 10px; }
 .navbar-white .navbar-nav > li > a:hover,
@@ -67,6 +67,8 @@ h1 { margin-top: 50px; }
 .collapsing, .in .divisor { display: none; }
 .collapsing, .in .navbar-right { margin-top: -10px; }
 .collapsing, .in .navbar-right a { margin-left: 26px; display: block; width: 100px; margin-bottom: 20px; }
+
+.navbar-brand { padding-left: 34px; margin-top: -4px; }
 
 form.navbar-nav .btn {
 	margin-top: 3px;
