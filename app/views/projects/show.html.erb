@@ -135,7 +135,7 @@
       <div class="row project">
         <% @activities.picture_taken.reverse.each_with_index do |activity, i| %>
           <div class="col-xs-2">
-            <a class="fancybox" rel="gallery1" href="<%= activity.detail.gsub("t_thumbnail/","") %>" title="Sample #<%= i+1 %>">
+            <a class="fancybox" rel="gallery1" href="<%= activity.squared_picture %>" title="Sample #<%= i+1 %>">
               <%= image_tag activity.detail, class: 'img-thumbnail' %>
             </a>
             <p>#<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></p>
@@ -211,7 +211,7 @@
     if (streamId == null){
       return logError("missing streamId");
     }
-    
+
     CineIO.init(publicKey, {jwPlayerKey: qs.jwPlayerKey});
 
     <% if @project.recording_file_name.present? %>

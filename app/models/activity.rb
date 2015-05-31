@@ -31,17 +31,21 @@ class Activity < ActiveRecord::Base
 
   def description(index=nil)
     if picture_taken?
-      link = if project.created_at >= '2015-05-08'.to_date
-        # Replace the transformation thumbnail for squared-v2
-        detail.gsub('t_thumbnail/','t_squared-v2/')
-      else
-        # Just remove the transformation, because the old images were already
-        # squared by default
-        detail.gsub('t_thumbnail/','')
-      end
+      link = squared_picture
       I18n.t("timeline.description.#{key}", link: link, i: index, img: detail)
     else
       I18n.t("timeline.description.#{key}")
+    end
+  end
+
+  def squared_picture
+    if project.created_at >= '2015-05-08'.to_date
+      # Replace the transformation thumbnail for squared-v2
+      detail.gsub(/t_thumb.+?(?=\/)./,'t_squared-v2/')
+    else
+      # Just remove the transformation, because the old images were already
+      # squared by default
+      detail.gsub('t_thumbnail/','')
     end
   end
 
