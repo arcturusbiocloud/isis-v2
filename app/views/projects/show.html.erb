@@ -212,14 +212,10 @@
       return logError("missing streamId");
     }
     
-    var playOptions = {
-      primary: 'html5'
-    };
-
     CineIO.init(publicKey, {jwPlayerKey: qs.jwPlayerKey});
 
     <% if @project.recording_file_name.present? %>
-      CineIO.playRecording(streamId, "<%= @project.recording_file_name %>", playerId, playOptions);
+      CineIO.playRecording(streamId, "<%= @project.recording_file_name %>", playerId);
     <% else %>
       CineIO.play(streamId, playerId);
     <% end %>
