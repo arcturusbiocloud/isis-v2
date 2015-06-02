@@ -14,6 +14,6 @@ class DiscourseSsoController < ApplicationController
     sso.avatar_force_update=true
     sso.sso_secret = secret
 
-    redirect_to sso.to_url("http://forum.arcturus.io/session/sso_login")
+    redirect_to sso.to_url("https://forum.arcturus.io/session/sso_login")
   end
 end
