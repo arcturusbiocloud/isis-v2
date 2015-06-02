@@ -7,7 +7,7 @@ en:
       description: "This is the part of your DNA circuit that helps you to select the right bacteria. If the bacteria has your circuit it will be able to resist this antibiotic and happily grow."
       values:
         ampr: "AmpR"
-        clhor: "ClhoR"
+        chlor: "ChloR"
         kanr: "KanR"
     promoter:
       name: "Promoter"
