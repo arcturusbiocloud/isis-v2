@@ -10,6 +10,7 @@
     <%= f.password_field :password, autocomplete: "off", placeholder: "Create a password", class: "form-control" %>
     <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm your password", class: "form-control" %>
     <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+    <p class="terms">By clicking "Sign up", you agree to the <%= link_to "terms of service", terms_path %></p>
   <% end %>
 
   <div class="signup">

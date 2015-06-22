@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'terms/index'
+
   namespace :api, defaults: { format: :json }, path: 'api' do
     resources :projects, only: :update do
       resources :activities, only: [:index, :create, :update]
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'explore', to: 'explore#index'
   get 'people', to: 'people#index'
+  get 'terms', to: 'terms#index', path: 'terms-of-service'
   get 'discourse/sso' => 'discourse_sso#sso'
 
   resources :projects
