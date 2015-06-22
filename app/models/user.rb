@@ -371,6 +371,7 @@ class User < ActiveRecord::Base
   		'tech',
   		'telnet',
   		'terms',
+      'terms-of-service',
   		'test',
   		'test1',
   		'test2',
