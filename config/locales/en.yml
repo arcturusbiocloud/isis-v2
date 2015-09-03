@@ -71,7 +71,7 @@ en:
       completed: "Project finished!"
     description:
       created: "Arc just created your project and is going to run it as soon as possible."
-      assembling: "Arc just got all the genetic parts and configurations to assemble your genetic circuit. You can watch the video of the process and learn more about it!</p><p><iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1V4aK0hSyT8?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>"
+      assembling: "Arc just got all the genetic parts and configurations to assemble your genetic circuit. You can watch the video of the process and learn more about it!</p><p><iframe width=\"418\" height=\"315\" src=\"https://www.youtube.com/embed/1V4aK0hSyT8?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>"
       transforming: "Arc is transforming a competent cell with your genetic circuit."
       plating: "Arc is plating your transformed competent cell in a petri dish with agar."
       running: "Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed."
