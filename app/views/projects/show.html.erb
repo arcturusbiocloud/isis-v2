@@ -185,44 +185,7 @@
 
 <br/>
 
-<script type="text/javascript" src="https://cdn.cine.io/cineio-broadcast.js"></script>
 <script type="text/javascript">
-  function loadVideo() {
-    var playerId = "player";
-    var logError = function(message){
-      var elem = document.getElementById(playerId);
-      elem.innerText = message;
-    };
-    var
-      qs = {},
-      publicKey = "55f827239e6c0badfc95795943396155",
-      streamId = "551913c4b936640b005750da";
-
-    if (location.search) {
-      location.search.substr(1).split("&").forEach(function(item) {
-        var parts = item.split(/=(.+)?/);
-        qs[parts[0]] = parts[1];
-      });
-    }
-
-    if (publicKey == null){
-      return logError("missing publicKey");
-    }
-    if (streamId == null){
-      return logError("missing streamId");
-    }
-
-    CineIO.init(publicKey, {jwPlayerKey: qs.jwPlayerKey});
-
-    <% if @project.recording_file_name.present? %>
-      CineIO.playRecording(streamId, "<%= @project.recording_file_name %>", playerId);
-    <% else %>
-      CineIO.play(streamId, playerId);
-    <% end %>
-  }
-
-  loadVideo();
-
   var pusher, channel;
   var entryId = 0;
 
