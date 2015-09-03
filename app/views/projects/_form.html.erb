@@ -25,6 +25,12 @@
 
   <%= f.label :design %>
   <p>Select the parts that will be used to assemble your genetic circuit:</p>
+  
+  <br>
+  
+  <div class="alert alert-danger">
+    <p class="lead">Would you like to upload new genes and parts? <a href="#" id="upload-gene">Click here to upload your FASTA file!</a></p>
+  </div>
 
   <br>
   <div class="row design-attribute">
@@ -101,10 +107,9 @@
     </div>
   </div>
 
-  <p class="lead">Would you like to upload new genes and parts? <a href="#" id="upload-gene">Talk with us!</a></p>
   <script>
   $('#upload-gene').click(function (event) {
-    Intercom('show');
+    Intercom('showNewMessage', 'Could you check this FASTA file? (drag and drop your FASTA file to this window!) ');
     event.preventDefault(); // Prevent link from following its href
   });
   </script>
