@@ -33,25 +33,28 @@ every(30.seconds, 'Trying to run experiment') {
   end
 }
 
-every(1.minute, 'Trying to take a picture') {
+every(1.minute, 'Trying to take a picture of all projects') {
   # define the API url
   url = Rails.env.production? ? "horus01.arcturus.io:3001" : "10.1.10.111:3000"
 
-  project = Project.active.last
-  unless project.nil?
-    puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}, :gene => #{project.genetic_parts[:gene]}"
+  projects = Project.active
+  
+  projects.each do | project |
+    unless project.nil?
+      puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}, :gene => #{project.genetic_parts[:gene]}"
     
-    # set the initial collection of virtual experiments pictures 
-    if project.virtual_experiment_collection.nil?
-      project.virtual_experiment_collection = ["A", "B", "C", "D", "E"].sample
-      project.save
+      # set the initial collection of virtual experiments pictures 
+      if project.virtual_experiment_collection.nil?
+        project.virtual_experiment_collection = ["A", "B", "C", "D", "E"].sample
+        project.save
+      end
+    
+      # get index of the picture 0, 1, 2 or 3 and merge with the collection letter from "A" to "E" previously defined on the first call
+      index = "#{(project.activities.count - 5)}_#{project.virtual_experiment_collection}"
+    
+      # making the rest call to take the picture
+      req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_virtual_picture/#{project.id}/#{project.slot}/#{project.genetic_parts[:gene]}/#{index}"
+      puts req
     end
-    
-    # get index of the picture 0, 1, 2 or 3 and merge with the collection letter from "A" to "E" previously defined on the first call
-    index = "#{(project.activities.count - 5)}_#{project.virtual_experiment_collection}"
-    
-    # making the rest call to take the picture
-    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_virtual_picture/#{project.id}/#{project.slot}/#{project.genetic_parts[:gene]}/#{index}"
-    puts req
   end
 }
