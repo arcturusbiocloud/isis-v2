@@ -7,7 +7,7 @@ include Clockwork
 
 every(30.seconds, 'Trying to run experiment') {
   # define the API url
-  url = Rails.env.production? ? "horus01.arcturus.io:3000" : "10.1.10.111:3000"
+  url = Rails.env.production? ? "horus01.arcturus.io:3001" : "10.1.10.111:3000"
   
   # execute a pending experiment
   project = Project.pending.last
@@ -35,14 +35,14 @@ every(30.seconds, 'Trying to run experiment') {
 
 every(1.minute, 'Trying to take a picture') {
   # define the API url
-  url = Rails.env.production? ? "horus01.arcturus.io:3000" : "10.1.10.111:3000"
+  url = Rails.env.production? ? "horus01.arcturus.io:3001" : "10.1.10.111:3000"
 
   # TODO: change the Project model to update the status of project to completed after 3 pictures
   project = Project.active.last
   unless project.nil?
     puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}"
     # making the rest call to take the picture
-    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_picture/#{project.id}/#{project.slot}/uv_on/light_off"
+    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_virtual_picture/#{project.id}/#{project.slot}/:gene/:index"
     puts req
   end
 }
