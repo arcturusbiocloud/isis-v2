@@ -5,7 +5,7 @@ require 'rest-client'
 
 include Clockwork
 
-every(30.seconds, 'Trying to run experiment') {
+every(10.seconds, 'Trying to run experiment') {
   # define the API url
   url = Rails.env.production? ? "horus01.arcturus.io:3001" : "10.1.10.111:3000"
   
