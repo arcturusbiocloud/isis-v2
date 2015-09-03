@@ -37,12 +37,15 @@ every(1.minute, 'Trying to take a picture') {
   # define the API url
   url = Rails.env.production? ? "horus01.arcturus.io:3001" : "10.1.10.111:3000"
 
-  # TODO: change the Project model to update the status of project to completed after 3 pictures
   project = Project.active.last
   unless project.nil?
-    puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}"
+    puts "making rest call to take the picture :project_id=> #{project.id}, :slot => #{project.slot}, :gene => #{project.genetic_parts[:gene]}"
+    
+    # get index and random A:E
+    index = "#{(project.activities.count - 5)}_#{["A", "B", "C", "D", "E"].sample}"
+    
     # making the rest call to take the picture
-    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_virtual_picture/#{project.id}/#{project.slot}/gfp/0_A"
+    req = RestClient.get "http://arcturus:huxnGrbNfQFR@#{url}/api/take_virtual_picture/#{project.id}/#{project.slot}/#{project.genetic_parts[:gene]}/#{index}"
     puts req
   end
 }
