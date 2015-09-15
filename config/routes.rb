@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  match ':username' => 'projects#index', via: :get, as: 'username_projects'
-  match ':username/:id' => 'projects#show', via: :get, as: 'username_project'
+  match ':username' => 'projects#index', via: :get, constraints: { username: /[^\/]+/ }, as: 'username_projects'
+  match ':username/:id' => 'projects#show', via: :get, constraints: { username: /[^\/]+/ }, as: 'username_project'
 
   root 'home#index'
 end
