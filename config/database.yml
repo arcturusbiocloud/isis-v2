@@ -6,6 +6,7 @@ development:
   pool: 50
   password:
   host: localhost
+
 test:
   adapter: postgresql
   encoding: utf8
@@ -14,6 +15,11 @@ test:
   pool: 10
   password:
   host: localhost
+
+staging:
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+
 production:
   url: <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
