@@ -1,0 +1,53 @@
+<% content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'pages/dashboard', media: 'all' %>
+<% end %>
+
+<div class="container">
+  <div class="slogan">
+    <h1>Dashboard</h1>
+    <%= link_to fa_icon('flask', text: 'Experiments'), experiments_path, class: "btn btn-primary pull-right" %>
+    <p class="lead">Manage and update the projects</p>
+    <hr/>
+  </div>
+
+  <br>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 20%">Project</th>
+        <th style="width: 40%">Status</th>
+        <th style="width: 20%">Last update</th>
+        <th style="width: 20%">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, username_project_path(project.user.username, project) %></td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar <%= status_color(project) %>" role="progressbar" aria-valuenow="<%= status_percentage(project) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= status_percentage(project) %>%;">
+                <span><%= project.status.humanize %></span>
+              </div>
+            </div>
+          </td>
+          <td><%= time_ago_in_words(project.updated_at, include_seconds: true) %> ago</td>
+          <td><span class="<%= project_action_class(project) %>" data-toggle="modal" data-target="#modal-<%= project.id %>"><%= project_action(project) %></span></td>
+        </tr>
+
+        <% if actionable?(project) %>
+          <%= render partial: 'form', locals: { project: project } %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.dropify').dropify({
+    messages: { 'default': 'Drag and drop the project report file here' }
+  });
+});
+</script>

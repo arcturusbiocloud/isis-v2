@@ -1,0 +1,21 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.collapsing, .in { background-color: transparentize(#333, 0.4); margin-top: 0; }
+
+.action {
+  color: darken(#428bca, 6.5%);
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color: darken(darken(#428bca, 6.5%), 15%);
+    text-decoration: underline;
+  }
+}
+
+.experiments li { margin-bottom: 10px; }
+.price-hint { font-weight: 300; color: #aaa; }
+.form-alert { margin-top: 8px; color: #fa6900; }
+.grid-actions a { margin-right: 10px; }

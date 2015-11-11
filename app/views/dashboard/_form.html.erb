@@ -1,0 +1,27 @@
+<div class="modal fade" id="modal-<%= project.id %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= link_to project.name, username_project_path(project.user.username, project) %></h4>
+      </div>
+      <%= form_for(project) do |f| %>
+        <div class="modal-body">
+          <%= render partial: project_action_partial(project), locals: { project: project, form: f } %>
+        </div>
+
+        <div class="modal-footer">
+          <% if project.quoting? %>
+            <%= link_to fa_icon('download', text: 'Download GB file'), project_download_asset_path(project, 'gen_bank'), class: "btn btn-info pull-left" %>
+          <% end %>
+
+          <% if project.getting_data? %>
+            <span class="pull-left form-alert">Be sure that you are attaching the correct report</span>
+          <% end %>
+
+          <%= f.submit project_action(project), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

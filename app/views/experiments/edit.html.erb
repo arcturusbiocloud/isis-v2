@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="slogan">
+    <h1><%= @experiment.name %></h1>
+    <p class="lead">Edit this experiment as needed.</p>
+    <hr/>
+  </div>
+
+  <%= render partial: 'form', locals: { value: 'Update' } %>
+</div>

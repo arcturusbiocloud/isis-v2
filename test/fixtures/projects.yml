@@ -2,26 +2,22 @@
 #
 # Table name: projects
 #
-#  id                    :integer          not null, primary key
-#  name                  :string           not null
-#  slug                  :string           not null
-#  description           :string
-#  is_open_source        :boolean          default(TRUE), not null
-#  is_featured           :boolean          default(FALSE), not null
-#  status                :integer          default(0), not null
-#  icon_url_path         :string           not null
-#  last_picture_taken_at :datetime
-#  recording_file_name   :string
-#  anchor                :string
-#  promoter              :string
-#  rbs                   :string
-#  gene                  :string
-#  terminator            :string
-#  cap                   :string
-#  slot                  :integer
-#  user_id               :integer          not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  id                      :integer          not null, primary key
+#  name                    :string           not null
+#  slug                    :string           not null
+#  is_open_source          :boolean          default(TRUE), not null
+#  is_featured             :boolean          default(FALSE), not null
+#  status                  :integer          default(0), not null
+#  icon_url_path           :string           not null
+#  user_id                 :integer          not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  gen_bank                :string           not null
+#  gen_bank_content        :binary           not null
+#  price                   :money
+#  estimated_delivery_days :integer
+#  report                  :string
+#  report_content          :binary
 #
 
 one:
@@ -29,15 +25,27 @@ one:
   name: Glowing Bacteria
   slug: glowing-bacteria
   icon_url_path: project-icons/1.png
-  description: My super cool open-source glowing bacterias
   is_open_source: true
+  gen_bank: glowing-bacteria.gb
+  gen_bank_content: glowing-bacteria
   user_id: 1
 
 two:
   id: 2
-  name: MyString
-  slug: mystring
-  icon_url_path: MyString
-  description: MyString
+  name: Glowing Bacteria v2
+  slug: glowing-bacteria-v2
+  icon_url_path: project-icons/2.png
   is_open_source: false
+  gen_bank: glowing-bacteria.gb
+  gen_bank_content: glowing-bacteria
+  user_id: 1
+
+three:
+  id: 3
+  name: Hybrid Octopus
+  slug: hybrid-octopus
+  icon_url_path: project-icons/3.png
+  is_open_source: false
+  gen_bank: hybrid-octopus.gb
+  gen_bank_content: hybrid-octopus
   user_id: 2

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="slogan">
+    <h1>Experiments</h1>
+    <hr/>
+
+    <% if flash.any? %>
+      <% unless flash.first[1].blank? %>
+        <div class="alert alert-danger">
+          <%= flash.first[1].html_safe %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @experiment.name %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= @experiment.price %>
+  </p>
+
+  <%= link_to 'Edit', edit_experiment_path(@experiment) %> |
+  <%= link_to 'Back', experiments_path %>
+</div>

@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: experiments
+#
+#  id         :integer          not null, primary key
+#  name       :string           not null
+#  price      :money            not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: Protein assay
+  price: 15
+
+two:
+  name: Gel images
+  price: 20

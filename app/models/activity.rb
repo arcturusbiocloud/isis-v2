@@ -1,17 +1,18 @@
+require 'action_view'
+
 class Activity < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::NumberHelper
+
   belongs_to :project
 
   enum key: {
-    created: 0,
-    assembling: 1,
-    transforming: 2,
-    plating: 3,
-    incubating: 4,
-    picture_taken: 5,
-    completed: 6
+    quoting: 0,
+    payment_pending: 1,
+    synthesizing: 2,
+    getting_data: 3,
+    done: 4
   }
-
-  after_create :handle_project_status, :notify
 
   def background
     I18n.t("timeline.background.#{key}")
@@ -19,94 +20,31 @@ class Activity < ActiveRecord::Base
 
   def icon
     # Font-awesome icons to represent the different stages of the project,
-    # displayed on the timeline. Note that the icon 'fa-random' is used
-    # on the JavaScript to trigger the assembling video, so if it is changed
-    # here, the script on projects/show.html.erb should be changed as well.
+    # displayed on the timeline.
     I18n.t("timeline.icon.#{key}")
+  end
+
+  def custom_css_style
+    I18n.t("timeline.custom_css_style.#{key}")
   end
 
   def title
     I18n.t("timeline.title.#{key}")
   end
 
-  def description(index=nil)
-    if picture_taken?
-      link = squared_picture
-      I18n.t("timeline.description.#{key}", link: link, i: index, img: detail)
-    else
-      I18n.t("timeline.description.#{key}")
-    end
-  end
-
-  def squared_picture
-    if project.created_at >= '2015-05-08'.to_date
-      # Replace the transformation thumbnail for squared-v2
-      detail.gsub(/t_thumb.+?(?=\/)./,'t_squared-v2/')
-    else
-      # Just remove the transformation, because the old images were already
-      # squared by default
-      detail.gsub('t_thumbnail/','')
-    end
-  end
-
-  def facebook
-    if project.created_at >= '2015-05-08'.to_date
-      # New camera, so it's necessary to use transformations v2
-      detail.gsub(/t_thumb.+?(?=\/)/, "t_facebook-v2")
-    else
-      # iPhone, so use the old transformations
-      detail.gsub(/t_thumb.+?(?=\/)/, "t_facebook")
-    end
-  end
-
-  def twitter
-    if project.created_at >= '2015-05-08'.to_date
-      # New camera, so it's necessary to use transformations v2
-      detail.gsub(/t_thumb.+?(?=\/)/, "t_twitter-card-v2")
-    else
-      # iPhone, so use the old transformations
-      detail.gsub(/t_thumb.+?(?=\/)/, "t_twitter-card")
-    end
+  def description
+    I18n.t("timeline.description.#{key}", price: price, days: days)
   end
 
   private
 
-  def handle_project_status
-    case self[:key]
-    when Activity.keys[:assembling]
-      # This activity indicates that the project is no longer pending,
-      # so the project status is updated to 1 (running)
-      return project.update_attribute(:status, 1)
-    when Activity.keys[:incubating]
-      # This activity indicates that the project is ready to be photographed
-      return project.update_attribute(:status, 2)
-    when Activity.keys[:picture_taken]
-      # This activity indicates that a picture was taken, so the project
-      # is updated with the current time. If this is the nth picture, the
-      # completed activity is automatically triggered
-      project.activities.create!(key: 6) if project.can_be_closed?
-      return project.update_attribute(:last_picture_taken_at, Time.now)
-    when Activity.keys[:completed]
-      # This activity indicates that no further actions will be taken towards
-      # ths project, so it is status is updated to 3 (completed)
-      project.update_attribute(:status, 3)
-    end
+  def price
+    return unless project.price
+    number_to_currency(project.price)
   end
 
-  def notify
-    return if self.created?
-
-    require 'pusher'
-
-    Pusher.url = Rails.application.secrets.pusher_url
-
-    Pusher[self.project.channel].trigger('update', {
-      background: background,
-      icon: icon,
-      title: title,
-      description: description(project.activities.picture_taken.count),
-      timestamp: self.created_at.strftime('%m/%d/%Y %H:%M:%S')
-    })
+  def days
+    project.estimated_delivery_days
   end
 end
 

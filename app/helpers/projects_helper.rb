@@ -1,5 +1,5 @@
 module ProjectsHelper
-  def is_selected?(tab, clear, is_first=false)
+  def selected?(tab, clear, is_first = false)
     if session[:tab] == tab
       session[:tab] = nil if clear
       return 'active'
@@ -8,7 +8,7 @@ module ProjectsHelper
     'active' if session[:tab].nil? && is_first
   end
 
-  def is_project_owner?(project)
+  def project_owner?(project)
     project.user == current_user
   end
 
@@ -16,7 +16,7 @@ module ProjectsHelper
     if user && user != current_user
       "#{user.username}'s projects"
     else
-      "Your projects"
+      'Your projects'
     end
   end
 
@@ -34,7 +34,7 @@ module ProjectsHelper
     params['project'] && params['project'][option]
   end
 
-  def picture_counter
-    @counter = (@counter || @project.activities.picture_taken.count + 1) - 1
+  def suggested_price(project)
+    project.experiments.sum(:price).to_i.to_s
   end
 end

@@ -1,0 +1,26 @@
+<p>This project is on the <strong>first step</strong> and is awaiting for your inputs.</p>
+
+<p>Please evaludate the GB file, and based on the selected experiments, enter the price and the estimated delivery days.</p>
+
+<p><strong>Experiments:</strong></p>
+<ul class="experiments">
+  <% project.experiments.each do |experiment| %>
+    <li><%= experiment.name %> <span class="price-hint"><%= number_to_currency(experiment.price) %></span></li>
+  <% end %>
+</ul>
+<hr>
+
+<%= form.hidden_field :status, value: "payment_pending" %>
+
+<div class="form-group">
+  <%= form.label :price, class: "control-label" %>
+  <div class="input-group">
+    <div class="input-group-addon">$</div>
+    <%= form.number_field :price, placeholder: suggested_price(project), required: true, min: 1, max: 5000, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :estimated_delivery_days, class: "control-label" %>
+  <%= form.number_field :estimated_delivery_days, placeholder: "8", required: true, min: 1, max: 80, class: "form-control" %>
+</div>

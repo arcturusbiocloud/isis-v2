@@ -1,0 +1,5 @@
+<p>This is the <strong>last step</strong>. Upload the PDF report, and the user will be automatically notified.</p>
+
+<%= form.hidden_field :status, value: 'done' %>
+
+<%= form.file_field :report, class: "dropify", "data-default-file" => "" %>

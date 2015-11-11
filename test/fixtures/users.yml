@@ -14,18 +14,22 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  username               :string           not null
-#  status                 :integer          default(0), not null
+#  status                 :integer          default(1), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  admin                  :boolean          default(FALSE)
 #
 
 one:
   id: 1
-  email: user@email.com
+  email: admin@arcturus.io
   username: one
+  admin: true
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>
+
 two:
   id: 2
-  email: another@email.com
+  email: user@arcturus.io
   username: two
+  admin: false
   encrypted_password: <%= User.new.send(:password_digest, '123456') %>

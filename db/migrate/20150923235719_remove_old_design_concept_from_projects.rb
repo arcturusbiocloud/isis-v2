@@ -1,5 +1,6 @@
 class RemoveOldDesignConceptFromProjects < ActiveRecord::Migration
   def change
+    remove_column :projects, :description
     remove_column :projects, :anchor
     remove_column :projects, :promoter
     remove_column :projects, :rbs

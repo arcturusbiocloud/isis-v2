@@ -1,0 +1,11 @@
+Documentation:
+  Enabled: false
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'test/test_helper.rb'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'lib/**/*'

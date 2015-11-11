@@ -1,0 +1,40 @@
+<% content_for :page_specific_stylesheets do %>
+  <%= stylesheet_link_tag 'pages/dashboard', media: 'all' %>
+<% end %>
+
+<div class="container">
+  <div class="slogan">
+    <h1>Experiments</h1>
+    <p>Manage the experiments available to the projects</p>
+    <hr/>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 25%">Name</th>
+        <th style="width: 25%">Price</th>
+        <th style="width: 25%">Projects implemented</th>
+        <th style="width: 25%">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @experiments.each do |experiment| %>
+        <tr>
+          <td><%= experiment.name %></td>
+          <td><%= number_to_currency(experiment.price) %></td>
+          <td><%= experiment.projects.count %></td>
+          <td class="grid-actions">
+            <%= link_to 'Edit', edit_experiment_path(experiment) %>
+            <%= link_to 'Delete', experiment, data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to fa_icon('plus', text: 'New Experiment'), new_experiment_path, class: 'btn btn-success' %>
+</div>

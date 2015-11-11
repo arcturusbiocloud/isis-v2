@@ -1,34 +1,20 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :download]
   before_action :load_user, only: [:show, :index]
-  before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy, :download]
   before_action :set_tab, only: [:show]
 
   def index
-    if @user && @user == current_user
-      # URL of the current_user
-      @projects = @user.projects.page params[:page]
-    elsif @user
-      # URL of a user other than the current_user
-      @projects = @user.projects.open_source.page params[:page]
-    else
-      # URL of the projects root (/projects)
-      @projects = current_user.projects.page params[:page]
-    end
+    @projects = load_projects
   end
 
   def show
-    @project = if @user
-      @user.projects.friendly.find(params[:id])
-    else
-      Project.friendly.find(params[:id])
-    end
+    @project = Project.friendly.find(params[:id])
 
-    if is_accessible?
+    if accessible?
       @activities = @project.activities.order('updated_at desc')
     else
-      # Not accessible, but we answer with not found, to make it harder to
-      # guess that the project is private
+      # Not accessible, but not found is answered
       not_found
     end
   end
@@ -43,44 +29,20 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
 
-    if current_user.tester? && @project.save
-      # Add the first activity of the timeline
-      @project.activities.create!
-      redirect_to username_project_path(current_user.username, @project)
-    elsif current_user.active? && @project.save
-      # Stripe charge
-      # Amount in cents
-      @amount = 8000
-      # create customer
-      customer = Stripe::Customer.create(
-        :email => current_user.email,
-        :card => params[:stripeToken]
-      )
-      # create charge
-      charge = Stripe::Charge.create(
-        :customer => customer.id,
-        :amount => @amount,
-        :description => '1 biological construct with 1 gene',
-        :currency => 'usd'
-      )
-
-      # Add the first activity of the timeline
-      @project.activities.create!
+    if @project.save
       redirect_to username_project_path(current_user.username, @project)
     else
       render :new
     end
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    render :new
   end
 
   def update
     if @project.update(project_params)
       redirect_to @project
     else
-      render :edit
+      msg = 'Ops! Something went wrong: ' + @project.errors[:base].first
+      flash[:error] = msg
+      redirect_to @project
     end
   end
 
@@ -89,39 +51,97 @@ class ProjectsController < ApplicationController
     redirect_to projects_url
   end
 
+  def download
+    if params[:asset] == 'report'
+      send_data @project.report_content, filename: @project.report_filename
+    else
+      send_data @project.gen_bank_content, filename: @project.gen_bank_filename
+    end
+  end
+
   private
 
   def set_project
-    @project = current_user.projects.friendly.find(params[:id])
+    id = params[:id] || params[:project_id]
+
+    @project = Project.friendly.find(id)
+
+    return not_found unless accessible?
   end
 
   def load_user
-    if params[:username]
-      @user = User.find_by_username(params[:username])
-      not_found unless @user
-    end
+    return unless params[:username]
+
+    @user = User.find_by_username(params[:username])
+    not_found unless @user
+  end
+
+  def load_projects
+    return user_projects if @user
+
+    # URL of the projects root (/projects)
+    Project.open_source.page params[:page]
+  end
+
+  def user_projects
+    @user.projects.page params[:page] if admin? || @user == current_user
+
+    # URL of an user other than current_user
+    @user.projects.open_source.page params[:page]
   end
 
   def set_tab
-    if params['tab'].present?
-      # A specific tab should be displayed, but we don't want the query string
-      # visible on the URL, because it shouldn't be present on Twitter.
-      # This value set on session will be handled on projects_helper.
-      session[:tab] = params['tab']
-      params.delete 'tab'
+    return unless params['tab'].present?
 
-      redirect_to request.path
-    end
+    # A specific tab should be displayed, but we don't want the query string
+    # visible on the URL, because it shouldn't be present on Twitter.
+    # This value set on session will be handled on projects_helper.
+    session[:tab] = params['tab']
+    params.delete 'tab'
+
+    redirect_to request.path
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :is_open_source, :design, :anchor, :promoter, :rbs, :gene, :terminator, :cap)
+    # Default parameters, always accessible
+    list = default_parameters
+
+    # Owner parameters, accessible only to the project owner
+    list << owner_parameters if @project && owner?
+
+    # Admin parameters, accessible only to admins
+    list << admin_parameters if admin?
+
+    params.require(:project).permit(list)
+  end
+
+  def default_parameters
+    [:name, :is_open_source, :gen_bank, :gen_bank_cache, experiment_ids: []]
+  end
+
+  def owner_parameters
+    params[:project] = {} if params[:project].nil?
+
+    if params[:project].empty?
+      # Append the status parameter and the stripeToken
+      params[:project][:status] = 'synthesizing'
+      params[:project][:stripeToken] = params[:stripeToken]
+    end
+
+    [:status, :stripeToken]
+  end
+
+  def admin_parameters
+    [:price, :estimated_delivery_days, :status, :report]
+  end
+
+  def owner?
+    @project.user == current_user
   end
 
   # Since a project can be public or private, it's necessary to be sure that
-  # the project is is_accessible to the current user
-  def is_accessible?
-    return true if @project.is_open_source?
-    @project.user == current_user
+  # the project is accessible to the current user
+  def accessible?
+    admin? || owner? || @project.is_open_source?
   end
 end

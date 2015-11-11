@@ -74,9 +74,19 @@ form.navbar-nav .btn {
 	margin-top: 3px;
 }
 
-.slogan { padding: 30px 0; }
-.slogan h1 { font-weight: normal; font-size: 28px; }
-.slogan .lead { font-weight: 300; font-size: 18px; color: #999; }
+.slogan {
+	padding: 30px 0;
+	height: 200px;
+	margin-bottom: 40px;
+	h1 {
+		line-height: 70px;
+		font-weight: normal;
+		font-size: 28px;
+	}
+	.nav-pills {
+		margin-top: 65px;
+	}
+ }
 
 .nav-inner { float: right; margin-top: 80px; }
 
@@ -87,17 +97,22 @@ form.navbar-nav .btn {
 .element-container img { width: 100px; height: 100px; }
 .element-container p { font-size: 15px; margin-top: 5px; }
 
-#strobeMediaPlayback { width: 100%; height: 250px; }
+/* Forms */
+.form-actions {
+	.btn {
+		margin-right: 16px;
+	}
+}
 
-.social { margin-top: -12px; display: block; clear: both; background-color: #fff; height: 55px;}
-.twitter-share-button, .fb-share-button { float: right; margin-left: 15px; }
-
-.video { margin-bottom: 50px; }
-
-.img-thumbnail { border-radius: 0; border-color: #ddd; }
-.img-thumbnail:hover { border-color: #888; }
-.lighterbox-title, .lighterbox-desc { display: none; }
-.lighterbox-overlay-title { font-size: 18px; }
+.progress {
+	margin-bottom: 0;
+	.progress-bar {
+		text-align: left;
+		span {
+			margin-left: 10px;
+		}
+	}
+}
 
 /* Sticky footer */
 html { position: relative; min-height: 100%; }

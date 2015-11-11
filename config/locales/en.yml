@@ -1,80 +1,34 @@
 en:
   custom_errors:
     sign_up: "Please fill in all the fields."
-  design:
-    anchor:
-      name: "Selection Gene"
-      description: "This is the part of your DNA circuit that helps you to select the right bacteria. If the bacteria has your circuit it will be able to resist this antibiotic and happily grow."
-      values:
-        ampr: "AmpR"
-        chlor: "ChloR"
-        kanr: "KanR"
-    promoter:
-      name: "Promoter"
-      description: "This guy controls your gene, it tells the gene when and why it should be active. This part is under the regulating of other cell components, helping in the transcription of your gene. Transcription is to read your DNA and produce a RNA copy of it."
-      values:
-        very_strong: "Very strong"
-        strong: "Strong"
-        medium: "Medium"
-        weak: "Weak"
-    rbs:
-      name: "Ribosome Binding Site"
-      description: "This part of your circuit will be transcribed with your gene. It indicates to the ribosome (machine that produces proteins) how many times it will read your RNA to produce proteins."
-      values:
-        very_strong: "Very strong"
-        strong: "Strong"
-        medium: "Medium"
-        weak: "Weak"
-    gene:
-      name: "Gene"
-      description: "This is the main component of your circuit! It is the gene that you want to express, which means, it will be translated into proteins. GFP (green fluorescent protein - when your bacteria is under UV light this gene makes it green), RFP (red fluorescent protein - when your bacteria is under UV light this gene makes it pink and under normal light it makes it red) or aCP (coral acropora millepora - makes your bacteria blue under normal light)."
-      values:
-        gfp: "GFP"
-        rfp: "RFP"
-        acp: "aCP"
-    terminator:
-      name: "Terminator"
-      description: "This part of your circuit indicates where finish the message that will become RNA in the transcription process."
-      values:
-        ter: "Ter"
-    cap:
-      name: "Replication Origin"
-      description: "This part determines the number of copies of your circuit per bacterial cell. Low (around 20 to 30), Medium (around 100 to 200) and High (around 300 to 500)."
-      values:
-        high: "High"
-        medium: "Medium"
-        low: "Low"
   timeline:
     background:
-      created: "cd-green"
-      assembling: "cd-running"
-      transforming: "cd-movie"
-      plating: "cd-plating"
-      incubating: "cd-location"
-      picture_taken: "cd-picture"
-      completed: "cd-green"
+      quoting: "cd-location"
+      payment_pending: "cd-running"
+      synthesizing: "cd-movie"
+      getting_data: "cd-plating"
+      done: "cd-green"
     icon:
-      created: "fa-clock-o"
-      assembling: "fa-random"
-      transforming: "fa-flask"
-      plating: "fa-eyedropper"
-      incubating: "fa-sun-o"
-      picture_taken: "fa-picture-o"
-      completed: "fa-check-square-o"
+      quoting: "clock-o"
+      payment_pending: "credit-card"
+      synthesizing: "flask"
+      getting_data: "file-pdf-o"
+      done: "check-square-o"
+    custom_css_style:
+      quoting: "margin-left: -10px"
+      payment_pending: ""
+      synthesizing: "margin-left: -11px"
+      getting_data: "margin-left: -9px"
+      done: "margin-left: -10px"
     title:
-      created: "Project created!"
-      assembling: "Assembling"
-      transforming: "Transforming"
-      plating: "Plating"
-      incubating: "Incubating"
-      picture_taken: "Picture taken!"
-      completed: "Project finished!"
+      quoting: "Congratulations!"
+      payment_pending: "Awaiting payment"
+      synthesizing: "Synthesizing"
+      getting_data: "Getting data"
+      done: "Project finished!"
     description:
-      created: "Arc just created your project and is going to run it as soon as possible."
-      assembling: "Arc just got all the genetic parts and configurations to assemble your genetic circuit. You can watch the video of the process and learn more about it!</p><p><iframe width=\"418\" height=\"315\" src=\"https://www.youtube.com/embed/1V4aK0hSyT8?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1\" frameborder=\"0\" allowfullscreen></iframe>"
-      transforming: "Arc is transforming a competent cell with your genetic circuit."
-      plating: "Arc is plating your transformed competent cell in a petri dish with agar."
-      running: "Arc just got all the consumables and configurations to start your experiment and now is working for you. This step is going to take approximately 10 minutes to be completed."
-      incubating: "Arc is incubating your experiment for the next 36 hours."
-      picture_taken: "Arc just got a picture of your experiment: <br/><br/><a href='%{link}' class='fancybox' rel='gallery2' title='Sample #%{i}'><img src='%{img}' class: 'img-thumbnail'><p class='lighterbox-title'></a>"
-      completed: "Arc just finished your experiment. You can check the insights and pictures to see if your genetic circuit is working as expected."
+      quoting: "We are quoting your construct and data analysis. We will get back to you as soon as possible (usually within 2 working days)."
+      payment_pending: "The price to synthesize your construct is <strong>%{price}</strong> and it is going to take <strong>%{days} working days</strong> to deliver the data from the analysis you had selected."
+      synthesizing: "Synthesizing and assemblying your construct."
+      getting_data: "Getting data from your biological construct."
+      done: "The data analysis from your construct is ready."

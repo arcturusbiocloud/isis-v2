@@ -1,75 +1,37 @@
-<% if @project.is_open_source? %>
-  <% content_for(:social) do %>
-    <meta property="og:locale" content="en" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:title" content="<%= @project.name %>" />
-    <meta property="og:description" content="Check this beautiful synthetic biology project at Arcturus BioCloud!" />
-    <meta property="og:site_name" content="Arcturus BioCloud" />
-    <% if @activities.picture_taken.any? %>
-    <meta property="og:image" content="<%= @activities.picture_taken.first.facebook %>" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <% end %>
-
-    <% if @activities.picture_taken.any? %>
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@arcturusbio" />
-      <meta name="twitter:creator" content="@arcturusbio" />
-      <meta name="twitter:title" content="<%= @project.name %>" />
-      <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
-      <meta name="twitter:image:src" content="<%= @activities.picture_taken.first.twitter %>" />
-      <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
-    <% else %>
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@arcturusbio" />
-      <meta name="twitter:title" content="<%= @project.name %>" />
-      <meta name="twitter:description" content="Code, create and share your biotechnology experiments in a friendly and easy way." />
-      <meta name="twitter:image" content="https://dl.dropboxusercontent.com/u/440273/arcturus.jpg" />
-      <meta name="twitter:url" content="<%= request.base_url + request.path %>" />
-    <% end %>
-  <% end %>
-<% end %>
-
 <div class="container">
   <div class="slogan">
     <ul class="nav nav-pills nav-inner">
-      <li class="<%= is_selected?('timeline', false, true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
-      <li class="<%= is_selected?('design', false) %>"><a href="#design" data-toggle="pill">Design</a></li>
-      <li class="<%= is_selected?('insights', false) %>"><a href="#insights" data-toggle="pill">Insights</a></li>
-      <% if is_project_owner?(@project) %>
+      <li class="<%= selected?('timeline', false, true) %>"><a href="#timeline" data-toggle="pill">Timeline</a></li>
+      <li class="<%= selected?('design', false) %>"><a href="#design" data-toggle="pill">Design</a></li>
+      <li class="<%= selected?('data-analysis', false) %>"><a href="#data-analysis" data-toggle="pill">Data analysis</a></li>
+      <% if project_owner?(@project) %>
         <li><a href="#settings" data-toggle="pill">Settings</a></li>
       <% end %>
     </ul>
-    <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <!-- <%= @project.id %> --> <%= @project.name %></h1>
-    <p class="lead"><%= @project.description %></p>
-
-    <hr/>
+    <h1><%= image_tag (@user || current_user).gravatar_url(default: 'identicon') %> <%= link_to @project.user.username, username_projects_path(@project.user.username) %> / <%= @project.name %></h1>
   </div>
 
   <div class="tab-content">
 
-    <div class="<%= is_selected?('timeline', true, true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
-      <% if @project.is_open_source? %>
-        <%= render 'social' %>
-      <% end %>
-
-      <br class="clearfix">
-
+    <div class="<%= selected?('timeline', true, true) %> tab-pane" id="timeline" style="background-color: #e9f0f5;">
       <section id="cd-timeline" class="cd-container">
         <% @activities.each do |activity| %>
           <div class="cd-timeline-block">
             <div class="cd-timeline-img <%= activity.background %>">
-              <i class="fa <%= activity.icon %>"></i>
+              <i class="fa fa-<%= activity.icon %>" style="<%= activity.custom_css_style %>"></i>
             </div>
 
             <div class="cd-timeline-content">
               <h2><%= activity.title %></h2>
-              <% if activity.picture_taken? %>
-                <p><%= raw activity.description(picture_counter) %></p>
-              <% else %>
-                <p><%= raw activity.description %></p>
+              <p><%= raw activity.description %></p>
+
+              <% if project_owner?(@project) && activity.payment_pending? && @project.payment_pending? %>
+                <%= render partial: 'stripe_form', locals: { project: @project } %>
+              <% elsif activity.done? %>
+                <br>
+                <p><%= link_to fa_icon('download', text: 'GFP construct data analysis'), project_download_asset_path(@project, 'report'), class: "btn btn-success" %></p>
               <% end %>
+
               <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
             </div>
           </div>
@@ -77,74 +39,37 @@
     	</section>
     </div>
 
-    <div class="<%= is_selected?('design', true) %> tab-pane" id="design">
-      <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
-        <div class="row design-attribute">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :anchor, t("design.anchor.name") %>
-              <%= f.select :anchor, options_for_select([t("design.anchor.values.#{@project.anchor}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.anchor.description") %></p>
-            </div>
-          </div>
+    <div class="<%= selected?('design', true) %> tab-pane" id="design">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Design</p>
+          <%= link_to fa_icon('download', text: 'Download GB file'), project_download_asset_path(@project, 'gen_bank'), class: "btn btn-info" %>
+        </div>
+      </div>
 
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :promoter, t("design.promoter.name") %>
-              <%= f.select :promoter, options_for_select([t("design.promoter.values.#{@project.promoter}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.promoter.description") %></p>
-            </div>
-          </div>
+      <br><br>
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Construct visualization</p>
+          <br>
+          <img src="http://placehold.it/350x350" class="img-circle">
+        </div>
+      </div>
+    </div>
 
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :rbs, t("design.rbs.name") %>
-              <%= f.select :rbs, options_for_select([t("design.rbs.values.#{@project.rbs}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.rbs.description") %></p>
-            </div>
-          </div>
-
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :gene, t("design.gene.name") %>
-              <%= f.select :gene, options_for_select([t("design.gene.values.#{@project.gene}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.gene.description") %></p>
-            </div>
-          </div>
-
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :terminator, t("design.terminator.name") %>
-              <%= f.select :terminator, options_for_select([t("design.terminator.values.#{@project.terminator}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.terminator.description") %></p>
-            </div>
-          </div>
-
-          <div class="col-xs-12">
-            <div class="form-group">
-              <%= f.label :cap, t("design.cap.name") %>
-              <%= f.select :cap, options_for_select([t("design.cap.values.#{@project.cap}"), nil]), {}, { disabled: true, :class => 'form-control' } %>
-              <p><%= t("design.cap.description") %></p>
-            </div>
-          </div>
+    <div class="<%= selected?('data-analysis', true) %> tab-pane" id="data-analysis">
+      <p>Experiment data</p>
+      <br>
+      <% Experiment.all.each do |experiment| %>
+        <div class="checkbox">
+          <label>
+            <%= check_box_tag("project[experiment_ids][]", experiment.id, @project.experiments.include?(experiment), disabled: true) %> <%= experiment.name %>
+          </label>
         </div>
       <% end %>
     </div>
 
-    <div class="<%= is_selected?('insights', true) %> tab-pane" id="insights">
-      <div class="row project">
-        <% @activities.picture_taken.reverse.each_with_index do |activity, i| %>
-          <div class="col-xs-2">
-            <a class="fancybox" rel="gallery1" href="<%= activity.squared_picture %>" title="Sample #<%= i+1 %>">
-              <%= image_tag activity.detail, class: 'img-thumbnail' %>
-            </a>
-            <p>#<%= i+1 %> - <%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <% if is_project_owner?(@project) %>
+    <% if project_owner?(@project) %>
       <div class="tab-pane" id="settings">
         <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
           <div class="row project">
@@ -164,15 +89,8 @@
           </div>
 
           <div class="row project">
-            <div class="col-xs-12">
-              <%= f.label :description %>
-              <%= f.text_field :description, placeholder: "A short sentence that describes your project", style: "width:100%", class: "form-control" %>
-              <span class="label label-danger form-error"><%= field_validation_message(@project, :description) %></span>
-            </div>
-          </div>
-
-          <div class="row project">
-            <div class="col-xs-12">
+            <div class="col-xs-12 form-actions">
+              <hr>
               <%= f.submit "Update settings", class: "btn btn-primary" %>
               <%= link_to "Delete project", @project, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
             </div>
@@ -182,40 +100,3 @@
     <% end %>
   </div>
 </div>
-
-<br/>
-
-<script type="text/javascript">
-  var pusher, channel;
-  var entryId = 0;
-
-  $(document).ready(function() {
-    if(typeof pusher == 'undefined'){
-      pusher = new Pusher("<%= Rails.application.secrets.pusher_key %>");
-      channel = pusher.subscribe('<%= @project.channel %>');
-      channel.bind('update', function(data) { addTimelineEntry(data); });
-    } else {
-      addTimelineEntry(data);
-    }
-  });
-
-  function addTimelineEntry(data) {
-    var markup = "";
-
-    markup += "<div class='cd-timeline-block'>";
-    markup += "  <div class='cd-timeline-img " + data.background + "'>";
-    markup += "    <i class='fa " + data.icon + "'></i>";
-    markup += "  </div>";
-    markup += "  <div class='cd-timeline-content timeline-entry entry-" + entryId + "'>";
-    markup += "    <h2>" + data.title + "</h2>";
-    markup += "    <p>" + data.description + "</p>";
-    markup += "    <span class='cd-date'>" + data.timestamp + "</span>";
-    markup += "  </div>";
-    markup += "</div>";
-
-    $("#cd-timeline").prepend(markup);
-    $(".entry-" + entryId++).fadeIn("slow", function() {
-      if(data.icon == 'fa-random') { loadVideo(); }
-    });
-  }
-</script>

@@ -5,7 +5,7 @@ ruby '2.2.3'
 gem 'rails', '4.2.4'
 
 # Database
-gem 'pg', '0.18.2'
+gem 'pg', '0.18.3'
 
 # Asset Pipeline
 gem 'bourbon'
@@ -16,14 +16,13 @@ gem 'sass-rails'
 gem 'uglifier'
 
 # Other gems
+gem 'carrierwave'
 gem 'devise'
-gem 'cloudinary'
+gem 'delayed_job_active_record'
 gem 'friendly_id'
 gem 'gravtastic'
 gem 'kaminari'
-gem 'pusher'
-gem 'clockwork'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug'

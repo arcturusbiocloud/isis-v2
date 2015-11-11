@@ -21,7 +21,7 @@
   }
 }
 
-.stripe-button-el { margin: 10px 0 0 174px; }
+.stripe-button-el { margin-bottom: 10px; }
 
 .timeline-entry { display: none; }
 
@@ -61,7 +61,6 @@
   margin-right: 7px;
   color: #ddd;
 }
-
 .project-pending {
   color: #b26a36;
 }
@@ -72,14 +71,26 @@
   color: #44b236;
 }
 
-#insights p {
-  text-align: center;
+.btn .fa {
+  margin-right: 10px;
 }
 
-// timeline
+.file-input {
+  p strong {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  p a img {
+    margin-top: 15px;
+  }
+  p img {
+    margin-right: 50px;
+  }
+}
 
-$main-text: #7f8c97; // main text
-$link: #acb7c0; // anchor tags
+// Timeline
+$main-text: #7f8c97;  // main text
+$link: #acb7c0;       // anchor tags
 $background: #e9f0f5; // body background color
 
 $color-1: #303e49; // blue dark
@@ -91,26 +102,9 @@ $color-6: #428bca; // blue
 $color-7: #9a6adc; // purple
 $color-8: #ed7c4a; // orange
 
-// fonts
 $primary-font: 'Droid Serif', serif;
 $secondary-font: 'Open Sans', sans-serif;
 
-// breakpoints
-$S: 320px;
-$M: 768px;
-$L: 1170px;
-
-@mixin MQ($canvas) {
-  @if $canvas == S {
-   @media only screen and (min-width: $S) { @content; }
-  }
-  @else if $canvas == M {
-   @media only screen and (min-width: $M) { @content; }
-  }
-  @else if $canvas == L {
-   @media only screen and (min-width: $L) { @content; }
-  }
-}
 @function calculateRem($size) {
   $remSize: $size / 16px;
   @return $remSize * 1rem;
@@ -123,46 +117,25 @@ $L: 1170px;
   border-radius: $radius;
 }
 
-/* --------------------------------
-Modules - reusable parts of our design
--------------------------------- */
-
-.cd-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+.cd-container {
 	width: 90%;
-	max-width: $L; // breakpoints inside partials > _layout.scss
 	margin: 0 auto;
 
-	&::after { /* clearfix */
+	&::after {
 		content: '';
 		display: table;
 		clear: both;
 	}
 }
 
-/* --------------------------------
-
-Main components
-
--------------------------------- */
-
 header {
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
 	background: $color-1;
-
 	h1 {
 		color: $color-3;
 		@include font-size(18px);
-	}
-
-	@include MQ(L) {
-		height: 300px;
-		line-height: 300px;
-
-		h1 {
-			@include font-size(24px);
-		}
 	}
 }
 
@@ -173,9 +146,8 @@ header {
     top: 2em;
     bottom: 2em;
   }
-
 	&::before {
-		/* this is the vertical line */
+		/* vertical line */
 		content: '';
 		position: absolute;
 		top: 0;
@@ -184,30 +156,16 @@ header {
 		width: 4px;
 		background: darken($background, 5%);
 	}
-
-	@include MQ(L) {
-		margin: {
-			top: -20px;
-			bottom: 3em;
-		}
-
-		&::before {
-			left: 50%;
-			margin-left: -2px;
-		}
-	}
-  @include MQ(S) {
-    h2 {
-      margin-top: 10px;
-      font-size: 22px;
-    }
-    p, .cd-date {
-      font-size: 14px;
-    }
-		margin: {
-			top: -20px;
-			bottom: 3em;
-		}
+  h2 {
+    margin-top: 10px;
+    font-size: 22px;
+  }
+  p, .cd-date {
+    font-size: 14px;
+  }
+	margin: {
+		top: -20px;
+		bottom: 3em;
 	}
 }
 
@@ -215,25 +173,11 @@ header {
 	position: relative;
 	margin: 2em 0;
 	@include clearfix;
-
 	&:first-child {
 		margin-top: 0;
 	}
-
 	&:last-child {
 		margin-bottom: 0;
-	}
-
-	@include MQ(L) {
-		margin: 4em 0;
-
-		&:first-child {
-			margin-top: 0;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
-		}
 	}
 }
 
@@ -245,7 +189,6 @@ header {
 	height: 40px;
 	border-radius: 50%;
 	box-shadow: 0 0 0 4px $color-3, inset 0 2px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .05) ;
-
 	.fa {
     font-size: 24px;
     color: #fff;
@@ -258,49 +201,23 @@ header {
 		margin-left: -12px;
 		margin-top: -12px;
 	}
-
 	&.cd-green {
 		background: $color-4;
 	}
-
 	&.cd-movie {
 		background: $color-2;
 	}
-
 	&.cd-location {
 		background: $color-5;
 	}
-
   &.cd-running {
 		background: $color-6;
 	}
-
   &.cd-plating {
 		background: $color-7;
 	}
-
   &.cd-picture {
 		background: $color-8;
-	}
-
-	@include MQ(L) {
-		width: 60px;
-		height: 60px;
-		left: 50%;
-		margin-left: -30px;
-
-		/* Force Hardware Acceleration in WebKit */
-		-webkit-transform: translateZ(0);
-		-webkit-backface-visibility: hidden;
-
-		.cssanimations &.is-hidden {
-			visibility: hidden;
-		}
-
-		.cssanimations &.bounce-in {
-			visibility: visible;
-			@include animation(cd-bounce-1 .6s);
-		}
 	}
 }
 
@@ -309,12 +226,10 @@ header {
 		opacity: 0;
 		@include transform(scale(.5));
 	}
-
 	60% {
 		opacity: 1;
 		@include transform(scale(1.2));
 	}
-
 	100% {
 		@include transform(scale(1));
 	}
@@ -328,42 +243,20 @@ header {
 	padding: 1em;
 	box-shadow: 0 3px 0 darken($background, 5%);
 	@include clearfix;
-
 	h2 {
 		color: $color-1;
 	}
-
-	p, .cd-read-more, .cd-date {
-		@include font-size(13px);
-	}
-
-	.cd-read-more, .cd-date {
-		display: inline-block;
-	}
-
 	p {
 		margin: 1em 0;
 		line-height: 1.6;
 	}
-
-	.cd-read-more {
-		float: right;
-		padding: .8em 1em;
-		background: $link;
-		color: $color-3;
-		@include border-radius;
-
-		.no-touch &:hover {
-			background-color: lighten($link, 5%);
-		}
-	}
-
 	.cd-date {
+    @include font-size(13px);
+    display: inline-block;
 		float: left;
 		padding: .8em 0;
 		opacity: .7;
 	}
-
 	&::before {
 		content: '';
 		position: absolute;
@@ -372,84 +265,7 @@ header {
 		height: 0;
 		width: 0;
 		border: 7px solid transparent;
-		border-right: 7px solid $color-3;
-	}
-
-	@include MQ(M) {
-		h2 {
-			@include font-size(30px);
-		}
-
-		p {
-			@include font-size(22px);
-		}
-
-		.cd-read-more, .cd-date {
-			@include font-size(26px);
-		}
-	}
-
-	@include MQ(L) {
-		margin-left: 0;
-		padding: 1.6em;
-		width: 45%;
-
-		&::before {
-			top: 24px;
-			left: 100%;
-			border-color: transparent;
-			border-left-color: $color-3;
-		}
-
-		.cd-read-more {
-			float: left;
-		}
-
-		.cd-date {
-			position: absolute;
-			width: 100%;
-			left: 122%;
-			top: 6px;
-			@include font-size(26px);
-		}
-
-		.cd-timeline-block:nth-child(even) & {
-			float: right;
-
-			&::before {
-				top: 24px;
-				left: auto;
-				right: 100%;
-				border-color: transparent;
-				border-right-color: $color-3;
-			}
-
-			.cd-read-more {
-				float: right;
-			}
-
-			.cd-date {
-				left: auto;
-				right: 122%;
-				text-align: right;
-			}
-		}
-
-		.cssanimations &.is-hidden {
-			visibility: hidden;
-		}
-
-		.cssanimations &.bounce-in {
-			visibility: visible;
-			@include animation(cd-bounce-2 .6s);
-		}
-	}
-}
-
-@include MQ(L) {
-	/* inverse bounce effect on even content blocks */
-	.cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
-		@include animation(cd-bounce-2-inverse .6s);
+		border-right: 8px solid $color-3;
 	}
 }
 

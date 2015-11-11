@@ -1,35 +1,33 @@
 module ApplicationHelper
   def flash_class(level, default)
     css_classes = case level
-      when 'notice', 'success' then 'alert alert-success'
-      when 'error', 'alert' then 'alert alert-danger'
-    end
+                  when 'notice', 'success' then 'alert alert-success'
+                  when 'error', 'alert' then 'alert alert-danger'
+                  end
 
     css_classes += ' default-flash' if default
     css_classes
   end
 
-  def form_message_for(action, errors, instant = true)
-    unless errors.empty?
-      message = "#{errors.first[0].to_s.humanize} #{errors.first[1]}"
+  def form_message_for(_action, errors, instant = true)
+    return if errors.empty?
 
-      if instant
-        flash.now[:error] = message
-      else
-        flash[:error] = message
-      end
+    message = "#{errors.first[0].to_s.humanize} #{errors.first[1]}"
+
+    if instant
+      flash.now[:error] = message
+    else
+      flash[:error] = message
     end
   end
 
-  def field_validation_message(obj, field)
-    return if obj.nil?
-
-    if obj.errors.messages.key?(field) && obj.errors.messages[field].any?
-      obj.errors.messages[field].first.humanize
-    end
+  def field_validation_message(o, field)
+    return if o.nil?
+    return unless o.errors.messages.key?(field) && o.errors.messages[field].any?
+    o.errors.messages[field].first.humanize
   end
 
-  def is_active?(page)
+  def active?(page)
     page == request.path ? 'active' : ''
   end
 
@@ -61,13 +59,13 @@ module ApplicationHelper
   #
   #   content_tag(:li, fa_icon("check li", text: "Bulleted list item"))
   #   # => <li><i class="fa fa-check fa-li"></i> Bulleted list item</li>
-  def fa_icon(names = "flag", options = {})
-    classes = ["fa"]
+  def fa_icon(names = 'flag', options = {})
+    classes = ['fa']
     classes.concat Private.icon_names(names)
     classes.concat Array(options.delete(:class))
     text = options.delete(:text)
     right_icon = options.delete(:right)
-    icon = content_tag(:i, nil, options.merge(:class => classes))
+    icon = content_tag(:i, nil, options.merge(class: classes))
     Private.icon_join(icon, text, right_icon)
   end
 
@@ -78,7 +76,7 @@ module ApplicationHelper
       return icon if text.blank?
       elements = [icon, ERB::Util.html_escape(text)]
       elements.reverse! if reverse_order
-      safe_join(elements, " ")
+      safe_join(elements, ' ')
     end
 
     def self.icon_names(names = [])

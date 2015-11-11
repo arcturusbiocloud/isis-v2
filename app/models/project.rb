@@ -1,26 +1,65 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   has_many :activities
+  has_many :project_experiments, dependent: :destroy
+  has_many :experiments, through: :project_experiments
+
+  accepts_nested_attributes_for :project_experiments,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
+  validate :experiments_presence
 
   # To create nice URLs
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  # A project is created with status 0 (pending); then the background job grabs
-  # the project, allocate resources for it and change the status to 1 (running).
-  # During the running phase, the robot performs various tasks, and at a certain
-  # point, the status is changed again, and the new status (2) indicates the
-  # project is incubating and ready to be photographed. After 3 pictures, the
-  # status is changed to 3 indicating that it is completed.
-  enum status: { pending: 0, running: 1, incubating: 2, completed: 3 }
+  mount_uploader :gen_bank, GenBankUploader
+  mount_uploader :report,   ReportUploader
+
+  # - A project is created with status 0 (quoting) and an automatic email is
+  #   sent to the staff.
+  # - A staff member get in touch with partners to find out the cost of the
+  #   project. Once the final price is defined, the project is updated to the
+  #   status 1 (payment_pending) and an automatic email is sent, asking the
+  #   customer to pay the experiment.
+  # - The customer click the link on the email and make the payment through
+  #   Stripe. The project is then updated to the status 2 (synthesizing), and an
+  #   automatic email is sent to the staff, which will then get in touch with
+  #   partner and authorize the execution of the experiment.
+  # - Once the experiment arrives at Arcturus, a staff member update the project
+  #   to the status 3 (getting_data).
+  # - When all the data is manually collected and arranged into a PDF file, a
+  #   staff member attaches the PDF file on the project, which is then updated
+  #   to the status 4 (done).
+  enum status: {
+    quoting: 0,
+    payment_pending: 1,
+    synthesizing: 2,
+    getting_data: 3,
+    done: 4
+  }
 
   validates :name,
             presence: true,
             length: { maximum: 25 },
             uniqueness: { scope: :user,
-                          message: "Already exists on your account" }
+                          message: 'Already exists on your account' }
 
-  validates :description, length: { maximum: 140 }
+  validates :gen_bank, presence: true, on: :create
+
+  validates :estimated_delivery_days,
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 1,
+                            less_than_or_equal_to: 80,
+                            message: 'Estimation should be between 1 and 80' },
+            if: :quoted?
+
+  validates :price,
+            numericality: { greater_than_or_equal_to: 1,
+                            less_than_or_equal_to: 5000,
+                            message: 'Price should be between 1 and 5000' },
+            if: :quoted?
 
   # List the pending projects first
   default_scope { order('status, created_at DESC') }
@@ -31,58 +70,122 @@ class Project < ActiveRecord::Base
   # Projects qualified to be shown on the landing page
   scope :featured, -> { where("is_featured = 'true'") }
 
-  # Projects incubating where the last picture was taken one hour ago and
-  # with less than N pictures in total.
-  # Note that the having clause is using count < N, that's because before
-  # stating taking picture, five other activities happens, so 5 + N = X.
-  scope :active, -> {
-    select("projects.*, COUNT(activities.id)").
-     joins("JOIN activities ON activities.project_id = projects.id").
-     where("projects.status = 2").
-     where("NOW() AT TIME ZONE 'UTC' - INTERVAL '#{Rails.application.secrets.picture_interval}' > projects.last_picture_taken_at
-            OR projects.last_picture_taken_at IS NULL").
-     group("projects.id").
-     having("COUNT(activities.id) < #{5 + Rails.application.secrets.number_of_pictures_to_take}")    
-  }
-
   before_create :random_icon
+  before_create :store_gen_bank_content, if: proc { |m| m.gen_bank.present? }
+  before_save :pay_with_card, if: proc { synthesizing? }
+  before_save :store_report_content, if: proc { done? && report_content.nil? }
 
-  def channel
-    require 'base64'
+  # Actions to be taken based on the project status
+  after_create :perform_action
+  after_save :perform_action, if: proc { |m| m.changes[:status] }
 
-    (Digest::SHA256.new << md5 + 'jUb@d8v#mmN02ZkB').hexdigest
+  attr_accessor :stripeToken
+
+  def report_filename
+    name.parameterize + '-report.pdf'
   end
 
-  def genetic_parts
-    {
-      anchor: anchor,
-      promoter: promoter,
-      rbs: rbs,
-      gene: gene,
-      terminator: terminator,
-      cap: cap
-    }
-  end
-
-  def can_be_closed?
-    count = activities.picture_taken.count
-    count >= Rails.application.secrets.number_of_pictures_to_take
-  end
-
-  def self.free_slot
-    (Rails.application.secrets.slots - (Project.running.map(&:slot) + Project.incubating.map(&:slot))).first
+  def gen_bank_filename
+    gen_bank.file.filename
   end
 
   private
+
+  def pay_with_card
+    return if Rails.env.test?
+
+    validate_stripe_token
+
+    Stripe::Charge.create(customer: stripe_customer.id,
+                          amount: (price * 100).round,
+                          description: name,
+                          currency: 'usd')
+
+  rescue Stripe::InvalidRequestError => e
+    errors.add(:base, e.message)
+    raise ActiveRecord::RecordInvalid.new(self)
+  rescue Stripe::CardError => e
+    errors.add(:base, e.message)
+    raise ActiveRecord::RecordInvalid.new(self)
+  end
+
+  def validate_stripe_token
+    return if stripeToken
+    errors.add(:base, 'Could not verify card')
+    fail ActiveRecord::RecordInvalid.new(self)
+  end
+
+  def stripe_customer
+    Stripe::Customer.create(email: user.email, card: stripeToken)
+  end
+
+  def experiments_presence
+    return if valid_experiments.count > 0
+    errors.add(:base, :experiments_too_short)
+  end
+
+  def valid_experiments
+    experiments.reject(&:marked_for_destruction?)
+  end
+
+  def quoted?
+    status != 'quoting'
+  end
+
+  def store_gen_bank_content
+    self.gen_bank_content = gen_bank.file.read
+  end
+
+  def store_report_content
+    self.report_content = report.file.read
+  end
 
   def random_icon
     self.icon_url_path = "project-icons/#{rand(15)}.png"
   end
 
-  def md5
-    require 'digest/md5'
+  def perform_action
+    case status
+    when 'quoting' then action_quoting
+    when 'payment_pending' then action_payment_pending
+    when 'synthesizing' then action_synthesizing
+    when 'getting_data' then action_getting_data
+    when 'done' then action_done
+    end
+  end
 
-    Digest::MD5.hexdigest self.user.username + self.name
+  def action_quoting
+    # Send email to the staff, so they can get in touch with partners to find
+    # out the cost of the project
+    ProjectMailer.quoting_email(self).deliver_later
+    activities.create!(key: 0)
+  end
+
+  def action_payment_pending
+    # Send email asking the customer to pay the experiment
+    ProjectMailer.payment_pending_email(self).deliver_later
+    activities.create!(key: 1)
+  end
+
+  def action_synthesizing
+    # Send email to the staff, so they can get in touch with the partner and
+    # authorize the execution of the experiment
+    ProjectMailer.synthesizing_email(self).deliver_later
+    activities.create!(key: 2)
+  end
+
+  def action_getting_data
+    # Send email to the customer, saying that the experiment is done and that
+    # Arcturus is collecting all the data
+    ProjectMailer.getting_data_email(self).deliver_later
+    activities.create!(key: 3)
+  end
+
+  def action_done
+    # Send email to the customer, saying that the project is done, with a link
+    # to download the report
+    ProjectMailer.done_email(self).deliver_later
+    activities.create!(key: 4)
   end
 end
 
@@ -90,24 +193,20 @@ end
 #
 # Table name: projects
 #
-#  id                    :integer          not null, primary key
-#  name                  :string           not null
-#  slug                  :string           not null
-#  description           :string
-#  is_open_source        :boolean          default(TRUE), not null
-#  is_featured           :boolean          default(FALSE), not null
-#  status                :integer          default(0), not null
-#  icon_url_path         :string           not null
-#  last_picture_taken_at :datetime
-#  recording_file_name   :string
-#  anchor                :string
-#  promoter              :string
-#  rbs                   :string
-#  gene                  :string
-#  terminator            :string
-#  cap                   :string
-#  slot                  :integer
-#  user_id               :integer          not null
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  id                      :integer          not null, primary key
+#  name                    :string           not null
+#  slug                    :string           not null
+#  is_open_source          :boolean          default(TRUE), not null
+#  is_featured             :boolean          default(FALSE), not null
+#  status                  :integer          default(0), not null
+#  icon_url_path           :string           not null
+#  user_id                 :integer          not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  gen_bank                :string           not null
+#  gen_bank_content        :binary           not null
+#  price                   :money
+#  estimated_delivery_days :integer
+#  report                  :string
+#  report_content          :binary
 #

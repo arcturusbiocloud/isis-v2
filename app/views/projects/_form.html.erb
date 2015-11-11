@@ -1,3 +1,5 @@
+<br class="clear"><br class="clear">
+
 <%= form_for(@project, html: { class: "form-inline" }) do |f| %>
   <div class="row project">
     <div class="col-xs-12">
@@ -15,126 +17,40 @@
     </div>
   </div>
 
-  <div class="row project">
-    <div class="col-xs-12">
-      <%= f.label :description %>
-      <%= f.text_field :description, placeholder: "A short sentence that describes your project", style: "width:100%", class: "form-control" %>
-      <span class="label label-danger form-error"><%= field_validation_message(@project, :description) %></span>
-    </div>
-  </div>
-
-  <%= f.label :design %>
-  <p>Select the parts that will be used to assemble your genetic circuit:</p>
-  
-  <br>
-  
-  <div class="alert alert-danger">
-    <p class="lead">Choose below the parts from Arcturus BioCloud library or <a href="#" id="upload-gene">click here to upload your FASTA file!</a></p>
+  <div class='file-input'>
+    <%= f.file_field :gen_bank, class: "dropify", "data-default-file" => "" %>
+    <%= f.hidden_field :gen_bank_cache %>
+    <br>
+    <p>The following tools can be used to create a biological construct and save as a GenBank file:</p>
+    <p><%= link_to image_tag('snap-gene-logo.png'), 'http://www.snapgene.com/products/file_compatibility/GenBank/', target: 'blank' %> <%= link_to image_tag('dna-20-logo.png'), 'https://www.dna20.com/resources/genedesigner', target: 'blank' %></p>
   </div>
 
   <br>
-  <div class="row design-attribute">
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :anchor, t("design.anchor.name") %>
-        <%= f.select :anchor, options_for_select(t("design.anchor.values").invert, selected: selected_value('anchor')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.anchor.description") %></p>
-      </div>
-    </div>
+  <hr>
 
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :promoter, t("design.promoter.name") %>
-        <%= f.select :promoter, options_for_select(t("design.promoter.values").invert, selected: selected_value('promoter')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.promoter.description") %></p>
-      </div>
-    </div>
+  <div class='file-input'>
+    <p><strong>Choose the experiment data you want from your construct</strong></p>
 
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :rbs, t("design.rbs.name") %>
-        <%= f.select :rbs, options_for_select(t("design.rbs.values").invert, selected: selected_value('rbs')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.rbs.description") %></p>
+    <% Experiment.all.each do |experiment| %>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag("project[experiment_ids][]", experiment.id, @project.experiments.include?(experiment)) %> <%= experiment.name %>
+        </label>
       </div>
-    </div>
-
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :gene, t("design.gene.name") %>
-        <%= f.select :gene, options_for_select(t("design.gene.values").invert, selected: selected_value('gene')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.gene.description") %></p>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :terminator, t("design.terminator.name") %>
-        <%= f.select :terminator, options_for_select(t("design.terminator.values").invert, selected: selected_value('terminator')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.terminator.description") %></p>
-      </div>
-    </div>
-
-    <div class="col-xs-12">
-      <div class="form-group">
-        <%= f.label :cap, t("design.cap.name") %>
-        <%= f.select :cap, options_for_select(t("design.cap.values").invert, selected: selected_value('cap')), {}, { :class => 'form-control' } %>
-        <p><%= t("design.cap.description") %></p>
-      </div>
-    </div>
+      <br>
+    <% end %>
   </div>
 
+  <br><br>
   <div class="row project">
     <div class="col-xs-12">
-      <!-- ugly hack to run experiments without paying until implement credits -->
-      <% if current_user.tester? %>
-        <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
-      <% elsif current_user.active? %>
-        <!-- <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %> -->
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-image="<%= asset_path('arcturus.png') %>"
-                data-name="Arcturus BioCloud"
-                data-description="1 biological construct with 1 gene"
-                data-amount="8000"
-                data-email="<%= current_user.email %>"
-                data-label="Assemble"
-                data-allow-remember-me="true"
-                data-bitcoin="true">
-        </script>
-      <% else %>
-        <button type="button" class="btn btn-lg btn-primary design-action" data-toggle="modal" data-target="#betaInvitation">Assemble</button>
-      <% end %>
+      <%= f.submit "Assemble", class: "btn btn-lg btn-primary design-action" %>
     </div>
   </div>
-
-  <script>
-  $('#upload-gene').click(function (event) {
-    Intercom('showNewMessage', '(Click on the paperclip icon on the right and choose your FASTA file. After that write a brief overview of your project on this chat window.)');
-    event.preventDefault(); // Prevent link from following its href
-  });
-  </script>
-
 <% end %>
 
-<div class="modal fade" id="betaInvitation" tabindex="-1" role="dialog" aria-labelledby="betaInvitation" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Beta invitation</h4>
-      </div>
-      <div class="modal-body">
-        <p>Hooray <%= current_user.username %>!</p>
-        <p>It seems like you want to see your experiment in action, that's right?</p>
-        <p>We are currently giving private access to selected users, so if you want to join the waiting list, please fill in the <a href="https://arcturus.typeform.com/to/jk9qz8">invitation form</a> and cross your fingers!</p>
-        <p>If you have already filled the invitation form, don't worry, because we are adding more members in a weekly basis.</p>
-        <p>Our cluster of robots, assemble genes, transform competent cells, plate and incubate your project, so by now we have a limited capacity.</p>
-        <p>We are working hard to scale and expand our capacity! <%= link_to 'Explore here', explore_path %> some projects already created by our private beta users.</p>
-        <p>There are <%= User.count - User.active.count %> members in our waiting list!</p>
-      </div>
-      <div class="modal-footer">
-        <a href="https://arcturus.typeform.com/to/jk9qz8" class="btn btn-primary">Invitation form</a>
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+$('.dropify').dropify({
+  messages: { 'default': 'Drag and drop the GenBank file of your biological construct here' }
+});
+</script>

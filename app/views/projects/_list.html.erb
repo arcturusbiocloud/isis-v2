@@ -8,23 +8,19 @@
         <% unless project.is_open_source? %>
           <%= fa_icon "lock", class: 'project-visibility' %>
         <% end %>
-        <% if project.pending? %>
-          <%= fa_icon "circle-o-notch", class: 'project-pending', title: "Pending", "data-toggle" => "tooltip" %>
-        <% elsif project.running? %>
-          <%= fa_icon "cog spin", class: 'project-running', title: "Running", "data-toggle" => "tooltip" %>
-        <% else %>
-          <%= fa_icon "check-square-o", class: 'project-completed', title: "Completed", "data-toggle" => "tooltip" %>
-        <% end %>
-        <span class="project-owner"><%= link_to project.user.username, username_projects_path(project.user.username) %> /</span>
-        <%= link_to project.name, username_project_path(project.user.username, project) %>
+
+        <p>
+          <span class="project-owner"><%= link_to project.user.username, username_projects_path(project.user.username) %> /</span>
+          <%= link_to project.name, username_project_path(project.user.username, project) %>
+        </p>
+        <span class="light"><%= project.status.humanize %></span>
       </h4>
-      <p><%= project.description %></p>
     </div>
     <div class="col-md-7">
       <ul class="actions">
         <li><%= link_to "Timeline", username_project_path(project.user.username, project, tab: "timeline") %></li>
         <li><%= link_to "Design", username_project_path(project.user.username, project, tab: "design") %></li>
-        <li><%= link_to "Insights", username_project_path(project.user.username, project, tab: "insights") %></li>
+        <li><%= link_to "Data analysis", username_project_path(project.user.username, project, tab: "data-analysis") %></li>
       </ul>
     </div>
   </div>
