@@ -42,7 +42,7 @@
     <div class="<%= selected?('design', true) %> tab-pane" id="design">
       <div class="row">
         <div class="col-xs-12">
-          <p>Design</p>
+          <p><strong>Design</strong></p>
           <%= link_to fa_icon('download', text: 'Download GB or FASTA file'), project_download_asset_path(@project, 'gen_bank'), class: "btn btn-info" %>
         </div>
       </div>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="<%= selected?('data-analysis', true) %> tab-pane" id="data-analysis">
-      <p>Experiment data</p>
+      <p><strong>Experiment data</strong></p>
       <br>
       <% Experiment.all.each do |experiment| %>
         <div class="checkbox">
