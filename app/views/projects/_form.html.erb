@@ -21,7 +21,7 @@
     <%= f.file_field :gen_bank, class: "dropify", "data-default-file" => "" %>
     <%= f.hidden_field :gen_bank_cache %>
     <br>
-    <p>The following tools can be used to create a biological construct and save as a GenBank file:</p>
+    <p>The following tools can be used to create a biological construct and save as a GenBank or FASTA file:</p>
     <p><%= link_to image_tag('snap-gene-logo.png'), 'http://www.snapgene.com/products/file_compatibility/GenBank/', target: 'blank' %> <%= link_to image_tag('dna-20-logo.png'), 'https://www.dna20.com/resources/genedesigner', target: 'blank' %></p>
   </div>
 
@@ -51,6 +51,6 @@
 
 <script>
 $('.dropify').dropify({
-  messages: { 'default': 'Drag and drop the GenBank file of your biological construct here' }
+  messages: { 'default': 'Drag and drop the GenBank or FASTA file of your biological construct here' }
 });
 </script>

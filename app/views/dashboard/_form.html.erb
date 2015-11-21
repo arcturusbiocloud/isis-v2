@@ -12,7 +12,7 @@
 
         <div class="modal-footer">
           <% if project.quoting? %>
-            <%= link_to fa_icon('download', text: 'Download GB file'), project_download_asset_path(project, 'gen_bank'), class: "btn btn-info pull-left" %>
+            <%= link_to fa_icon('download', text: 'Download GB or FASTA file'), project_download_asset_path(project, 'gen_bank'), class: "btn btn-info pull-left" %>
           <% end %>
 
           <% if project.getting_data? %>
