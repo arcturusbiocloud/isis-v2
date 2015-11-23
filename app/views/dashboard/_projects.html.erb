@@ -1,0 +1,25 @@
+<div class="row grid-header">
+  <div class="col-xs-2">Project</div>
+  <div class="col-xs-6">Status</div>
+  <div class="col-xs-2">Last update</div>
+  <div class="col-xs-2">Action</div>
+</div>
+
+<% @projects.each do |project| %>
+  <div class="row grid-item">
+    <div class="col-xs-2"><%= link_to project.name, username_project_path(project.user.username, project) %></div>
+    <div class="col-xs-6">
+      <div class="progress">
+        <div class="progress-bar <%= status_color(project) %>" role="progressbar" aria-valuenow="<%= status_percentage(project) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= status_percentage(project) %>%;">
+          <span><%= project.status.humanize %></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2"><%= time_ago_in_words(project.updated_at, include_seconds: true) %> ago</div>
+    <div class="col-xs-2"><span class="<%= project_action_class(project) %>" data-toggle="modal" data-target="#modal-<%= project.id %>"><%= project_action(project) %></span></div>
+  </div>
+
+  <% if actionable?(project) %>
+    <%= render partial: 'form', locals: { project: project } %>
+  <% end %>
+<% end %>

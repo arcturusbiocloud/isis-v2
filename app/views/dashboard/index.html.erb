@@ -10,38 +10,11 @@
     <hr/>
   </div>
 
-  <br>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th style="width: 20%">Project</th>
-        <th style="width: 40%">Status</th>
-        <th style="width: 20%">Last update</th>
-        <th style="width: 20%">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |project| %>
-        <tr>
-          <td><%= link_to project.name, username_project_path(project.user.username, project) %></td>
-          <td>
-            <div class="progress">
-              <div class="progress-bar <%= status_color(project) %>" role="progressbar" aria-valuenow="<%= status_percentage(project) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= status_percentage(project) %>%;">
-                <span><%= project.status.humanize %></span>
-              </div>
-            </div>
-          </td>
-          <td><%= time_ago_in_words(project.updated_at, include_seconds: true) %> ago</td>
-          <td><span class="<%= project_action_class(project) %>" data-toggle="modal" data-target="#modal-<%= project.id %>"><%= project_action(project) %></span></td>
-        </tr>
-
-        <% if actionable?(project) %>
-          <%= render partial: 'form', locals: { project: project } %>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+  <% if @projects.any? %>
+    <%= render partial: 'projects' %>
+  <% else %>
+    <p>No projects were found.</p>
+  <% end %>
 </div>
 
 <script>
