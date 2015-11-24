@@ -28,8 +28,8 @@
               <% if project_owner?(@project) && activity.payment_pending? && @project.payment_pending? %>
                 <%= render partial: 'stripe_form', locals: { project: @project } %>
               <% elsif activity.done? %>
-                <br>
-                <p><%= link_to fa_icon('download', text: 'GFP construct data analysis'), project_download_asset_path(@project, 'report'), class: "btn btn-success" %></p>
+                
+                <p><%= link_to fa_icon('download', text: 'Download data analysis'), project_download_asset_path(@project, 'report'), class: "btn btn-success" %></p>
               <% end %>
 
               <span class="cd-date"><%= activity.created_at.strftime('%m/%d/%Y %H:%M:%S') %></span>
