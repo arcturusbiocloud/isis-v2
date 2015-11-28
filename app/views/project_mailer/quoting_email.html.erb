@@ -5,7 +5,7 @@
   </head>
   <body>
     <p>The project <%= @project.name %> has just been created!</p>
-    <p>You can check more information at <%= link_to "project's timeline", username_project_url(@project.user.username, @project) %>.</p>
+    <p>You can check more information at the <%= link_to "project's timeline", username_project_url(@project.user.username, @project) %>.</p>
     <p>Manage this project at the <%= link_to "admin dashboard", dashboard_url %>.</p>
   </body>
 </html>

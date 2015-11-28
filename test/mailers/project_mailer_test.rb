@@ -19,7 +19,7 @@ class ProjectMailerTest < ActionMailer::TestCase
 
     assert_equal ['no-reply@arcturus.io'], email.from
     assert_equal ['staff@arcturus.io'], email.to
-    assert_equal "Project #{project.id} - Pithovirus", email.subject
+    assert_equal 'New project created id: 6 name: Pithovirus', email.subject
     assert_equal read_fixture('quoting').join, email_body(email)
   end
 
@@ -47,7 +47,7 @@ class ProjectMailerTest < ActionMailer::TestCase
 
     assert_equal ['no-reply@arcturus.io'], email.from
     assert_equal ['staff@arcturus.io'], email.to
-    assert_equal 'Project 1 - Glowing Bacteria', email.subject
+    assert_equal 'Project paid id: 1 name: Glowing Bacteria', email.subject
     assert_equal read_fixture('synthesizing').join, email_body(email)
   end
 

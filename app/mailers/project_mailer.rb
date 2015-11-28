@@ -13,7 +13,7 @@ class ProjectMailer < ApplicationMailer
 
   def synthesizing_email(project)
     @project = project
-    subject = "Project #{@project.id} - #{@project.name}"
+    subject = "Project paid id: #{@project.id} name: #{@project.name}"
     mail(to: 'staff@arcturus.io', subject: subject)
   end
 
