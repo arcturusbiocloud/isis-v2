@@ -9,6 +9,16 @@ The following distinct environments are available:
 - Staging: [https://www-staging.arcturus.io](https://www-staging.arcturus.io) (branch `staging`)
 - Production: [https://www.arcturus.io](https://www.arcturus.io) (branch `master`)
 
+## Deployment
+
+```shell
+#to production on branch master
+git push heroku-production
+
+#to staging on branch staging
+git push heroku-staging staging:master
+```
+
 ## Environment variables
 
 You should set this variables to run the project:
