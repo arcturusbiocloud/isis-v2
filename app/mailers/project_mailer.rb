@@ -1,7 +1,7 @@
 class ProjectMailer < ApplicationMailer
   def quoting_email(project)
     @project = project
-    subject = "Project #{@project.id} - #{@project.name}"
+    subject = "New project created id: #{@project.id} name: #{@project.name}"
     mail(to: 'staff@arcturus.io', subject: subject)
   end
 
