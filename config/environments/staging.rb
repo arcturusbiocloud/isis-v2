@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # E-mail settings
-  config.action_mailer.default_url_options = { host: 'staging.arcturus.io' }
+  config.action_mailer.default_url_options = { host: 'www-staging.arcturus.io' }
 
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
@@ -86,7 +86,7 @@ Rails.application.configure do
     authentication: :plain,
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: 'arcturus.io'
+    domain: 'www-staging.arcturus.io'
   }
 
   ActionMailer::Base.delivery_method ||= :smtp
