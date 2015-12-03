@@ -57,8 +57,8 @@ class Project < ActiveRecord::Base
 
   validates :price,
             numericality: { greater_than_or_equal_to: 1,
-                            less_than_or_equal_to: 5000,
-                            message: 'Price should be between 1 and 5000' },
+                            less_than_or_equal_to: 100000,
+                            message: 'Price should be between 1 and 100000' },
             if: :quoted?
 
   # List the pending projects first
