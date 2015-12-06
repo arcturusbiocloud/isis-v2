@@ -28,7 +28,7 @@ en:
       done: "Project finished!"
     description:
       quoting: "We are quoting your construct and data analysis. We will get back to you as soon as possible (usually within 2 working days)."
-      payment_pending: "The price to synthesize your construct is <strong>%{price}</strong> and it is going to take <strong>%{days} working days</strong> to deliver the data from the analysis you had selected."
+      payment_pending: "The price to synthesize and run the selected assays in your construct is <strong>%{price}</strong>. It is going to take <strong>%{days} working days</strong> to deliver the data from the assays you had selected."
       synthesizing: "Synthesizing and assemblying your construct."
       getting_data: "Getting data from your biological construct."
       done: "The data analysis from your construct is ready."
