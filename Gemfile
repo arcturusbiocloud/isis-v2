@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.0'
 
 gem 'rails', '4.2.5'
 
@@ -26,12 +26,18 @@ gem 'stripe'
 
 group :development, :test do
   gem 'byebug'
+end
+
+group :development do
   gem 'better_errors'
-  gem 'mocha'
   gem 'quiet_assets'
-  gem 'simplecov'
   gem 'spring'
   gem 'web-console'
+end
+
+group :test do
+  gem 'mocha'
+  gem 'simplecov'
 end
 
 group :production do
