@@ -1,62 +1,152 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag("arcturus-white.png", width: "61", height: "63.5", alt: "Arcturus BioCloud"), root_path, class: "navbar-brand" %>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Explore', explore_path %></li>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path, class: 'sign-up' %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="jumbotron">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <h1>Arcturus BioCloud</h1>
-        <p class="lead">Code, create and share your biotechnology experiments in a friendly and easy way.</p>
-      </div>
-    </div>
-    <div class="row features">
-      <div class="col-md-3 col-sm-6">
-        <div class="service-item">
-          <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-flask fa-stack-1x text-primary"></i>
-          </span>
-          <h3>Easy genetic engineering</h3>
-          <p>Assemble genes without any previous knowledge, using our growing library of parts and a simple interface.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="service-item">
-          <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-dashboard fa-stack-1x text-primary"></i>
-          </span>
-          <h3>Fast prototyping</h3>
-          <p>We use super smart, fast and precise robots to assemble, transform and plate your synthetic biology project.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="service-item">
-          <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-heart fa-stack-1x text-primary"></i>
-          </span>
-          <h3>Open community</h3>
-          <p>We encourage collaboration and openness. Share your genetic circuits and co-create with other members.</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="service-item">
-          <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-magic fa-stack-1x text-primary"></i>
-          </span>
-          <h3>Simple to learn</h3>
-          <p>Code life as you play with LEGO. Don't waste your time with expensive and non-repeatable lab protocols.</p>
-        </div>
+        <p class="lead">Genetic Engineering as a service</p>
+        <%= link_to 'Create your first construct', new_project_path, class: 'cta' %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="slogan">
-    <h1>Featured projects</h1>
-    <p class="lead">Check out what others are doing on Arcturus BioCloud</p>
-    <hr/>
+<div class="container section section-one">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Rapid prototyping and data extraction of genetic constructs.<br>Create your constructs through the cloud!</h1>
+    </div>
+  </div>
 
-    <%= render 'projects/list' %>
+  <div class="row">
+    <div class="col-sm-5 steps">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag("step-1.png", class: 'step-icon') %>
+        </div>
+        <div class="col-sm-8">
+          <p>Drag and drop your<br>GenBank files</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag("step-2.png", class: 'step-icon') %>
+        </div>
+        <div class="col-sm-8">
+          <p>Choose experiments data<br>you want to be extracted</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= image_tag("step-3.png", class: 'step-icon') %>
+        </div>
+        <div class="col-sm-8">
+          <p>View real time updates and<br>share with the community</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <%= image_tag("import.png", class: 'step-info') %>
+    </div>
+  </div>
+</div>
+
+<div class="section section-two">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5">
+        <%= image_tag("workflow.png", class: 'step-icon') %>
+      </div>
+      <div class="col-sm-7">
+        <blockquote><span>We synthesize and assembly your constructs, running multiple data extraction experiments in your project to check if your gene is expressing. If you like the results we will ship the construct for you.</span></blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section section-three">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>See what our customers are talking about us</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= image_tag("heather.png") %>
+        <p>"We want to use Arcturus platform to teach people that don't have a background in biology to do biohacking."</p>
+        <p class="author">Heather - Denver Biolabs, UC Denver</p>
+      </div>
+      <div class="col-sm-6">
+        <%= image_tag("brian.png") %>
+        <p>"I created a split GFP that you can attach to interacting proteins and detect protein-protein binding."</p>
+        <p class="author">Brian - Boolean Biotech</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= image_tag("andrew.png") %>
+        <p>"We want to innovate in synthetic biology Arcturus helped us to rapid prototype."</p>
+        <p class="author">Andrew - IDEO</p>
+      </div>
+      <div class="col-sm-6">
+        <%= image_tag("ryan.png") %>
+        <p>"We're putting together a project to provide open source insulin."</p>
+        <p class="author">Ryan - IndieBio and Counter Culture Labs</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container section section-four">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>See what the media is talking about us</h1>
+      <%= image_tag("media.png") %>
+    </div>
+  </div>
+</div>
+
+<div class="section section-five">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1 col-sm-offset-2">
+        <%= link_to image_tag("arcturus.png", width: "70", height: "66", class: "footer-logo"), root_path %>
+      </div>
+      <div class="col-sm-2">
+        <ul>
+          <li><%= link_to 'Explore', explore_path %></li>
+          <li><%= link_to 'People', people_path %></li>
+          <li><%= link_to 'Forum', 'https://forum.arcturus.io' %></li>
+        </ul>
+      </div>
+      <div class="col-sm-4 social">
+        <%= link_to image_tag("facebook.png", width: "32.5", height: "32.5"), "https://www.facebook.com/arcturusbiocloud?fref=ts" %>
+        <%= link_to image_tag("github.png", width: "32.5", height: "32.5"), "https://github.com/arcturusbiocloud" %>
+        <%= link_to image_tag("medium.png", width: "32.5", height: "32.5"), "https://medium.com/@arcturusbiocloud" %>
+        <%= link_to image_tag("twitter.png", width: "32.5", height: "32.5"), "https://twitter.com/arcturusbio" %>
+        <p>© 2016 Acturus BioCloud, Inc.</p>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,243 @@
+html * {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.jumbotron {
+  background: url(asset_path('bg-landing.jpg')) no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+
+	text-align: center;
+	margin: -125px auto 0 auto;
+
+  height: 1100px;
+  width: 100%;
+  text-rendering: optimizeLegibility;
+
+  color: #fff;
+
+  h1 {
+    margin-top: 260px;
+    font-size: 90px;
+    font-weight: 300;
+  }
+
+  .lead {
+    font-size: 36px;
+    font-weight: 300;
+  }
+
+  .cta {
+    width: 500px;
+    height: 100px;
+    background-color: #3fa642;
+    display: block;
+    margin: 60px auto;
+    padding-top: 27px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 200;
+
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+
+    transition: background-color 0.3s ease;
+
+    &:hover{
+      background-color: #227b24;
+    }
+  }
+}
+
+.sign-up {
+  width: 150px;
+  height: 50px;
+  background-color: #356ba8;
+  text-decoration: none;
+  font-size: 18px;
+
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+
+  transition: background-color 0.3s ease;
+}
+
+.navbar {
+  background-color: transparent;
+  border: none;
+  padding-top: 50px;
+  .navbar-nav {
+    display:inline-block;
+    float: none;
+    margin: 0;
+  }
+  .navbar-collapse.collapse {
+    text-align: center;
+  }
+  .navbar-collapse.collapsing, .navbar-collapse.collapse.in {
+    text-align: left;
+    padding-left: 55px;
+    .navbar-right {
+      float: none;
+      display: block;
+      margin-left: -55px;
+      margin-bottom: 10px;
+      margin-right: -6px;
+    }
+  }
+}
+.navbar-default {
+  .navbar-brand {
+    margin-top: -25px;
+  }
+  .navbar-nav > li > a {
+    font-size: 18px;
+    color: #fff;
+    margin-left: 50px;
+    font-weight: 200;
+    &.sign-up:hover {
+      background-color: #225896;
+    }
+  }
+
+  .navbar-nav > li > a:hover,
+  .navbar-nav > li > a:focus {
+    color: #fff;
+  }
+  .navbar-toggle {
+    border-color: #fff;
+  }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus {
+    background-color: transparent;
+  }
+  .navbar-toggle .icon-bar {
+    background-color: #fff;
+  }
+}
+
+.section {
+  h1 {
+    margin: 110px 0;
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 52px;
+    color: #444;
+  }
+}
+
+.section-one {
+  p {
+    font-size: 22px;
+    color: #444;
+    padding-top: 30px;
+  }
+  .step-icon {
+    padding: 15px 0;
+  }
+  .step-info {
+    float: right;
+  }
+  .steps .row {
+    margin-bottom: 30px;
+    &:first-child {
+      border: 1px solid #3fa642;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      border-radius: 8px;
+    }
+  }
+}
+
+.section-two {
+  margin-top: 55px;
+  background-color: #3fa642;
+  .step-icon {
+    margin: 80px 0;
+  }
+  blockquote {
+    margin-top: 130px;
+    color: #fff;
+    font-size: 22px;
+    padding: 80px 0 0 100px;
+    line-height: 40px;
+    background-image: url(asset_path('openquote.png'));
+    background-position: top left;
+    background-repeat: no-repeat;
+    border: none;
+  }
+  blockquote span {
+    display: block;
+    padding-bottom: 100px;
+    background-image: url(asset_path('closequote.png'));
+    background-repeat: no-repeat;
+    background-position: bottom right;
+  }
+}
+
+.section-three {
+  background-color: #fdfdfd;
+  text-align: center;
+  img {
+    -webkit-border-radius: 76px;
+    -moz-border-radius: 76px;
+    border-radius: 76px;
+  }
+  p {
+    margin: 25px auto 0 auto;
+    font-size: 22px;
+    max-width: 460px;
+  }
+  .author {
+    color: #777;
+  }
+  .row:last-child {
+    margin: 120px 0;
+  }
+}
+
+.section-four {
+  h1 {
+    margin-bottom: 70px;
+  }
+}
+
+.section-five {
+  color: #888;
+  font-size: 18px;
+  margin-top: 50px;
+  background-color: #f2f2f2;
+  min-height: 190px;
+  padding-top: 50px;
+  .footer-logo {
+    margin-top: 20px;
+  }
+  ul {
+    list-style: none;
+    a {
+      color: #333;
+      line-height: 35px;
+    }
+  }
+  .social {
+    margin-top: 15px;
+    float: right;
+    img {
+      margin-left: 12px;
+      margin-right: 5px;
+    }
+    p {
+      margin-left: -10px;
+      margin-top: 25px;
+    }
+  }
+}
