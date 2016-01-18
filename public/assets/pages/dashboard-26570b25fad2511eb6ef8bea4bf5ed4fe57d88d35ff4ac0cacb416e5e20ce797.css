@@ -1,0 +1,50 @@
+/* line 5, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.collapsing, .in {
+  background-color: rgba(51, 51, 51, 0.6);
+  margin-top: 0;
+}
+
+/* line 7, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.action {
+  color: #337ab7;
+  text-decoration: none;
+}
+/* line 11, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.action:hover {
+  cursor: pointer;
+  color: #23527c;
+  text-decoration: underline;
+}
+
+/* line 18, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.experiments li {
+  margin-bottom: 10px;
+}
+
+/* line 19, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.price-hint {
+  font-weight: 300;
+  color: #aaa;
+}
+
+/* line 20, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.form-alert {
+  margin-top: 8px;
+  color: #fa6900;
+}
+
+/* line 21, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.grid-actions a {
+  margin-right: 10px;
+}
+
+/* line 23, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.grid-header {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* line 28, /Users/bmsatierf/Projects/rails/isis-v2/app/assets/stylesheets/pages/dashboard.scss */
+.grid-item {
+  margin-bottom: 10px;
+}
