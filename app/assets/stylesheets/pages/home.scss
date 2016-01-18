@@ -184,6 +184,30 @@ body {
   }
 }
 
+.section-faq {
+	i {
+		color: #237426;
+		margin-right: 5px;
+	}
+	p {
+		display: inline;
+	}
+	font-size: 22px;
+	.question {
+		color: #237426;
+		margin-top: 25px;
+		display: block;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	.answer{
+		display: none;
+		font-weight: 300;
+		color: #566056;
+	}
+}
+
 .section-three {
   background-color: #fdfdfd;
   text-align: center;
