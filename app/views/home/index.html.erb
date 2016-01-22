@@ -12,9 +12,15 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Explore', explore_path %></li>
+        <li><%= link_to 'How it Works', '#how-it-works' %></li>
         <li><%= link_to 'FAQ', '#frequently-asked-questions' %></li>
-        <li><%= link_to "Login", new_user_session_path %></li>
-        <li><%= link_to "Sign Up", new_user_registration_path, class: 'sign-up' %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "My projects", projects_path %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, class: 'sign-up' %></li>
+        <% else %>
+          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path, class: 'sign-up' %></li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -85,6 +91,21 @@
   </div>
 </div>
 
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 id="how-it-works">How it Works</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uMPc_BTG_LI" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="section section-faq">
   <div class="container">
     <div class="row">
@@ -114,7 +135,7 @@
     <div class="row">
       <div class="col-sm-12">
         <p class="question"><%= fa_icon 'caret-right' %> How do I start?</p>
-        <p class="answer">See our screencast. There you will see how to Find genes in the databases, Design your construction using a design software. Finally, you only need to send us your design and choose the experiments you want.</p>
+        <p class="answer"><%= link_to 'See our screencast', '#how-it-works' %>. There you will see how to Find genes in the databases, Design your construction using a design software. Finally, you only need to send us your design and choose the experiments you want.</p>
       </div>
     </div>
     <div class="row">
@@ -201,7 +222,7 @@
 <div class="container section section-four">
   <div class="row">
     <div class="col-sm-12">
-      <h1>See what the media is talking about us</h1>
+      <h1>The media is talking about us</h1>
       <%= image_tag("media.png") %>
     </div>
   </div>
@@ -216,6 +237,8 @@
       <div class="col-sm-2">
         <ul>
           <li><%= link_to 'Explore', explore_path %></li>
+          <li><%= link_to 'How it Works', '#how-it-works' %></li>
+          <li><%= link_to 'FAQ', '#frequently-asked-questions' %></li>
           <li><%= link_to 'People', people_path %></li>
           <li><%= link_to 'Forum', 'https://forum.arcturus.io' %></li>
         </ul>
