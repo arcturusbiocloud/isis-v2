@@ -1,0 +1,1353 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+/* line 3, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+html * {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 7, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+html {
+  overflow-y: scroll;
+}
+
+/* line 8, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+body {
+  padding-top: 30px;
+}
+
+/* line 9, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+h1 {
+  margin-top: 50px;
+}
+
+/* line 11, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.btn-blue {
+  background-color: #428bca;
+  color: #fff;
+}
+
+/* line 16, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24706) 0px 2px 4px -1px;
+  height: 63px;
+}
+
+/* line 17, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav {
+  margin-top: 13px;
+}
+
+/* line 18, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav .divisor {
+  margin: 1px 0 0 8px;
+  color: #ccc;
+  font-weight: 100;
+  font-size: 22px;
+}
+
+/* line 19, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav > li.active > a {
+  color: #000;
+}
+
+/* line 20, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav > li > a {
+  height: 40px;
+  line-height: 8px;
+  margin-left: 10px;
+}
+
+/* line 21, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav > li > a:hover,
+.navbar-white .navbar-nav > li > a:focus {
+  background-color: inherit;
+}
+
+/* line 23, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav > li > .btn-blue:hover {
+  background-color: #20649f;
+  color: #fff;
+}
+
+/* line 24, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-nav > li > .btn-default:hover {
+  background-color: #eee;
+}
+
+/* line 25, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-toggle {
+  background-color: #377bb5;
+  margin-top: 30px;
+}
+
+/* line 26, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-white .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+/* line 33, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.navbar-brand {
+  padding-left: 34px;
+  margin-top: -4px;
+}
+
+/* line 35, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+form.navbar-nav .btn {
+  margin-top: 3px;
+}
+
+/* line 39, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.slogan {
+  padding: 30px 0;
+  height: 200px;
+  margin-bottom: 40px;
+}
+/* line 43, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.slogan h1 {
+  line-height: 70px;
+  font-weight: normal;
+  font-size: 28px;
+}
+/* line 48, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.slogan .nav-pills {
+  margin-top: 65px;
+}
+
+/* line 53, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.nav-inner {
+  float: right;
+  margin-top: 80px;
+}
+
+/* line 55, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.explore {
+  margin-bottom: 25px;
+}
+
+/* line 56, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.explore img {
+  margin-bottom: 15px;
+}
+
+/* line 58, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.element-container {
+  text-align: center;
+}
+
+/* line 59, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.element-container img {
+  width: 100px;
+  height: 100px;
+}
+
+/* line 60, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.element-container p {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+/* Forms */
+/* line 64, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.form-actions .btn {
+  margin-right: 16px;
+}
+
+/* line 69, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.progress {
+  margin-bottom: 0;
+}
+/* line 71, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.progress .progress-bar {
+  text-align: left;
+}
+/* line 73, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.progress .progress-bar span {
+  margin-left: 10px;
+}
+
+/* Sticky footer */
+/* line 80, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* line 81, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+body {
+  margin-bottom: 60px;
+}
+
+/* line 82, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+/* line 83, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.footer hr.small {
+  width: 105px;
+}
+
+/* line 84, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.footer-inner {
+  border-top: 1px solid #ccc;
+}
+
+/* line 85, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.footer-inner p {
+  padding-top: 20px;
+  text-align: center;
+}
+
+/* line 86, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/overwrites.scss */
+.complete {
+  border-top: 1px solid #ccc;
+  padding-top: 25px;
+  margin-bottom: 12px;
+}
+
+/* line 1, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+body.devise {
+  background: #6493b7 url("/assets/bg-377e8f6a07c62d1424b10d51f21ae4da45c62118581a197fd6667eca65ddf356.png") no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+}
+
+/* line 7, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+h1 img, h2 img {
+  width: 70px;
+  height: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  float: left;
+  margin: 0 13px 0 0;
+}
+
+/* line 19, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+h2.list {
+  font-size: 22px;
+}
+/* line 21, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+h2.list p {
+  font-size: 16px;
+  margin: 8px 0 -2px 0;
+}
+/* line 25, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+h2.list p.meta {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* line 31, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.alert {
+  display: none;
+  padding: 6px 10px;
+  margin-bottom: 25px;
+}
+
+/* line 37, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.default-flash {
+  margin-top: 75px;
+  margin-bottom: -55px;
+}
+
+/* line 42, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.nav-pills {
+  float: right;
+  margin-top: 55px;
+}
+
+/* line 48, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-error {
+  float: left;
+  margin: 3px 0 -19px 0;
+}
+
+/* line 50, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.wrapper {
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+/* line 55, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin-logo {
+  margin: 0 auto;
+  display: block;
+}
+
+/* line 61, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin {
+  max-width: 410px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #fff;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/* line 75, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin img {
+  margin: 15px auto;
+}
+/* line 79, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin .form-signin-lead {
+  margin: 15px 0 20px 0;
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+/* line 86, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin hr {
+  margin-bottom: 26px;
+}
+/* line 90, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+/* line 97, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+/* line 102, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin input[type="text"] {
+  margin-bottom: 15px;
+}
+/* line 106, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin input[type="email"] {
+  margin-bottom: 15px;
+}
+/* line 110, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin input[type="password"] {
+  margin-bottom: 15px;
+}
+/* line 114, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.form-signin input[type="submit"] {
+  margin-top: 30px;
+  margin-bottom: -15px;
+}
+
+/* line 120, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.signup {
+  max-width: 410px;
+  margin: 0 auto;
+  padding: 15px 35px;
+  background-color: #010101;
+  border: 1px solid #010101;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/* line 134, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.signup span {
+  font-size: 20px;
+  text-align: center;
+  display: block;
+  font-weight: 300;
+  color: #fff;
+}
+/* line 140, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.signup span a {
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
+}
+/* line 146, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.signup span a:hover {
+  text-decoration: underline;
+}
+
+/* line 152, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.reset-password {
+  text-align: center;
+}
+/* line 154, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.reset-password a {
+  color: #fff;
+  text-shadow: 1px 1px 2px #333;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* line 162, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.paginate-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* line 167, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.tos {
+  padding-bottom: 30px;
+}
+/* line 169, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.tos h2 {
+  border-bottom: 1px solid #eee;
+  margin: 35px 0 25px 0;
+}
+/* line 173, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.tos ul {
+  padding-left: 15px;
+}
+/* line 176, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.tos li {
+  list-style-type: lower-latin;
+}
+
+/* line 181, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.terms {
+  margin: 35px 0 -25px 0;
+}
+
+@font-face {
+  font-family: dropify;
+  src: url("dropify.eot");
+  src: url("dropify.eot?#iefix") format("embedded-opentype"), url("dropify.svg#dropify") format("svg"), url("dropify.woff") format("woff"), url("dropify.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-font:before, .dropify-wrapper .dropify-message span.file-icon:before, .dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon:before, [class*=" dropify-font-"]:before, [class^=dropify-font-]:before {
+  font-family: dropify;
+  font-style: normal;
+  font-weight: 400;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-left: .2em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper, .dropify-wrapper .dropify-clear {
+  font-family: Roboto,"Helvetica Neue",Helvetica,Arial;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-font-upload:before, .dropify-wrapper .dropify-message span.file-icon:before {
+  content: '\e800';
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-font-file:before {
+  content: '\e801';
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  padding: 5px 10px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #777;
+  background-color: #FFF;
+  background-image: none;
+  text-align: center;
+  border: 2px solid #E5E5E5;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper:hover {
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(135deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
+  -webkit-animation: stripes 2s linear infinite;
+  animation: stripes 2s linear infinite;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.has-error .dropify-message .dropify-error, .dropify-wrapper.has-preview .dropify-clear {
+  display: block;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.disabled input {
+  cursor: not-allowed;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.disabled:hover {
+  background-image: none;
+  -webkit-animation: none;
+  animation: none;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.disabled .dropify-message {
+  opacity: .5;
+  text-decoration: line-through;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.disabled .dropify-infos-message {
+  display: none;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-message {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-message span.file-icon {
+  font-size: 50px;
+  color: #CCC;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-message p {
+  margin: 5px 0 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-message p.dropify-error {
+  color: #F34141;
+  font-weight: 700;
+  display: none;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-clear {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  z-index: 7;
+  top: 10px;
+  right: 10px;
+  background: 0 0;
+  border: 2px solid #FFF;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 4px 8px;
+  font-weight: 700;
+  color: #FFF;
+  -webkit-transition: all .15s linear;
+  transition: all .15s linear;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-clear:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #FFF;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-render img {
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #FFF;
+  -webkit-transition: border-color .15s linear;
+  transition: border-color .15s linear;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-render i {
+  font-size: 70px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: #777;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-render .dropify-extension {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  font-size: 13px;
+  width: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -40%);
+  -ms-transform: translate(0, -40%);
+  transform: translate(0, -40%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  width: 100%;
+  padding: 0 20px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #FFF;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename span.file-icon {
+  margin-right: 2px;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message {
+  margin-top: 15px;
+  padding-top: 15px;
+  font-size: 12px;
+  position: relative;
+  opacity: .5;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  background: #FFF;
+  width: 30px;
+  height: 2px;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper:hover .dropify-clear, .dropify-wrapper:hover .dropify-preview .dropify-infos {
+  opacity: 1;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper:hover .dropify-preview .dropify-infos .dropify-infos-inner {
+  margin-top: -5px;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback {
+  height: auto !important;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback:hover {
+  background-image: none;
+  -webkit-animation: none;
+  animation: none;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview {
+  position: relative;
+  padding: 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-render {
+  display: block;
+  position: relative;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message::before, .dropify-wrapper.touch-fallback.has-preview .dropify-message {
+  display: none;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-render .dropify-font-file {
+  position: relative;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 0;
+  left: 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-render .dropify-font-file::before {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-render img {
+  position: relative;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos {
+  position: relative;
+  opacity: 1;
+  background: 0 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos .dropify-infos-inner {
+  position: relative;
+  top: 0;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  padding: 5px 90px 5px 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos .dropify-infos-inner p {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #777;
+  text-align: left;
+  line-height: 25px;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-filename {
+  font-weight: 700;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-preview .dropify-infos .dropify-infos-inner p.dropify-infos-message {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 11px;
+  position: relative;
+  opacity: 1;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-message {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  padding: 40px 0;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback .dropify-clear {
+  top: auto;
+  bottom: 23px;
+  opacity: 1;
+  border-color: rgba(119, 119, 119, 0.7);
+  color: #777;
+}
+
+/* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/globals/shared.scss */
+.dropify-wrapper.touch-fallback:hover .dropify-preview .dropify-infos .dropify-infos-inner {
+  margin-top: 0;
+}
+
+@-webkit-keyframes stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 30px;
+  }
+}
+@keyframes stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 30px;
+  }
+}
+/* line 1, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.waiting-list {
+  float: left;
+  margin-top: 7px;
+  color: #aaa;
+}
+
+/* line 3, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.scope-check {
+  margin-left: 15px;
+}
+
+/* line 6, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.design-attribute .col-xs-12 {
+  margin-bottom: 18px;
+}
+/* line 9, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.design-attribute label {
+  min-width: 170px;
+  padding-right: 15px;
+  text-align: right;
+}
+/* line 14, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.design-attribute select {
+  min-width: 120px;
+  margin-right: 10px;
+}
+/* line 18, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.design-attribute p {
+  margin: 6px 0 15px 175px;
+  color: #aaa;
+}
+
+/* line 24, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.stripe-button-el {
+  margin-bottom: 10px;
+}
+
+/* line 26, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.timeline-entry {
+  display: none;
+}
+
+/* line 28, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project {
+  margin-bottom: 35px;
+}
+
+/* line 29, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project .description {
+  padding-left: 30px;
+}
+
+/* line 30, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project .actions {
+  margin-top: 25px;
+  text-align: right;
+}
+
+/* line 31, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project .actions li {
+  list-style-type: none;
+  display: inline;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+/* line 32, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-owner {
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  /* line 35, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .scope-check {
+    margin-left: 0;
+  }
+
+  /* line 38, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .design-attribute label {
+    text-align: left;
+  }
+  /* line 41, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .design-attribute p {
+    margin-left: 0;
+  }
+
+  /* line 45, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .stripe-button-el {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* line 46, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .project .fa {
+    display: none;
+  }
+
+  /* line 47, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .project .description {
+    padding-left: 15px;
+    margin: 18px 0 15px auto;
+  }
+
+  /* line 48, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+  .project .actions {
+    display: none;
+  }
+}
+/* line 51, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-icon {
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* line 56, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-thumbnail {
+  border-radius: 5px;
+}
+
+/* line 59, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-visibility {
+  margin-left: -25px;
+  margin-right: 7px;
+  color: #ddd;
+}
+
+/* line 64, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-pending {
+  color: #b26a36;
+}
+
+/* line 67, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-running {
+  color: #3679b2;
+}
+
+/* line 70, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.project-completed {
+  color: #44b236;
+}
+
+/* line 74, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.btn .fa {
+  margin-right: 10px;
+}
+
+/* line 79, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.file-input p strong {
+  font-weight: 500;
+  font-size: 18px;
+}
+/* line 83, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.file-input p a img {
+  margin-top: 15px;
+}
+/* line 86, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.file-input p img {
+  margin-right: 50px;
+}
+
+/* line 120, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-container {
+  width: 90%;
+  margin: 0 auto;
+}
+/* line 124, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 131, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+header {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: #303e49;
+}
+/* line 136, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+header h1 {
+  color: #ffffff;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+/* line 142, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+#cd-timeline {
+  position: relative;
+  padding: 3.5em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-top: -20px;
+  margin-bottom: 3em;
+}
+/* line 149, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+#cd-timeline::before {
+  /* vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+/* line 159, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+#cd-timeline h2 {
+  margin-top: 10px;
+  font-size: 22px;
+}
+/* line 163, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+#cd-timeline p, #cd-timeline .cd-date {
+  font-size: 14px;
+}
+
+/* line 172, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-block {
+  position: relative;
+  margin: 2em 0;
+}
+/* line 20, /Users/bmsatierf/.rvm/gems/ruby-2.3.0@rails/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.cd-timeline-block::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 176, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-block:first-child {
+  margin-top: 0;
+}
+/* line 179, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-block:last-child {
+  margin-bottom: 0;
+}
+
+/* line 184, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
+/* line 192, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img .fa {
+  font-size: 24px;
+  color: #fff;
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+}
+/* line 204, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-green {
+  background: #75ce66;
+}
+/* line 207, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-movie {
+  background: #c03b44;
+}
+/* line 210, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-location {
+  background: #f0ca45;
+}
+/* line 213, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-running {
+  background: #428bca;
+}
+/* line 216, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-plating {
+  background: #9a6adc;
+}
+/* line 219, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-img.cd-picture {
+  background: #ed7c4a;
+}
+
+@-webkit-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* line 238, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-content {
+  position: relative;
+  margin-left: 60px;
+  background: #ffffff;
+  border-radius: 0.25em;
+  padding: 1em;
+  box-shadow: 0 3px 0 #d7e4ed;
+}
+/* line 20, /Users/bmsatierf/.rvm/gems/ruby-2.3.0@rails/gems/bourbon-4.2.6/app/assets/stylesheets/addons/_clearfix.scss */
+.cd-timeline-content::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* line 246, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-content h2 {
+  color: #303e49;
+}
+/* line 249, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-content p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+/* line 253, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-content .cd-date {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  display: inline-block;
+  float: left;
+  padding: .8em 0;
+  opacity: .7;
+}
+/* line 260, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/projects.scss */
+.cd-timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 8px solid #ffffff;
+}
+
+@-webkit-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(-20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
