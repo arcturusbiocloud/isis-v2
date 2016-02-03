@@ -1,0 +1,452 @@
+/* line 1, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+html * {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* line 5, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+body {
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+/* line 10, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.jumbotron {
+  background: url("/assets/bg-landing-e6312017a054be29a2ab90431b98c679e7d4cb0b062a7da6344df35dc4d46e35.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  text-align: center;
+  margin: -125px auto 0 auto;
+  height: 100vh;
+  width: 100%;
+  text-rendering: optimizeLegibility;
+  color: #fff;
+}
+/* line 24, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.jumbotron h1 {
+  font-family: "myriad-pro-semi-condensed";
+  font-weight: 700;
+  margin-top: 120px;
+  font-size: 90px;
+}
+/* line 31, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.jumbotron .lead {
+  font-size: 36px;
+  font-weight: 300;
+}
+/* line 36, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.jumbotron .cta {
+  width: 500px;
+  height: 100px;
+  background-color: #3fa642;
+  display: block;
+  margin: 60px auto;
+  padding-top: 27px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 200;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+/* line 54, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.jumbotron .cta:hover {
+  background-color: #227b24;
+}
+
+/* line 60, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.sign-up {
+  width: 150px;
+  height: 50px;
+  background-color: #356ba8;
+  text-decoration: none;
+  font-size: 18px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+/* line 74, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar {
+  background-color: transparent;
+  border: none;
+  padding-top: 50px;
+}
+/* line 78, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  margin: 0;
+}
+/* line 83, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar .navbar-collapse.collapse {
+  text-align: center;
+}
+/* line 86, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar .navbar-collapse.collapsing, .navbar .navbar-collapse.collapse.in {
+  text-align: left;
+  padding-left: 55px;
+}
+/* line 89, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar .navbar-collapse.collapsing .navbar-right, .navbar .navbar-collapse.collapse.in .navbar-right {
+  float: none;
+  display: block;
+  margin-left: -55px;
+  margin-bottom: 10px;
+  margin-right: -6px;
+}
+
+/* line 99, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-brand {
+  margin-top: -25px;
+}
+/* line 102, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-nav > li > a {
+  font-size: 18px;
+  color: #fff;
+  margin-left: 50px;
+  font-weight: 200;
+}
+/* line 107, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-nav > li > a.sign-up:hover {
+  background-color: #225896;
+}
+/* line 112, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+}
+/* line 116, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+/* line 119, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+/* line 123, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+/* line 128, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+/* line 134, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 950px) {
+  /* line 143, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .col-md-7 {
+    display: none;
+  }
+
+  /* line 144, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .section-one {
+    text-align: center;
+  }
+  /* line 146, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .section-one img {
+    margin-bottom: -40px !important;
+  }
+
+  /* line 150, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .row {
+    border: none !important;
+  }
+
+  /* line 153, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .section-two .col-sm-5 {
+    display: none;
+  }
+  /* line 154, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .section-two .col-sm-7 {
+    margin-top: -100px;
+  }
+}
+@media only screen and (max-width: 766px) {
+  /* line 159, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .col-md-7 {
+    display: none;
+  }
+
+  /* line 161, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .navbar-header img {
+    margin-top: -21px;
+    width: 38px;
+    height: 40px;
+  }
+
+  /* line 166, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .navbar-toggle {
+    margin-top: -27px;
+  }
+
+  /* line 169, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .navbar-default {
+    background-color: #3fa642;
+  }
+
+  /* line 173, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .navbar-nav li:first-child {
+    margin-top: 15px;
+  }
+
+  /* line 177, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .sign-up, .sign-up:hover {
+    background-color: transparent !important;
+    display: block;
+  }
+
+  /* line 182, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .collapsing, .in {
+    background-color: #3fa642;
+  }
+
+  /* line 184, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .collapsing ul li a, .in ul li a {
+    margin-left: 17px !important;
+  }
+
+  /* line 186, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  h1 {
+    font-size: 50px !important;
+  }
+
+  /* line 190, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  h2 {
+    font-size: 25px !important;
+    line-height: 35px !important;
+  }
+
+  /* line 195, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .lead {
+    font-size: 24px !important;
+  }
+
+  /* line 199, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .cta {
+    width: 400px !important;
+    height: 60px !important;
+    font-size: 22px !important;
+    padding-top: 15px !important;
+    -webkit-border-radius: 30px !important;
+    -moz-border-radius: 30px !important;
+    border-radius: 30px !important;
+  }
+}
+@media only screen and (max-width: 460px) {
+  /* line 211, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  h1 {
+    font-size: 40px !important;
+  }
+
+  /* line 215, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .lead {
+    font-size: 20px !important;
+  }
+
+  /* line 219, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+  .cta {
+    width: 300px !important;
+    height: 60px !important;
+    font-size: 18px !important;
+    padding-top: 17px !important;
+    -webkit-border-radius: 30px !important;
+    -moz-border-radius: 30px !important;
+    border-radius: 30px !important;
+  }
+}
+/* line 231, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section h2 {
+  margin: 110px 0;
+  font-size: 36px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 52px;
+  color: #444;
+}
+
+/* line 242, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-one p {
+  font-size: 22px;
+  color: #444;
+  padding-top: 30px;
+}
+/* line 247, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-one .step-icon {
+  padding: 15px 0;
+}
+/* line 250, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-one .step-info {
+  float: right;
+}
+/* line 253, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-one .steps .row {
+  margin-bottom: 30px;
+}
+/* line 255, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-one .steps .row:first-child {
+  border: 1px solid #3fa642;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+/* line 264, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-two {
+  margin-top: 55px;
+  background-color: #3fa642;
+}
+/* line 267, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-two .step-icon {
+  margin: 80px 0;
+}
+/* line 270, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-two blockquote {
+  margin-top: 130px;
+  color: #fff;
+  font-size: 22px;
+  padding: 80px 0 0 100px;
+  line-height: 40px;
+  background-image: url("/assets/openquote-38e422501f1039bf89dfc3414c97e3c3817acb53ee81387eaac06f665e4b477f.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+  border: none;
+}
+/* line 281, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-two blockquote span {
+  display: block;
+  padding-bottom: 100px;
+  background-image: url("/assets/closequote-0f3c1a8f7e1218e47c7268c6a41b46e3b1e51dc0b348e5677fb745966917b472.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+/* line 290, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.video {
+  text-align: center;
+}
+
+/* line 294, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq {
+  margin-bottom: 80px;
+  font-size: 22px;
+}
+/* line 296, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq h1 {
+  margin-bottom: 45px;
+}
+/* line 299, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq i {
+  color: #237426;
+  margin-right: 5px;
+}
+/* line 303, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq p {
+  display: inline;
+}
+/* line 307, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq .question {
+  color: #237426;
+  margin-top: 25px;
+  display: block;
+}
+/* line 311, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq .question:hover {
+  cursor: pointer;
+}
+/* line 315, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-faq .answer {
+  display: none;
+  font-weight: 300;
+  color: #566056;
+}
+
+/* line 322, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three {
+  background-color: #fdfdfd;
+  text-align: center;
+}
+/* line 325, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three h1 {
+  margin-top: 55px;
+}
+/* line 328, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three img {
+  -webkit-border-radius: 76px;
+  -moz-border-radius: 76px;
+  border-radius: 76px;
+}
+/* line 333, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three p {
+  margin: 25px auto 0 auto;
+  font-size: 22px;
+  max-width: 460px;
+}
+/* line 338, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three .author {
+  color: #777;
+}
+/* line 341, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-three .row:last-child {
+  margin: 120px 0;
+}
+
+/* line 347, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-four h1 {
+  margin-bottom: 70px;
+}
+
+/* line 352, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five {
+  color: #888;
+  font-size: 18px;
+  margin-top: 50px;
+  background-color: #f2f2f2;
+  min-height: 230px;
+  padding: 50px 0 30px 0;
+}
+/* line 359, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five .footer-logo {
+  margin-top: 50px;
+}
+/* line 362, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five ul {
+  list-style: none;
+}
+/* line 364, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five ul a {
+  color: #333;
+  line-height: 35px;
+}
+/* line 369, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five .social {
+  margin-top: 45px;
+  float: right;
+}
+/* line 372, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five .social img {
+  margin-left: 12px;
+  margin-right: 5px;
+}
+/* line 376, /Users/bmsatierf/Projects/rails/isis/app/assets/stylesheets/pages/home.scss */
+.section-five .social p {
+  margin-left: -10px;
+  margin-top: 25px;
+}
