@@ -15,7 +15,7 @@
         <li><%= link_to 'How it Works', '#how-it-works' %></li>
         <li><%= link_to 'FAQ', '#frequently-asked-questions' %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "My projects", projects_path %></li>
+          <li><%= link_to "My projects", username_projects_path(current_user.username) %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, class: 'sign-up' %></li>
         <% else %>
           <li><%= link_to "Login", new_user_session_path %></li>
