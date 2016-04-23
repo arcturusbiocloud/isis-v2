@@ -84,7 +84,7 @@ class ProjectsController < ApplicationController
   end
 
   def user_projects
-    @user.projects.page params[:page] if admin? || @user == current_user
+    return @user.projects.page params[:page] if admin? || @user == current_user
 
     # URL of an user other than current_user
     @user.projects.open_source.page params[:page]
